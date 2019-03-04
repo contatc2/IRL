@@ -9,7 +9,6 @@
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
-
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
@@ -21,6 +20,13 @@
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :location %>
+    <%= f.input :date_of_birth, as: :date, start_year: Date.today.year - 18,
+                              end_year: Date.today.year - 100,
+                              order: %i(day month year)  %>
+    <%= f.input :picture %>
   </div>
 
   <div class="form-actions">
