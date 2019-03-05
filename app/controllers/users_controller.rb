@@ -5,7 +5,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @friends = @user.friend_invitations.where(accepted: true)
-    @friends_pending = @user.friend_invitations.where(accepted: nil)
+    @invitations = FriendInvitation.where(friend: @user)
+    @accepted_invitations = FriendInvitation.where(accepted: true, user: @user)
+    @pending_invitations = FriendInvitation.where(accepted: nil, user: @user)
   end
 end
