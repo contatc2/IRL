@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   root to: 'pages#home'
-  resources :users, only: %i[index profile] do
+  resources :users, only: %i[index show] do
     resources :user_adjectives, only: %i[new create]
     resources :friend_invitations, only: %i[new create]
   end
