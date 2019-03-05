@@ -29,4 +29,5 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
   gem 'carrierwave', '~> 1.2'
+  gem 'cloudinary', '~> 1.9.1'
 end

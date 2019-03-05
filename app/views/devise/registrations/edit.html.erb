@@ -5,6 +5,7 @@
 
   <div class="form-inputs">
     <%= f.input :picture %>
+    <%= f.input :picture_cache, as: :hidden %>
     <%= f.input :email, required: true, autofocus: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
