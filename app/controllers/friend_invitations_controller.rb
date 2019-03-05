@@ -1,7 +1,10 @@
 class FriendInvitationsController < ApplicationController
-  def index
+  def new
   end
 
-  def new
+  def create
+  end
+
+  def update
   end
 end
