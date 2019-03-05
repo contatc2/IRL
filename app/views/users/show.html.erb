@@ -1,18 +1,25 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @user.picture, height: 300, width: 400, crop: :fill %>')">
   <div class="container">
     <h1>My Profile</h1>
-    <%= link_to "invite friend", new_user_friend_invitation_path(@user), class:"text-decoration-none text-secondary"  %>
+    <%= link_to "invite friend", new_friend_invitation_path, class:"text-decoration-none text-secondary"  %>
   </div>
 </div>
 
-
+<div class="p-5">
+  <% unless @invitations.nil? %>
+    <% @invitations.each do |invitation| %>
+    <p><%= invitation.user.full_name %> has invited you as a trusted friend</p>
+    <%= link_to "Accept invitation",friend_invitation_path(invitation, friend_invitation: {accepted: true}), method: :put, class:"btn btn-light" %>
+    <% end %>
+  <% end %>
+</div>
 
 <h2>My helpers</h2>
 
-<% @friends.each do |friend| %>
+<% @accepted_invitations.each do |invitation| %>
 
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path friend.picture, height: 300, width: 400, crop: :fill %>')">
-   <%= link_to friend.first_name, user_path(friend), class:"text-decoration-none text-light"  %>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path invitation.friend.picture, height: 300, width: 400, crop: :fill %>')">
+   <%= link_to invitation.friend.full_name, user_path(invitation.friend), class:"text-decoration-none text-light"  %>
 </div>
 
 

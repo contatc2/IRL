@@ -1,5 +1,5 @@
 class FriendInvitationsController < ApplicationController
-  before_action :set_user, only: %i[new create]
+  before_action :set_user, only: %i[create update]
   def new
     @invitation = FriendInvitation.new
   end
@@ -12,12 +12,15 @@ class FriendInvitationsController < ApplicationController
   end
 
   def update
+    @invitation = FriendInvitation.find(params[:id])
+    @invitation.update(invitation_params)
+    redirect_to user_path(current_user)
   end
 
   private
 
   def set_user
-    @user = User.find(params[:user_id])
+    @user = current_user
   end
 
   def invitation_params
