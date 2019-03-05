@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :matches
   has_many :friend_invitations
-  has_many :user_adjectives
+  has_many :user_adjectives, dependent: :destroy
 end
