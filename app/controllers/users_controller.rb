@@ -9,4 +9,5 @@ class UsersController < ApplicationController
     @accepted_invitations = FriendInvitation.where(accepted: true, user: @user)
     @pending_invitations = FriendInvitation.where(accepted: nil, user: @user)
   end
+
 end

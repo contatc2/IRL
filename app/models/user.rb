@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :matches
-  has_many :friend_invitations
+  has_many :friend_invitations, dependent: :destroy
   has_many :user_adjectives, dependent: :destroy
   mount_uploader :picture, PhotoUploader
 
