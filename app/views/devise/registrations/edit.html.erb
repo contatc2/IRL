@@ -4,6 +4,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :picture %>
     <%= f.input :email, required: true, autofocus: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -26,7 +27,6 @@
     <%= f.input :date_of_birth, as: :date, start_year: Date.today.year - 18,
                               end_year: Date.today.year - 100,
                               order: %i(day month year)  %>
-    <%= f.input :picture %>
     <%= f.input :available %>
   </div>
 
