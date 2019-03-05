@@ -28,7 +28,7 @@
     <%= f.input :date_of_birth, as: :date, start_year: Date.today.year - 18,
                               end_year: Date.today.year - 100,
                               order: %i(day month year)  %>
-    <%= f.input :available %>
+    <%= f.input :available, as: :radio_buttons, collection: [['Single', 'Single'], ['In couple', 'In']] %>
   </div>
 
   <div class="form-actions">
