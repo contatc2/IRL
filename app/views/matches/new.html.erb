@@ -1,0 +1,14 @@
+<h1>Propose a match for <%= @match_one %></h1>
+
+<%= simple_form_for @match do |f| %>
+
+<%= f.hidden_field :match_one_id, value: params[:match_one] %>
+
+<%= f.association :match_two, label_method: :full_name %>
+
+<%= f.submit %>
+
+<% end %>
+
+
+
