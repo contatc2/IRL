@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_many :friend_invitations
   has_many :user_adjectives, dependent: :destroy
   mount_uploader :picture, PhotoUploader
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

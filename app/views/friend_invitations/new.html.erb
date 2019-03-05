@@ -1,2 +1,11 @@
 <h1>FriendInvitations#new</h1>
-<p>Find me in app/views/friend_invitations/new.html.erb</p>
+
+<%= simple_form_for [@user, @invitation] do |f| %>
+
+<%= f.association :friend, label_method: :full_name %>
+
+<%= f.submit %>
+
+<% end %>
+
+
