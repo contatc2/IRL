@@ -1,11 +1,17 @@
 <h1>Add a trusted friend</h1>
 
 <%= simple_form_for @invitation do |f| %>
+  <%= f.association :friend, label_method: :full_name %>
+  <%= f.submit %>
+<% end %>
 
-<%= f.association :friend, label_method: :full_name %>
+<br>
+<br>
+<br>
 
-<%= f.submit %>
-
+<%= simple_form_for @invitation, :url => share_friend_invitations_path do |f| %>
+  <%= f.input :enter_email, hint: "Enter a non user email" %>
+  <%= f.submit %>
 <% end %>
 
 
