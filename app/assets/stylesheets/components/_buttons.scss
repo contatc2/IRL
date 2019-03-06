@@ -1,5 +1,5 @@
 
-.button1{
+.main_action_button{
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
@@ -9,16 +9,15 @@
   border: 1px solid #0F60C4;
 }
 
-.button1:hover{
+.main_action_button:hover{
   background: linear-gradient(#0F60C4, #103773);
   color: white;
   text-decoration: none;
 }
 
-.button2{
+.second_action_button{
   color: black;
   padding: 8px 24px;
-  width: 40%;
   display: inline-block;
   border-radius: 4px;
   background: #CEF9E2;
@@ -26,7 +25,7 @@
   border: 1px solid #0F60C4;
 }
 
-.button2:hover{
+.second_action_button:hover{
   padding: 7px 23px;
   background: #CEF9E2;
   color: black;
@@ -34,11 +33,10 @@
   border: 2px solid #0F60C4;
 }
 
-.button3{
+.low_key_button{
   color: #4A4A4A;
   border: 1px solid #4A4A4A;
   margin: auto;
-  width: 40%;
   padding: 8px 24px;
   display: inline-block;
   border-radius: 50px;
@@ -47,30 +45,14 @@
   transition: opacity 0.3s ease;
 }
 
-.button3:hover{
+.low_key_button:hover{
   opacity: 1;
   text-decoration: none;
 }
 
-.button4{
- color: #4A4A4A;
- border: 1px solid #4A4A4A;
- padding: 8px 24px;
- border-radius: 50px;
- font-weight: lighter;
- opacity: 0.6;
- transition: opacity 0.3s ease;
-}
-
-.button4:hover{
-  opacity: 1;
-  text-decoration: none;
-}
-
-.full_width{
+.full_width_button{
   color: white;
   padding: 8px 24px;
-  border-radius: 4px;
   text-align: center;
   background: linear-gradient(#103773, #0F60C4);
   transition: background 0.3s ease;
@@ -79,7 +61,7 @@
   width: 100%;
 }
 
-.full_width:hover{
+.full_width_button:hover{
   background: linear-gradient(#0F60C4, #103773);
   color: white;
   text-decoration: none;
