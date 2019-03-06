@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+  <title>You are in control</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="jumbotron">
+    <div class="form-inputs">
+      <%= simple_form_for [current_user] do |f| %>
+      <%= f.input :picture %>
+      <%= f.input :picture_cache, as: :hidden %>
+        <%= f.simple_fields_for :user_adjectives do |useradj_form| %>
+          <%= useradj_form.input :adjective, hint: "Enter the first adjective that suits you" %>
+          <%= useradj_form.input :adjective_2, hint: "Enter the second adjective that suits you" %>
+          <%= useradj_form.input :adjective_3, hint: "Enter the third adjective that suits you" %>
+        <% end %>
+      <%= f.button :submit, "Send the adjectives", class: "btn btn-gradient" %>
+    <% end %>
+  </div>
+  </div>
+</div>
+
+<div>
+
+<h3>Go back to Home</h3>
+
+<p>Home? <%= link_to "Go back home", users_path %></p>
+</div>
+
+</body>
+</html>

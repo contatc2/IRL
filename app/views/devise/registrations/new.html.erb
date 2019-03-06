@@ -20,7 +20,7 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :available %>
+    <%= f.input :available, as: :boolean, checked_value: true, unchecked_value: false %>
 
   </div>
 
