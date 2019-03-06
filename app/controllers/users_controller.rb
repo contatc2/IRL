@@ -20,7 +20,8 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
-  def share(email)
+  def share
+    email = params[:email]
     UserMailer.share(email, current_user).deliver_now
   end
 
