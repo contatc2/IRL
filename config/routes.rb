@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show] do
     resources :user_adjectives, only: %i[new create]
   end
+
+  get "test" to: "pages#test"
   resources :friend_invitations, only: %i[new create update]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
