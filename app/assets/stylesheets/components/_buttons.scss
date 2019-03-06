@@ -1,0 +1,87 @@
+
+.button1{
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  display: inline-block;
+  background: linear-gradient(#103773, #0F60C4);
+  transition: background 0.3s ease;
+  border: 1px solid #0F60C4;
+}
+
+.button1:hover{
+  background: linear-gradient(#0F60C4, #103773);
+  color: white;
+  text-decoration: none;
+}
+
+.button2{
+  color: black;
+  padding: 8px 24px;
+  width: 40%;
+  display: inline-block;
+  border-radius: 4px;
+  background: #CEF9E2;
+  transition: background 0.3s ease;
+  border: 1px solid #0F60C4;
+}
+
+.button2:hover{
+  padding: 7px 23px;
+  background: #CEF9E2;
+  color: black;
+  text-decoration: none;
+  border: 2px solid #0F60C4;
+}
+
+.button3{
+  color: #4A4A4A;
+  border: 1px solid #4A4A4A;
+  margin: auto;
+  width: 40%;
+  padding: 8px 24px;
+  display: inline-block;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.button3:hover{
+  opacity: 1;
+  text-decoration: none;
+}
+
+.button4{
+ color: #4A4A4A;
+ border: 1px solid #4A4A4A;
+ padding: 8px 24px;
+ border-radius: 50px;
+ font-weight: lighter;
+ opacity: 0.6;
+ transition: opacity 0.3s ease;
+}
+
+.button4:hover{
+  opacity: 1;
+  text-decoration: none;
+}
+
+.full_width{
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  text-align: center;
+  background: linear-gradient(#103773, #0F60C4);
+  transition: background 0.3s ease;
+  border: 1px solid #0F60C4;
+  display: block;
+  width: 100%;
+}
+
+.full_width:hover{
+  background: linear-gradient(#0F60C4, #103773);
+  color: white;
+  text-decoration: none;
+}
+
