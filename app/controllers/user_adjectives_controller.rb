@@ -13,8 +13,6 @@ class UserAdjectivesController < ApplicationController
     redirect_to user_path(@user)
   end
 
-
-
   private
 
   def useradj_params
