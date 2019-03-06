@@ -9,7 +9,7 @@ gem 'puma'
 gem 'rails', '5.2.2'
 gem 'redis'
 gem 'faker'
-
+gem 'omniauth-facebook'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
 gem 'sassc-rails'
