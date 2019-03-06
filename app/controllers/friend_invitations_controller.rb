@@ -9,7 +9,6 @@ class FriendInvitationsController < ApplicationController
     @invitation = FriendInvitation.new(invitation_params)
     @invitation.user = @user
     @invitation.save
-    UserMailer.creation_confirmation(@user).deliver_now
     redirect_to user_path(@user)
   end
 

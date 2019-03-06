@@ -10,4 +10,10 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.creation_confirmation(user)
   end
 
+  def share
+    user = User.first
+    email = "hello@gmail.com"
+    UserMailer.share(email, user)
+  end
+
 end
