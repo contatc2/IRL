@@ -1,7 +1,8 @@
 class FriendInvitationsController < ApplicationController
-  before_action :set_user, only: %i[create update]
+  before_action :set_user, only: %i[create update new]
   def new
     @invitation = FriendInvitation.new
+    UserMailer.creation_confirmation(@user).deliver_now
   end
 
   def create

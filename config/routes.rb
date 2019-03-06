@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # end
   root to: 'pages#home'
   resources :users, only: %i[index show update] do
-    resources :user_adjectives, only: %i[new create]
+    resources :user_adjectives, only: %i[new create update]
   end
 
   get "test", to: "pages#test"
