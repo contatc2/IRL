@@ -23,6 +23,7 @@ gem 'postmark-rails'
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem "letter_opener"
+  gem 'mail_interceptor'
 end
 
 group :development, :test do

@@ -2,8 +2,8 @@ class UserMailer < ApplicationMailer
 
   def welcome_email(user)
     @user = user
-    @url  = 'http://example.com/login'
-    mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+    @url  = 'https://www.reallife.love'
+    mail(to: @user.email, subject: 'Welcome to My Awesome Site',:track_opens => 'true')
   end
 
   def creation_confirmation(user)
