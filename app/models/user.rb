@@ -37,7 +37,7 @@ class User < ApplicationRecord
 
   def profile_image_tag
     if picture.present?
-      cl_image_tag picture
+      picture.url
     elsif facebook_picture_url.present?
       facebook_picture_url
     else
@@ -47,7 +47,7 @@ class User < ApplicationRecord
 
   def profile_image_path
     if picture.present?
-      picture.url
+      picture
     elsif facebook_picture_url.present?
       facebook_picture_url
     else
