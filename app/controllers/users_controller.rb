@@ -27,6 +27,4 @@ class UsersController < ApplicationController
     # params.require(:user).permit(:adjective, :adjective_2, :adjective_3)
     # params.require([:user][:user_adjectives]).permit(:adjective, :adjective_2, :adjective_3)
   end
-
-
 end

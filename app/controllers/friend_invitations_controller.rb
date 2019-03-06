@@ -2,12 +2,14 @@ class FriendInvitationsController < ApplicationController
   before_action :set_user, only: %i[create update]
   def new
     @invitation = FriendInvitation.new
+    UserMailer.creation_confirmation(@user).deliver_now
   end
 
   def create
     @invitation = FriendInvitation.new(invitation_params)
     @invitation.user = @user
     @invitation.save
+    UserMailer.creation_confirmation(@user).deliver_now
     redirect_to user_path(@user)
   end
 
