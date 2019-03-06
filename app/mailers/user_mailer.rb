@@ -13,8 +13,9 @@ class UserMailer < ApplicationMailer
 
   def share(email, user)
     @user = user
+    @url  = 'https://www.reallife.love'
+    # maybe change user for current user
     mail(to: email, subject: "#{@user.first_name} has invited you to join IRL")
+    # raise
   end
-
-
 end
