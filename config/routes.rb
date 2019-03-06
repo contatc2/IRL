@@ -5,9 +5,6 @@ Rails.application.routes.draw do
   }
   root to: 'pages#home'
   resources :users, only: %i[index show update] do
-    member do
-      get 'share'
-    end
     resources :user_adjectives, only: %i[new create update]
   end
   resources :friend_invitations, only: %i[new create update]
