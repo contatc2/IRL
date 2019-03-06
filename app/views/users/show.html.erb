@@ -1,13 +1,9 @@
 <% if @user == current_user %>
-  <% if @user.picture.present? %>
-      <% image_url = cl_image_path @user.picture, height: 300, width: 400, crop: :fill %>
-    <% else %>
-      <% image_url = 'https://images.pexels.com/photos/682355/pexels-photo-682355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' %>
-    <% end %>
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_url %>')">
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @user.profile_image_path %>')">
     <div class="container">
       <h1>My Profile</h1>
-      <%= link_to "invite friend", new_friend_invitation_path, class:"text-decoration-none text-light"  %>
+      <%= link_to "invite friend", new_friend_invitation_path, class:"btn btn-light"  %>
+      <%= link_to "my search", new_user_user_adjective_path(@user), class:"btn btn-light"  %>
     </div>
   </div>
 
@@ -27,7 +23,7 @@
       <div class="cards">
         <% @accepted_invitations.each do |invitation| %>
           <% myfriend = invitation.friend %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path myfriend.picture, height: 300, width: 400, crop: :fill %>')">
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= myfriend.profile_image_path %>')">
              <%= link_to myfriend.full_name, user_path(myfriend), class:"text-decoration-none text-light"  %>
           </div>
         <% end %>
@@ -36,7 +32,7 @@
       <div class="cards mt-3">
         <% @pending_invitations.each do |invitation| %>
           <% myfriend = invitation.friend %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path myfriend.picture, height: 300, width: 400, crop: :fill %>')">
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= myfriend.profile_image_path %>')">
              <%= link_to user_path(myfriend), class:"text-decoration-none text-light" do %>
              <%= myfriend.full_name %> <i class="fas fa-frog"></i>
              <% end %>
@@ -55,7 +51,7 @@
           <% else %>
             <% mymatch = match.match_one %>
           <% end %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path mymatch.picture, height: 300, width: 400, crop: :fill %>')">
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= mymatch.profile_image_path %>')">
              <%= link_to mymatch.full_name, user_path(mymatch), class:"text-decoration-none text-light"  %>
           </div>
         <% end %>
@@ -71,6 +67,16 @@
   </div>
 
   <div class="p-3 my-3">
+    <h2>Looking for male/female</h2>
+
+    <% @user.user_adjectives.each do |adjective| %>
+      <%= adjective[adjective] %>
+
+    <% end %>
+
+  </div>
+
+  <div class="p-3 my-3">
     <h2>Current Matches</h2>
 
     <div class="cards">
@@ -80,7 +86,7 @@
         <% else %>
           <% mymatch = match.match_one %>
         <% end %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path mymatch.picture, height: 300, width: 400, crop: :fill %>')">
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= mymatch.profile_image_path %>')">
            <%= link_to mymatch.full_name, user_path(mymatch), class:"text-decoration-none text-light"  %>
         </div>
       <% end %>

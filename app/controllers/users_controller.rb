@@ -24,7 +24,6 @@ class UsersController < ApplicationController
     UserMailer.share(email, current_user).deliver_now
   end
 
-
   private
 
   def user_params
