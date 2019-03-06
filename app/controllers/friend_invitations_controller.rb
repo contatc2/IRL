@@ -1,8 +1,8 @@
 class FriendInvitationsController < ApplicationController
   before_action :set_user, only: %i[create update new]
+
   def new
     @invitation = FriendInvitation.new
-    UserMailer.creation_confirmation(@user).deliver_now
   end
 
   def create
@@ -18,6 +18,13 @@ class FriendInvitationsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def share
+    @email = params[:friend_invitation][:enter_email]
+    UserMailer.share(@email, current_user).deliver_now
+
+  end
+  # instead of def share put the content into create
+
   private
 
   def set_user
@@ -25,6 +32,6 @@ class FriendInvitationsController < ApplicationController
   end
 
   def invitation_params
-    params.require(:friend_invitation).permit(:friend_id, :accepted)
+    params.require(:friend_invitation).permit(:enter_email, :friend_id, :accepted)
   end
 end

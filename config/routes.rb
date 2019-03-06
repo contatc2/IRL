@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   end
 
   get "test", to: "pages#test"
-  resources :friend_invitations, only: %i[new create update]
+  resources :friend_invitations, only: %i[new create update] do
+    collection do
+      post 'share'
+    end
+  end
   resources :matches, only: %i[new create update]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
