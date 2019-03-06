@@ -1,8 +1,13 @@
 <% if @user == current_user %>
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @user.picture, height: 300, width: 400, crop: :fill %>')">
+  <% if @user.picture.present? %>
+      <% image_url = cl_image_path @user.picture, height: 300, width: 400, crop: :fill %>
+    <% else %>
+      <% image_url = 'https://images.pexels.com/photos/682355/pexels-photo-682355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' %>
+    <% end %>
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_url %>')">
     <div class="container">
       <h1>My Profile</h1>
-      <%= link_to "invite friend", new_friend_invitation_path, class:"text-decoration-none text-secondary"  %>
+      <%= link_to "invite friend", new_friend_invitation_path, class:"text-decoration-none text-light"  %>
     </div>
   </div>
 
