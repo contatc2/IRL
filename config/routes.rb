@@ -19,6 +19,6 @@ Rails.application.routes.draw do
       post 'share'
     end
   end
-  resources :matches, only: %i[new create update]
+  resources :matches, only: %i[new show create update]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
