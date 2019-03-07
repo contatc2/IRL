@@ -1,26 +1,29 @@
 class MatchesController < ApplicationController
-  before_action :set_user, only: %i[create update]
+  before_action :find_match, only: %i[show update]
+  
+  def show
+  end
+  
   def new
     @match = Match.new
   end
 
   def create
     @match = Match.new(match_params)
-    @match.helper = @user
+    @match.helper = current_user
     @match.save
     redirect_to user_path(@match.match_one)
   end
 
   def update
-    @match = Match.find(params[:id])
     @match.update(match_params)
     redirect_to user_path(current_user)
   end
 
   private
 
-  def set_user
-    @user = current_user
+  def find_match
+    @match = Match.find(params[:id])
   end
 
   def match_params

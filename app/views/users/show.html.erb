@@ -1,120 +1,18 @@
+<% if @user == current_user %>
 <!-- account page for user currently logged in  -->
 
-<% if @user == current_user %>
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @user.profile_image_path %>')">
-    <div class="container">
-      <h1>My Profile</h1>
-      <%= link_to "invite friend", new_friend_invitation_path, class:"btn btn-light"  %>
-      <% if @user.available %>
-        <% if @user.user_adjectives.present? %>
-          <%= link_to "my search", edit_user_user_adjective_path(@user, @user.user_adjective_ids.first), class:"btn btn-light"  %>
-        <% else %>
-          <%= link_to "my search", new_user_user_adjective_path(@user, @user.user_adjective_ids.first), class:"btn btn-light"  %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="p-5">
-    <% unless @invitations.nil? %>
-      <% @invitations.each do |invitation| %>
-      <p><%= invitation.user.full_name %> has invited you as a trusted friend</p>
-      <%= link_to "Accept invitation",friend_invitation_path(invitation, friend_invitation: {accepted: true}), method: :put, class:"btn btn-light" %>
-      <% end %>
-    <% end %>
-  </div>
-
-
-    <div class="p-3 my-3">
-      <h2>My friends</h2>
-
-      <div class="cards">
-        <% @accepted_invitations.each do |invitation| %>
-          <% if invitation.friend == @user %>
-            <% myfriend = invitation.user %>
-          <% else %>
-            <% myfriend = invitation.friend %>
-          <% end %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= myfriend.profile_image_path %>')">
-             <%= link_to myfriend.full_name, user_path(myfriend), class:"text-decoration-none text-light"  %>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="cards mt-3">
-        <% @pending_invitations.each do |invitation| %>
-          <% myfriend = invitation.friend %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= myfriend.profile_image_path %>')">
-             <%= link_to user_path(myfriend), class:"text-decoration-none text-light" do %>
-             <%= myfriend.full_name %> <i class="fas fa-frog"></i>
-             <% end %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="p-3 my-3">
-      <h2>My Matches</h2>
-
-      <div class="cards">
-        <% @matches.each do |match| %>
-          <% if match.match_one == @user %>
-            <% mymatch = match.match_two %>
-          <% else %>
-            <% mymatch = match.match_one %>
-          <% end %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= mymatch.profile_image_path %>')">
-             <%= link_to mymatch.full_name, user_path(mymatch), class:"text-decoration-none text-light"  %>
-          </div>
-        <% end %>
-      </div>
-    </div>
+  <%= render 'loggedin' %>
 
 <!-- profile page for user not currently logged in  -->
 <% else %>
 
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @user.picture, height: 300, width: 400, crop: :fill %>')">
-    <div class="container">
-      <h1>My Profile</h1>
-    </div>
-  </div>
-
-  <% if @user.user_adjectives.present? %>
-    <div class="p-3 my-3">
-      <h2>Looking for a <%#= @user.gender_search %>, who is:</h2>
-
-      <p><%= @user.user_adjectives.first[:adjective] %>, <%= @user.user_adjectives.first[:adjective_2] %> and <%= @user.user_adjectives.first[:adjective_3] %> </p>
-
-    </div>
-  <% end %>
-
-  <div class="p-3 my-3">
-    <h2>Current Matches</h2>
-
-    <div class="cards">
-      <% @matches.each do |match| %>
-        <% if match.match_one == @user %>
-          <% mymatch = match.match_two %>
-        <% else %>
-          <% mymatch = match.match_one %>
-        <% end %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= mymatch.profile_image_path %>')">
-           <%= link_to mymatch.full_name, user_path(mymatch), class:"text-decoration-none text-light"  %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-
-
-  <%= link_to new_match_path(@match, match_one: @user) do %>
-  Add match<i class="fas fa-plus-square" style="font-size: 1.5em"></i>
-  <% end %>
-
-
-
+  <%= render 'otheruser' %>
 
 <% end %>
+
+
+
+
 
 
 
