@@ -1,7 +1,5 @@
 class UserAdjectivesController < ApplicationController
-  def index
-  end
-
+  before_action :set_user
   def new
     @useradj = UserAdjective.new
   end
@@ -15,7 +13,11 @@ class UserAdjectivesController < ApplicationController
 
   private
 
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
   def useradj_params
-    params.require(:user_adjective).permit(:adjective)
+    params.require(:user_adjective).permit(:adjective, :adjective_2, :adjective_3)
   end
 end

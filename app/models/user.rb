@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :friend_invitations, dependent: :destroy
   has_many :user_adjectives, dependent: :destroy
   mount_uploader :picture, PhotoUploader
+  # validates :gender_search, inclusion: { in: ('Man' 'Woman') }
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
