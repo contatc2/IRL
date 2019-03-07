@@ -1,0 +1,39 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @user.profile_image_path %>')">
+  <div class="container">
+    <h1><%= @user.full_name %></h1>
+  </div>
+</div>
+
+<!-- if user available, show search criteria and matches -->
+  <% if @user.available %>
+    <% if @user.user_adjectives.present? %>
+      <div class="p-3 my-3">
+        <h2>Looking for a <%#= @user.gender_search %>, who is:</h2>
+
+        <p><%= @user.user_adjectives.first[:adjective] %>, <%= @user.user_adjectives.first[:adjective_2] %> and <%= @user.user_adjectives.first[:adjective_3] %> </p>
+
+      </div>
+    <% end %>
+
+    <div class="p-3 my-3">
+      <h2>Current Matches</h2>
+      <%= render 'mymatches', matches: @matches  %>
+    </div>
+
+
+
+    <%= link_to new_match_path(@match, match_one: @user) do %>
+    Add match<i class="fas fa-plus-square" style="font-size: 1.5em"></i>
+    <% end %>
+
+<!-- show helper page for not available -->
+  <% else %>
+    <div class="p-3 my-3">
+      <% if @helper_matches.nil? %>
+        <p>No matches submitted yet </p>
+      <% else %>
+        <h2>Submitted Matches</h2>
+        <%= render 'helper_matches' %>
+      <% end %>
+    </div>
+  <% end %>
