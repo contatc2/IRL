@@ -1,7 +1,14 @@
-.top_background{
+.top_page{
   background-color: $lighter-blue;
-  text-align: center;
   border-radius: 0px 0px 65px 65px;
+}
+
+.top_page p {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
 }
 
 .hero_image{
