@@ -1,9 +1,9 @@
 class MatchesController < ApplicationController
   before_action :find_match, only: %i[show update]
-
+  
   def show
   end
-
+  
   def new
     @match = Match.new
   end
