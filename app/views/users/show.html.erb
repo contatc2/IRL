@@ -1,3 +1,8 @@
+<% content_for :meta_title, "#{@offer.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @offer.description %>
+<% content_for :meta_image, cl_image_path(@offer.photo.path) %>
+
+
 <% if @user == current_user %>
 <!-- account page for user currently logged in  -->
 
@@ -10,17 +15,7 @@
 
 <% end %>
 
-<div class="footer-social-icons">
-    <h4 class="_14">Follow us on</h4>
-    <ul class="social-icons">
-        <li><a href="" class="social-icon"> <i class="fa fa-facebook"></i></a></li>
-        <li><a href="" class="social-icon"> <i class="fa fa-twitter"></i></a></li>
-        <li><a href="" class="social-icon"> <i class="fa fa-rss"></i></a></li>
-        <li><a href="" class="social-icon"> <i class="fa fa-youtube"></i></a></li>
-        <li><a href="" class="social-icon"> <i class="fa fa-linkedin"></i></a></li>
-        <li><a href="" class="social-icon"> <i class="fa fa-google-plus"></i></a></li>
-    </ul>
-</div>
+
 
 
 
