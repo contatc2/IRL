@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_07_115112) do
+ActiveRecord::Schema.define(version: 2019_03_07_145530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_03_07_115112) do
     t.bigint "match_two_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "intro_message"
     t.index ["helper_id"], name: "index_matches_on_helper_id"
     t.index ["match_one_id"], name: "index_matches_on_match_one_id"
     t.index ["match_two_id"], name: "index_matches_on_match_two_id"
