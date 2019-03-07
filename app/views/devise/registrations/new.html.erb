@@ -23,7 +23,7 @@
         <%= f.input :password_confirmation,
                     required: true,
                     input_html: { autocomplete: "new-password" } %>
-        <%= f.input :available, as: :boolean, checked_value: true, unchecked_value: false, input_html: {checked: true} %>
+        <%= f.input :available, input_html: {checked: true} %>
         <%= f.input :picture %>
         <%= f.input :picture_cache, as: :hidden %>
 
