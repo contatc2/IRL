@@ -20,16 +20,14 @@
 
 <% unless @searched_user.nil? %>
   <% @searched_user.each do |user| %>
-    <%= user.full_name%>
-
-        <%= simple_form_for @invitation do |f| %>
-          <%= f.association :friend, label_method: :full_name %>
-          <%= f.submit %>
-        <% end %>
-
+    <%= user.full_name %>
+<br>
+      <%= simple_form_for @invitation do |f| %>
+        <%= f.association :friend, label_method: :full_name %>
+        <%= f.button :submit, class: "btn-primary" %>
+      <% end %>
   <% end %>
 <% end %>
-
 
 
 

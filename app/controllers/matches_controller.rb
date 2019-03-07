@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  before_action :set_user, only: %i[create update]
+  before_action :set_user, only: %i[create update show]
   def new
     @match = Match.new
   end
