@@ -1,5 +1,6 @@
 class UserAdjectivesController < ApplicationController
   before_action :set_user
+  before_action :find_user_adjectives, only: %i[edit update]
   def new
     @useradj = UserAdjective.new
   end
@@ -11,10 +12,22 @@ class UserAdjectivesController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def edit
+  end
+
+  def update
+    @useradj.update(useradj_params)
+    redirect_to user_path(@user)
+  end
+
   private
 
   def set_user
     @user = User.find(params[:user_id])
+  end
+
+  def find_user_adjectives
+    @useradj = UserAdjective.find(params[:id])
   end
 
   def useradj_params

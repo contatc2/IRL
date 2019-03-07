@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get "fblogin", to: "pages#fblogin"
   resources :users, only: %i[index show update] do
-    resources :user_adjectives, only: %i[new create update]
+    resources :user_adjectives, only: %i[new create edit update]
   end
 
   get "test", to: "pages#test"
