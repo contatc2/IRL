@@ -1,4 +1,17 @@
 .top_background{
   background-color: $lighter-blue;
   text-align: center;
+  border-radius: 0px 0px 65px 65px;
+}
+
+.hero_image{
+  border-radius: 0px 0px 30px 30px;
+}
+
+body{
+  background-color: white;
+}
+
+.navbarIRL{
+  background-color: $lighter-blue;
 }
