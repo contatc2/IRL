@@ -8,6 +8,7 @@ class UserMailer < ApplicationMailer
 
   def registration_confirmation(user)
     @user = user
+    @url  = 'https://www.reallife.love'
     mail(:to => @user.email, :subject => "Welcome #{@user.first_name} you just signed up!", :track_opens => 'true')
   end
 
