@@ -3,12 +3,12 @@ class UserMailer < ApplicationMailer
   def welcome_email(user)
     @user = user
     @url  = 'https://www.reallife.love'
-    mail(to: @user.email, subject: 'Welcome to My Awesome Site',:track_opens => 'true')
+    mail(:to => @user.email, :subject => "Registered", :track_opens => 'true')
   end
 
-  def creation_confirmation(user)
+  def registration_confirmation(user)
     @user = user
-    mail(to: @user.email, subject: "Welcome #{@user.first_name} you just signed up!")
+    mail(:to => @user.email, :subject => "Welcome #{@user.first_name} you just signed up!", :track_opens => 'true')
   end
 
   def share(email, user)
