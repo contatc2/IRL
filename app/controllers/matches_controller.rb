@@ -13,6 +13,7 @@ class MatchesController < ApplicationController
   def create
     @match = Match.new(match_params)
     @match.helper = current_user
+    @match.match_two = User.find(params[:match][:match_two])
     @match.save
     redirect_to user_path(@match.match_one)
   end
@@ -29,6 +30,6 @@ class MatchesController < ApplicationController
   end
 
   def match_params
-    params.require(:match).permit(:match_one_id, :match_two_id, :match_one_accepted, :match_two_accepted)
+    params.require(:match).permit(:match_one_id, :match_one_accepted, :match_two_accepted, :intro_message)
   end
 end

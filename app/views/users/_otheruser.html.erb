@@ -8,7 +8,7 @@
   <% if @user.available %>
     <% if @user.user_adjectives.present? %>
       <div class="p-3 my-3">
-        <h2>Looking for a <%#= @user.gender_search %>, who is:</h2>
+        <h2>Looking for someone <%#= @user.gender_search %> who is:</h2>
 
         <p><%= @user.user_adjectives.first[:adjective] %>, <%= @user.user_adjectives.first[:adjective_2] %> and <%= @user.user_adjectives.first[:adjective_3] %> </p>
 
