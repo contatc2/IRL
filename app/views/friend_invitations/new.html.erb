@@ -1,33 +1,44 @@
-<h1>Add a trusted friend</h1>
+<div class="container">
 
+  <h1>Add a trusted friend</h1>
 
-<%= simple_form_for @invitation, :url => share_friend_invitations_path do |f| %>
-  <%= f.input :enter_email, hint: "Enter a non user email" %>
-  <%= f.submit %>
-<% end %>
+  <!-- search your friend in the existing app users -->
 
-<br>
-<br>
-<br>
-
-<%= form_tag new_friend_invitation_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: " Enter you friend email" %>
-    <%= submit_tag %>
-<% end %>
-
-<% unless @searched_user.nil? %>
-  <% @searched_user.each do |user| %>
-    <%= user.full_name %>
-<br>
-      <%= simple_form_for @invitation do |f| %>
-        <%= f.association :friend, label_method: :full_name %>
-        <%= f.button :submit, class: "btn-primary" %>
+  <div>
+    <div>
+      <%= form_tag new_friend_invitation_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: " Enter you friend email" %>
+        <%= submit_tag %>
       <% end %>
-  <% end %>
-<% end %>
+
+    </div>
+
+    <div>
+      <% unless @searched_user.nil? %>
+        <% @searched_user.each do |user| %>
+          <%= user.full_name %>
+            <%= simple_form_for @invitation do |f| %>
+            <%= f.association :friend, label_method: :full_name %>
+            <%= f.button :submit, class: "btn-primary" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Invite friend through e-mail -->
+  <div>
+    <%= simple_form_for @invitation, :url => share_friend_invitations_path do |f| %>
+      <%= f.input :enter_email, hint: "Enter a non user email" %>
+      <%= f.submit %>
+    <% end %>
+
+  </div>
+
+</div>
 
 
 

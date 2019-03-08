@@ -1,14 +1,19 @@
-<h1>Propose a match for <%= @match_one %></h1>
+<div class="container">
+  <div class="jumbotron">
+    <h1>Propose a match for <%= @match_one.full_name %></h1>
 
-<%= simple_form_for @match do |f| %>
+    <%= simple_form_for @match do |f| %>
 
-<%= f.hidden_field :match_one_id, value: params[:match_one] %>
+    <%= f.hidden_field :match_one_id, value: params[:match_one] %>
 
-<%= f.association :match_two, label_method: :full_name %>
+    <%= f.input :match_two, label: 'Who would be the perfect match?', label_method: :full_name, collection: @friends %>
 
-<%= f.submit %>
+    <%= f.submit class:"full_width_button" %>
+    <% end %>
+  </div>
+</div>
 
-<% end %>
+
 
 
 

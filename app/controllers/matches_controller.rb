@@ -6,6 +6,8 @@ class MatchesController < ApplicationController
 
   def new
     @match = Match.new
+    @match_one = User.find(params[:match_one])
+    @friends = current_user.friends
   end
 
   def create
