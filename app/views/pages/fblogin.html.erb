@@ -3,17 +3,17 @@
   <div class="d-flex justify-content-between">
     <div></div>
     <div>
-      <%= image_tag "lock.png", class: "mt-3", alt: "data protection", style: 'height:auto;width:100px;' %>
+      <%= image_tag "lock.svg", class: "mb-3", alt: "data protection", style: 'height:auto;width:100px;' %>
     </div>
     <div></div>
   </div>
 </div>
 <div class="catch-paragraph">
-  Data is shared with your helpers and each match you choose.
+  Data is shared with your friend(s) and each match approved individually.
 </div>
-approve terms & conditions
+<!-- approve terms & conditions -->
 <div class="text-center">
-  <%= link_to user_facebook_omniauth_authorize_path, :class => "loginBtn--facebook" do %>
+  <%= link_to user_facebook_omniauth_authorize_path, class: "loginBtn--facebook" do %>
     <i class="fab fa-facebook-f"></i> | Login with Facebook
   <% end %>
 </div>
