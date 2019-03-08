@@ -10,6 +10,10 @@ h2{
   text-align: center;
 }
 
+.navbar-logo:hover {
+  text-decoration: none;
+}
+
 .logo{
   display: inline-flex;
   flex-wrap: nowrap;
@@ -31,3 +35,5 @@ h2{
   font-size: 20px;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
+
+
