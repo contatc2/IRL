@@ -1,37 +1,37 @@
 <h1>Add a trusted friend</h1>
 
-
-<%= simple_form_for @invitation, :url => share_friend_invitations_path do |f| %>
-  <%= f.input :enter_email, hint: "Enter a non user email" %>
-  <%= f.submit %>
-<% end %>
-
-<br>
-<br>
-<br>
+<h3>Is you'r friend already on the platform?</h3>
 
 <%= form_tag new_friend_invitation_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
     class: "form-control",
-    placeholder: " Enter you friend email" %>
+    placeholder: " Enter you friend full name" %>
     <%= submit_tag %>
 <% end %>
 
 <% unless @searched_user.nil? %>
   <% @searched_user.each do |user| %>
-    <%= user.full_name%>
-
-        <%= simple_form_for @invitation do |f| %>
-          <%= f.association :friend, label_method: :full_name %>
-          <%= f.submit %>
+    <p><%= user.first_name %> <%= user.last_name %>
+        <%= link_to friend_invitations_path(@invitation, friend_id: user.id), method: :post do %>
+          <p>Add friend</p>
         <% end %>
 
   <% end %>
 <% end %>
 
 
+<br>
+<br>
+<br>
 
+
+<h3>Share the platform to a new friend:</h3>
+
+<%= simple_form_for @invitation, :url => share_friend_invitations_path do |f| %>
+  <%= f.input :enter_email, hint: "Enter a non user email" %>
+  <%= f.submit %>
+<% end %>
 
 
 
