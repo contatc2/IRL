@@ -6,7 +6,6 @@ class FriendInvitationsController < ApplicationController
     if params[:query].present?
       @names = params[:query].split()
       @searched_user = User.where(first_name: @names[0], last_name: @names[1])
-      # @test = User.where(first_name: params[:query])
     end
   end
 
@@ -26,10 +25,6 @@ class FriendInvitationsController < ApplicationController
     @invitation.update(invitation_params)
     redirect_to user_path(current_user)
   end
-
-  # def full_name
-  #   "#{first_name} #{last_name}"
-  # end
 
   def share
     @email = params[:friend_invitation][:enter_email]

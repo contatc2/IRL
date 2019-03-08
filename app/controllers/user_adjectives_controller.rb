@@ -17,6 +17,7 @@ class UserAdjectivesController < ApplicationController
 
   def update
     @useradj.update(useradj_params)
+    UserMailer.registration_confirmation(@user).deliver_now
     redirect_to user_path(@user)
   end
 
