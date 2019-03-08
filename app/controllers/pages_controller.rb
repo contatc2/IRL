@@ -1,7 +1,13 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[home fblogin]
+  skip_before_action :authenticate_user!
 
   def home
+  end
+
+  def about
+  end
+
+  def terms_and_conditions
   end
 
   def test
