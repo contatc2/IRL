@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="jumbotron">
     <h1>Add a trusted friend</h1>
@@ -26,9 +25,9 @@
       <div>
         <% unless @searched_user.nil? %>
           <% @searched_user.each do |user| %>
-            <p><%= user.first_name %> <%= user.last_name %>
+            <p><%= user.first_name %> <%= user.last_name %> <%= image_tag(user.profile_image_tag, size: "35x35", class: "icon_searched_friend")  %>
                 <%= link_to friend_invitations_path(@invitation, friend_id: user.id), method: :post do %>
-                  <p>Add friend</p>
+                  <p class="main_action_button mt-3">Add friend</p>
                 <% end %>
           <% end %>
         <% end %>

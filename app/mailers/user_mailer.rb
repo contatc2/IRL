@@ -8,15 +8,13 @@ class UserMailer < ApplicationMailer
 
   def registration_confirmation(user)
     @user = user
-    @url  = 'https://www.reallife.love'
+    @url  = 'https://www.reallife.love'2
     mail(:to => @user.email, :subject => "Welcome #{@user.first_name} you just signed up!", :track_opens => 'true')
   end
 
   def share(email, user)
     @user = user
     @url  = 'https://www.reallife.love'
-    # maybe change user for current user
     mail(to: email, subject: "#{@user.first_name} has invited you to join IRL")
-    # raise
   end
 end
