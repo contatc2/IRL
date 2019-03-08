@@ -1,8 +1,6 @@
 Rails.application.configure do
 
-  # config.action_mailer.delivery_method = :postmark
-  # config.action_mailer.postmark_settings   = { api_key: ENV['be7805af-effd-43df-b215-0f1851064820'] }
-  # config.action_mailer.default_url_options = { host: "IRL.herokuapp.com" }
+
 
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.default_url_options = { host: "http://localhost:3000" }

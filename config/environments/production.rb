@@ -3,7 +3,7 @@ Rails.application.configure do
   config.webpacker.check_yarn_integrity = false
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.delivery_method     = :postmark
-  config.action_mailer.postmark_settings   = { api_key: ENV['be7805af-effd-43df-b215-0f1851064820'] }
+  config.action_mailer.postmark_settings   = { api_key: ENV['POSTMARK_API_KEY'] }
   config.action_mailer.default_url_options = { host: "https://www.reallife.love" }
   # Code is not reloaded between requests.
   config.cache_classes = true
