@@ -4,12 +4,11 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Hey, <%= @user.first_name %> you succesfully updated you'r profile</h1>
+    <h1>Hey, <%= @user.first_name %> <%= @user.last_name %> you succesfully updated you'r profile</h1>
     <p>
-      Your username is: <%= @user.last_name %>.<br>
-    </p>
-  <!-- If you want to add new modification, <%#link_to "Edit profile", edit_user_user_adjective_url(@user) %> -->
-    </p>
+      If you wish to go back on the site just click on the link down there.<br>
+      To login to the site, click <a href="<%= @url %>" target="blank">https://wwww.reallife.love</a>
+
 
   </body>
 </html>
