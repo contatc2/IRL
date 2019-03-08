@@ -1,7 +1,16 @@
 <div class="navbarIRL navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
+  <%= link_to root_path do %>
+    <div class="logo">
+      <div class="logo-real">
+        Real
+      </div>
+      <div class="logo-life">
+        Life
+      </div>
+      <div class="logo-love"><i class="fas fa-heart"></i>love
+      </div>
+    </div>
+  <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
