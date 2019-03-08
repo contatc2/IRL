@@ -1,14 +1,14 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @user.profile_image_path %>')">
   <div class="container">
     <h1>My Profile</h1>
-    <%= link_to "invite friend", new_friend_invitation_path, class:"btn btn-light"  %>
+    <%= link_to "invite friend", new_friend_invitation_path, class:"main-action-button mt-3"  %>
 
 <!-- if user is available show "search button" -->
     <% if @user.available %>
       <% if @user.user_adjectives.present? %>
-        <%= link_to "my search", edit_user_user_adjective_path(@user, @user.user_adjective_ids.first), class:"btn btn-light"  %>
+        <%= link_to "my search", edit_user_user_adjective_path(@user, @user.user_adjective_ids.first), class:"main-action-button mt-3"  %>
       <% else %>
-        <%= link_to "my search", new_user_user_adjective_path(@user, @user.user_adjective_ids.first), class:"btn btn-light"  %>
+        <%= link_to "my search", new_user_user_adjective_path(@user, @user.user_adjective_ids.first), class:"main-action-button mt-3"  %>
       <% end %>
     <% end %>
   </div>
@@ -19,7 +19,7 @@
   <% unless @invitations.nil? %>
     <% @invitations.each do |invitation| %>
     <p><%= invitation.user.full_name %> has invited you as a trusted friend</p>
-    <%= link_to "Accept invitation",friend_invitation_path(invitation, friend_invitation: {accepted: true}), method: :put, class:"btn btn-light" %>
+    <%= link_to "Accept invitation",friend_invitation_path(invitation, friend_invitation: {accepted: true}), method: :put, class:"second-action-button" %>
     <% end %>
   <% end %>
 </div>
