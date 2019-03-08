@@ -4,13 +4,13 @@ class FriendInvitationsController < ApplicationController
   def new
     @invitation = FriendInvitation.new
     if params[:query].present?
-      @names = params[:query].split()
+      @names = params[:query].split
       @searched_user = User.where(first_name: @names[0], last_name: @names[1])
     end
   end
 
   def create
-    @invitation = FriendInvitation.new()
+    @invitation = FriendInvitation.new
     @invitation.friend = User.find(params[:friend_id])
     @invitation.user_id = current_user.id
     if @invitation.save

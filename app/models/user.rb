@@ -7,6 +7,7 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:facebook]
   has_many :matches
   has_many :friend_invitations, dependent: :destroy
+  has_many :friends, through: :friend_invitations
   has_many :user_adjectives, dependent: :destroy
   mount_uploader :picture, PhotoUploader
   # validates :gender_search, inclusion: { in: ('Man' 'Woman') }
