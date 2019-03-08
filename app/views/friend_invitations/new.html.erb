@@ -1,44 +1,53 @@
 <div class="container">
+  <div class="jumbotron">
+    <h1>Add a trusted friend</h1>
 
-  <h1>Add a trusted friend</h1>
+    <!-- search your friend in the existing app users -->
 
-  <!-- search your friend in the existing app users -->
+    <div class="p-3">
+      <div class="mb-3">
+        <h3>Is your friend already on the platform?</h3>
 
-  <div>
-    <div>
-      <%= form_tag new_friend_invitation_path, method: :get do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: " Enter you friend email" %>
-        <%= submit_tag %>
-      <% end %>
+        <%= form_tag new_friend_invitation_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: " Enter you friend full name" %>
+            <%= submit_tag 'Search friend', class: "main_action_button mt-3" %>
+        <% end %>
 
-    </div>
+        <%#= simple_form_for :search, url: new_friend_invitation_path, method: "GET", html: {class: ''} do |f| %>
+          <%#= f.input :query, placeholder: " Enter you friend full name" %>
+            <%#= f.submit class:"main_action_button" %>
+        <%# end %>
+      </div>
 
-    <div>
-      <% unless @searched_user.nil? %>
-        <% @searched_user.each do |user| %>
-          <%= user.full_name %>
-            <%= simple_form_for @invitation do |f| %>
-            <%= f.association :friend, label_method: :full_name %>
-            <%= f.button :submit, class: "btn-primary" %>
+      <div>
+        <% unless @searched_user.nil? %>
+          <% @searched_user.each do |user| %>
+            <p><%= user.first_name %> <%= user.last_name %>
+                <%= link_to friend_invitations_path(@invitation, friend_id: user.id), method: :post do %>
+                  <p>Add friend</p>
+                <% end %>
           <% end %>
         <% end %>
+      </div>
+    </div>
+
+    <!-- Invite friend through e-mail -->
+    <div class="p-3 mt-3">
+      <h3>Share the platform with a friend:</h3>
+      <%= simple_form_for @invitation, :url => share_friend_invitations_path do |f| %>
+        <%= f.input :enter_email, placeholder: "Enter a your friend's email" %>
+        <%= f.submit class:"main_action_button" %>
       <% end %>
+
     </div>
   </div>
 
-  <!-- Invite friend through e-mail -->
-  <div>
-    <%= simple_form_for @invitation, :url => share_friend_invitations_path do |f| %>
-      <%= f.input :enter_email, hint: "Enter a non user email" %>
-      <%= f.submit %>
-    <% end %>
-
-  </div>
 
 </div>
+
 
 
 

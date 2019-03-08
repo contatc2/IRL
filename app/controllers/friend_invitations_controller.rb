@@ -4,14 +4,15 @@ class FriendInvitationsController < ApplicationController
   def new
     @invitation = FriendInvitation.new
     if params[:query].present?
-      sql_query = " users.email @@ :query"
-      @searched_user = User.where(sql_query, query: "%#{params[:query]}%")
+      @names = params[:query].split
+      @searched_user = User.where(first_name: @names[0], last_name: @names[1])
       # @test = User.where(first_name: params[:query])
     end
   end
 
   def create
-    @invitation = FriendInvitation.new(invitation_params)
+    @invitation = FriendInvitation.new
+    @invitation.friend = User.find(params[:friend_id])
     @invitation.user_id = current_user.id
     if @invitation.save
       redirect_to user_path(@user)
@@ -39,6 +40,6 @@ class FriendInvitationsController < ApplicationController
   end
 
   def invitation_params
-    params.require(:friend_invitation).permit(:enter_email, :friend_id, :accepted)
+    params.require(:friend_invitation).permit(:enter_email, :friend_id, :accepted, :id)
   end
 end
