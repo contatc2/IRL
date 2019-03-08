@@ -9,3 +9,25 @@ h2{
   margin-top: 25px;
   text-align: center;
 }
+
+.logo{
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+}
+
+.logo-real{
+  color: $dark-blue;
+  font-size: 35px;
+}
+
+.logo-life{
+  color: $darker-blue;
+  font-size: 35px;
+}
+
+.logo-love{
+  color: $blue;
+  font-size: 20px;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
