@@ -1,0 +1,12 @@
+<div class="cards">
+  <% matches.each do |match| %>
+    <% if match.match_one == @user %>
+      <% mymatch = match.match_two %>
+    <% else %>
+      <% mymatch = match.match_one %>
+    <% end %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= mymatch.profile_image_path %>')">
+       <%= link_to mymatch.full_name, user_path(mymatch), class:"text-decoration-none text-light"  %>
+    </div>
+  <% end %>
+</div>

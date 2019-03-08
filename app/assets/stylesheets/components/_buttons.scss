@@ -1,4 +1,3 @@
-
 .main_action_button{
   color: white;
   padding: 16px 28px;
@@ -10,6 +9,7 @@
   border: 1px solid #0F60C4;
 //  box-shadow: 0 0 30px rgba(0,0,0,0.2);
   box-shadow: 0px 4px 5px 3px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
 }
 
 .main_action_button:hover{
@@ -71,3 +71,86 @@
   text-decoration: none;
 }
 
+.loginBtn--facebook {
+  box-sizing: border-box;
+  position: relative;
+  /* width: 13em;  - apply for fixed size */
+  margin: 0.2em;
+  padding: 10px 25px 10px 25px;
+  border: none;
+  text-align: left;
+  line-height: 34px;
+  white-space: nowrap;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #FFF;
+  background-color: #4C69BA;
+  /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
+  text-shadow: 0 -1px 0 #354C8C;
+}
+// .loginBtn--facebook:before {
+//   content: "";
+//   box-sizing: border-box;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 34px;
+//   height: 100%;
+//   border-right: #364e92 1px solid;
+// }
+.loginBtn--facebook:hover,
+.loginBtn--facebook:focus {
+  outline: none;
+}
+
+.loginBtn--facebook:active {
+  box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
+
+
+// Button scss for profile picture.
+.center {
+  display: table;
+  width: 100%;
+  height: 100vh;
+}
+
+#social-test {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 30px;
+  h2 {
+    color: #fff;
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+    font-weight: 100;
+  }
+  .social {
+    padding-left: 0px;
+  }
+  li {
+    color: rgba(103, 211, 34, 0.5);
+    list-style-type: none;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid #053FFF;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    transition: ease .3s;
+    &:hover {
+      color: #FF6684;
+      border: 1px solid rgba(255, 255, 255, 1);
+    }
+  }
+}
+
+.social:hover > li {
+  opacity: 0.5;
+}
+
+.social:hover > li:hover {
+  opacity: 1;
+}
+}

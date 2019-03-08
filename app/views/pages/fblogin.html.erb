@@ -1,8 +1,25 @@
-<div class="container">
-
-  <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class:"btn btn-primary"  %>
-
-  <%= link_to "sign up with e-mail and password", new_user_registration_path  %>
-
+<div class="top_page">
+  <p class="mx-3">You are in control</p>
+  <div class="d-flex justify-content-between">
+    <div></div>
+    <div>
+      <%= image_tag "lock.svg", class: "mb-3", alt: "data protection", style: 'height:auto;width:100px;' %>
+    </div>
+    <div></div>
+  </div>
 </div>
-
+<div class="catch-paragraph">
+  Data is shared with your friend(s) and each match approved individually.
+</div>
+<!-- approve terms & conditions -->
+<div class="text-center">
+  <%= link_to user_facebook_omniauth_authorize_path, class: "loginBtn--facebook" do %>
+    <i class="fab fa-facebook-f"></i> | Login with Facebook
+  <% end %>
+</div>
+<div class="catch-paragraph">
+  Speed-up onboarding with Facebook (picture, profile URL, location & email).
+</div>
+<div class="text-center">
+  <%= link_to "sign up with e-mail and password", new_user_registration_path, class: "low_key_button justify-content-center" %>
+</div>

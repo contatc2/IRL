@@ -1,0 +1,50 @@
+<% if @match.match_one == @user %>
+  <% mymatch = @match.match_two %>
+<% else %>
+  <% mymatch = @match.match_one %>
+<% end %>
+
+<div class="container">
+  <h2><%= mymatch.full_name %></h2>
+  <div class="card-product">
+      <%= image_tag current_user.profile_image_tag, class:"card-product image" %>
+    <div class="card-product-infos">
+      <h2><%= @match.status %></h2>
+      <p><i class="fab fa-facebook-square"></i></p>
+      <p><i class="fab fa-twitter-square"></i></p>
+      <p><i class="fab fa-instagram"></i></p>
+      <p><i class="fab fa-linkedin"></i></p>
+    </div>
+  </div>
+
+  <h2>Would you like to be introduced?</h2>
+  <div class="d-flex w-100 justify-content-around p-3">
+    <% if @match.match_one == @user %>
+      <%= link_to "Yes",match_path(@match, match: {match_one_accepted: true}), method: :put, class:"btn btn-secondary" %>
+      <%= link_to "No",match_path(@match, match: {match_one_accepted: false}), method: :put, class:"btn btn-light" %>
+    <% else %>
+      <%= link_to "Yes",match_path(@match, match: {match_two_accepted: true}), method: :put, class:"btn btn-secondary" %>
+      <%= link_to "No",match_path(@match, match: {match_two_accepted: false}), method: :put, class:"btn btn-light" %>
+
+    <% end %>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <h2>Introduced by:</h2>
+    <% myhelper = @match.helper %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= myhelper.profile_image_path %>')">
+       <%= link_to myhelper.full_name, user_path(myhelper), class:"text-decoration-none text-light"  %>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <h2>Comment from my helper</h2>
+    <%= @match.intro_message %>
+  </div>
+
+
+</div>
+
+
+
+
