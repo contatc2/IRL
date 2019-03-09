@@ -33,7 +33,7 @@
       <%= f.input :date_of_birth, as: :date, start_year: Date.today.year - 18,
                                 end_year: Date.today.year - 100,
                                 order: %i(day month year)  %>
-      <%= f.input :available, as: :radio_buttons, collection: [['Single', true], ['In couple', false]], label_method: :first, value_method: :second %>
+      <%= f.input :available, as: :radio_buttons, collection: [['Single & looking to be matched', true], ['Not available to be matched', false]], label_method: :first, value_method: :second %>
     </div>
 
     <div class="form-actions">
