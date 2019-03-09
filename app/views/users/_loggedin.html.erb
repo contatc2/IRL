@@ -15,17 +15,22 @@
 
 </div>
 
-<div class="p-5">
+<div>
   <% unless @invitations.nil? %>
     <% @invitations.each do |invitation| %>
-    <p><%= invitation.user.full_name %> has invited you as a trusted friend</p>
-    <%= link_to "Accept invitation",friend_invitation_path(invitation, friend_invitation: {accepted: true}), method: :put, class:"second_action_button" %>
+      <% if invitation.accepted.nil? %>
+        <p><%= invitation.user.full_name %> has invited you as a trusted friend</p>
+        <%= link_to "Accept invitation",friend_invitation_path(invitation, friend_invitation: {accepted: true}), method: :put, class:"second_action_button mr-3" %>
+        <%= link_to friend_invitation_path(invitation, friend_invitation: {accepted: false}), method: :put do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      <% end %>
     <% end %>
   <% end %>
 </div>
 
 
-  <div class="p-3 my-3">
+  <div class="p-3">
     <h2>My friends</h2>
 
     <div class="cards">
