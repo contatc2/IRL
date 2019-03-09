@@ -11,6 +11,7 @@ class FriendInvitationsController < ApplicationController
   end
 
   def create
+    # if create comes from new path
     @invitation = FriendInvitation.new
     @invitation.friend = User.find(params[:friend_id])
     @invitation.user_id = current_user.id
@@ -19,6 +20,13 @@ class FriendInvitationsController < ApplicationController
     else
       render :new
     end
+    # if create comes from referral path
+    @invitation = FriendInvitation.new
+    @invitation.friend = current_user.id
+    @referral = Referral.where(friend_email: current_user.email)
+    @invitation.user = @referral.user
+    @invitation.save
+    redirect_to user_path(current_user) #TBC - should it be search?
   end
 
   def update
@@ -26,12 +34,6 @@ class FriendInvitationsController < ApplicationController
     @invitation.update(invitation_params)
     redirect_to user_path(current_user)
   end
-
-  def share
-    @email = params[:friend_invitation][:enter_email]
-    UserMailer.share(@email, current_user).deliver_now
-  end
-  # instead of def share put the content into create
 
   private
 
