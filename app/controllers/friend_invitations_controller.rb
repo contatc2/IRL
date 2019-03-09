@@ -3,9 +3,10 @@ class FriendInvitationsController < ApplicationController
 
   def new
     @invitation = FriendInvitation.new
-    if params[:query].present?
-      @names = params[:query].split
-      @searched_user = User.where(first_name: @names[0], last_name: @names[1])
+    if params[:search].present?
+      @names = params[:search][:query].split
+      @searched_user = User.where("first_name ILIKE ? AND last_name ILIKE ?", @names[0], @names[1])
+                           .or(User.where("first_name ILIKE ? AND last_name ILIKE ?", @names[1], @names[0]))
     end
   end
 
