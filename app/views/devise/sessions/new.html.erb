@@ -1,14 +1,16 @@
 <div class="top_page">
+
   <p class="mx-3">Welcome back</p>
-  <div class="d-flex justify-content-between">
-    <div></div>
+
+  <div class="d-flex justify-content-center">
     <div>
       <%= image_tag "lock.svg", class: "mb-3", alt: "data protection", style: 'height:auto;width:100px;' %>
     </div>
-    <div></div>
   </div>
 </div>
+
 <h2>Log in</h2>
+
 <div class="form">
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
@@ -27,4 +29,7 @@
     </div>
   <% end %>
 </div>
-<%= render "devise/shared/links" %>
+
+<div class="pl-3">
+  <%= render "devise/shared/links" %>
+</div>
