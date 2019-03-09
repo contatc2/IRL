@@ -8,6 +8,7 @@ class MatchesController < ApplicationController
     @match = Match.new
     @match_one = User.find(params[:match_one])
     @friends = current_user.friends.where(available: true)
+    @invitation = FriendInvitation.new
   end
 
   def create
