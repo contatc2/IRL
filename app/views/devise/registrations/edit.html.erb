@@ -5,7 +5,11 @@
     <%= f.error_notification %>
 
     <div class="form-inputs">
-      <%= f.input :picture %>
+      <label class="btn btn-primary" id="bob">Add a picture
+        <span style="display:none;">
+          <%= f.input :picture, multiple: false, name: 'picture' %>
+        </span>
+      </label>
       <%= f.input :picture_cache, as: :hidden %>
       <% if resource.token.nil? %>
         <%= f.input :email, required: true, autofocus: true %>

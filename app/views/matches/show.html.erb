@@ -3,7 +3,7 @@
 <% else %>
   <% mymatch = @match.match_one %>
 <% end %>
-
+<div class="min-height">
 <div class="container">
   <h2>Would you like to be introduced to <%= mymatch.full_name %>?</h2>
   <% unless @match.helper == current_user %>
@@ -45,7 +45,7 @@
 
 
 </div>
-
+</div>
 
 
 
