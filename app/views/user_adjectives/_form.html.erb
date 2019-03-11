@@ -1,8 +1,20 @@
 <div class="form">
-  <%= simple_form_for [@user, @useradj] do |f| %>
-    <%= f.input :adjective, hint: "First adjective that matters to you", hint_html: { class: "from-text"} %>
-    <%= f.input :adjective_2, hint: "Second adjective that matters to you", hint_html: { class: "from-text"} %>
-    <%= f.input :adjective_3, hint: "Third adjective that matters to you", hint_html: { class: "from-text"} %>
+  <%= simple_form_for @user do |f| %>
+  <%= f.input :male_search, input_html: {value: @user.male_search} %>
+  <%= f.input :female_search, input_html: {value: @user.female_search} %>
+    <%= f.simple_fields_for :user_adjectives do |f| %>
+    <% if @user.user_adjectives.blank? %>
+      <%= f.input :adjective, hint: "First adjective that matters to you", hint_html: { class: "from-text"} %>
+      <%= f.input :adjective_2, hint: "Second adjective that matters to you", hint_html: { class: "from-text"} %>
+      <%= f.input :adjective_3, hint: "Third adjective that matters to you", hint_html: { class: "from-text"} %>
+    <% else %>
+      <%= f.input :adjective, input_html: {value: @user.user_adjectives.first[:adjective]}, hint: "First adjective that matters to you", hint_html: { class: "from-text"} %>
+      <%= f.input :adjective_2, input_html: {value: @user.user_adjectives.first[:adjective_2]}, hint: "Second adjective that matters to you", hint_html: { class: "from-text"} %>
+      <%= f.input :adjective_3, hint: "Third adjective that matters to you", input_html: {value: @user.user_adjectives.first[:adjective_3]}, hint_html: { class: "from-text"} %>
+
+
+    <% end %>
+    <% end %>
     <div class="text-center">
       <%= f.button :submit, "UPDATE SEARCH", class: "second_action_button right" %>
     </div>

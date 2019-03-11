@@ -5,20 +5,20 @@ class UserAdjectivesController < ApplicationController
     @useradj = UserAdjective.new
   end
 
-  def create
-    @useradj = UserAdjective.new(useradj_params)
-    @useradj.user = @user
-    @useradj.save
-    redirect_to user_path(@user)
-  end
+  # def create
+  #   @useradj = UserAdjective.new(useradj_params)
+  #   @useradj.user = @user
+  #   @useradj.save
+  #   redirect_to user_path(@user)
+  # end
 
   def edit
   end
 
-  def update
-    @useradj.update(useradj_params)
-    redirect_to user_path(@user)
-  end
+  # def update
+  #   @useradj.update(useradj_params)
+  #   redirect_to user_path(@user)
+  # end
 
   private
 

@@ -24,3 +24,8 @@ body{
 .navbarIRL{
   background-color: $light-blue;
 }
+
+.radio-button-inline {
+  display: flex;
+  flex-direction: row;
+}
