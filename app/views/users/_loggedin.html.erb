@@ -1,17 +1,31 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @user.profile_image_path %>')">
-  <div class="container">
-    <h1><%= @user.full_name %>'s profile</h1>
-<!-- if user is available show "search button" -->
-    <% if @user.available %>
-      <% if @user.user_adjectives.present? %>
-              <p>Looking for</p><p><%= @user.user_adjectives.first[:adjective] %>, <%= @user.user_adjectives.first[:adjective_2] %> and <%= @user.user_adjectives.first[:adjective_3] %></p>
-        <%= link_to "edit my search", edit_user_user_adjective_path(@user, @user.user_adjective_ids.first), class:"main_action_button mt-3"  %>
-      <% else %>
-        <%= link_to "my search", new_user_user_adjective_path(@user, @user.user_adjective_ids.first), class:"main_action_button mt-3"  %>
-      <% end %>
-    <% end %>
+<div class="container">
+  <div class="row">
+      <div class="col-sm-1">
+      </div>
+      <div class="col-sm-4">
+        <%= cl_image_tag(@user.profile_image_path, gravity:"faces", crop:"fill", class:"profile-picture") %>
+      </div>
+      <div class="col-sm-6 catch-paragraph-left">
+        <%= @user.first_name %>
+        <!-- if user is available show "search button" -->
+          <% if @user.available %>
+            <% if @user.user_adjectives.present? %>
+              looking for someone who is <%= @user.user_adjectives.first[:adjective] %>, <%= @user.user_adjectives.first[:adjective_2] %> and <%= @user.user_adjectives.first[:adjective_3] %>
+              <% else %>
+              <%= link_to "my search", new_user_user_adjective_path(@user, @user.user_adjective_ids.first), class:"main_action_button mt-3"  %>
+            <% end %>
+          <% end %>
+          <p></p>
+        <%= link_to edit_user_registration_path(@user), class:"small_link_text_right" do %>
+          edit my profile...
+          <% end %><br>
+          <% if @user.available %>
+            <%= link_to "edit my search...", edit_user_user_adjective_path(@user, @user.user_adjective_ids.first), class:"small_link_text_right"  %>
+          <% end %>
+      </div>
+      <div class="col-sm-1">
+      </div>
   </div>
-
 </div>
 
 <div>
@@ -29,57 +43,63 @@
 </div>
 
 
-  <div class="p-3">
-    <h2>Friends helping with my search</h2>
-    <div class="cards">
-      <% @accepted_invitations.each do |invitation| %>
-        <% if invitation.friend == @user %>
-          <% myfriend = invitation.user %>
-        <% else %>
-          <% myfriend = invitation.friend %>
-        <% end %>
-        <%= link_to user_path(myfriend), class:"text-decoration-none" do %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= myfriend.profile_image_path %>')">
-            <p><%= myfriend.full_name %></p>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-
-    <div class="cards mt-3">
-      <% @pending_invitations.each do |invitation| %>
-        <% myfriend = invitation.friend %>
-        <%= link_to user_path(myfriend), class:"text-decoration-none" do %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= myfriend.profile_image_path %>')">
-             <%= myfriend.full_name %> <i class="fas fa-frog"></i>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-    <%= link_to "invite more friends to help", new_friend_invitation_path, class:"main_action_button mt-3"  %>
-<!-- if user is available show matches profiles -->
+<div class="p-3">
   <% if @user.available %>
-    <div class="p-3 my-3">
-      <h2>My Matches</h2>
-
-        <%= render 'mymatches', matches: @matches  %>
-
-        <% unless @pending_matches.nil? %>
-          <%= render 'mymatches', matches: @pending_matches  %>
-        <% end %>
-
-    </div>
-
-<!-- if user is not available show submitted matches with both profiles and status -->
-  <% else %>
-    <div class="p-3 my-3">
-
-      <% if @helper_matches.nil? %>
-        <p>Create your first match today! </p>
-      <% else %>
-        <h2>My submitted Matches</h2>
-        <%= render 'helper_matches' %>
-      <% end %>
-    </div>
+    <h2>Friends helping with your search</h2>
+    <% else %>
+    <h2>Friends you are helping in their search</h2>
   <% end %>
+
+  <div class="cards">
+  <!-- accepted friends -->
+    <% @accepted_invitations.each do |invitation| %>
+      <% if invitation.friend == @user %>
+        <% myfriend = invitation.user %>
+      <% else %>
+        <% myfriend = invitation.friend %>
+      <% end %>
+      <%= link_to user_path(myfriend), class:"text-decoration-none" do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= myfriend.profile_image_path %>')">
+          <p><%= myfriend.full_name %></p>
+        </div>
+      <% end %>
+    <% end %>
+  <!-- pending friends -->
+  <% @pending_invitations.each do |invitation| %>
+    <% myfriend = invitation.friend %>
+    <%= link_to user_path(myfriend), class:"text-decoration-none" do %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= myfriend.profile_image_path %>')">
+         <%= myfriend.full_name %> <i class="fas fa-frog"></i>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div align="center">
+  <% if @user.available %>
+    <%= link_to "broardern your opportunities by inviting more friends to help you", new_friend_invitation_path, class:"main_action_button mt-3"  %>
+  <% else %>
+    <%= link_to "help other friends by inviting them", new_friend_invitation_path, class:"main_action_button mt-3"  %>
+  <% end %>
+</div>
+
+<!-- if user is available show matches profiles -->
+<% if @user.available %>
+  <div class="p-3 my-3">
+    <h2>My Matches</h2>
+    <%= render 'mymatches', matches: @matches  %>
+    <% unless @pending_matches.nil? %>
+    <%= render 'mymatches', matches: @pending_matches  %>
+    <% end %>
+  </div>
+<!-- if user is not available show submitted matches with both profiles and status -->
+<% else %>
+  <div class="p-3 my-3">
+    <% if @helper_matches.nil? %>
+      <p>Create your first match today! </p>
+    <% else %>
+      <h2>My submitted Matches</h2>
+      <%= render 'helper_matches' %>
+    <% end %>
+  </div>
+<% end %>

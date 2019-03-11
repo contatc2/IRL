@@ -7,8 +7,14 @@
     <% end %>
     <%= link_to match_path(match), class:"text-decoration-none" do %>
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= mymatch.profile_image_path %>')">
-         <%= mymatch.full_name  %>
+        <%= mymatch.full_name  %>
+
       </div>
     <% end %>
+    <div>
+      <%= link_to user_path(match.helper), class:"text-decoration-none" do %>
+        <%= cl_image_tag(match.helper.profile_image_path, width:50, height:50, gravity:"faces", crop:"fill", class:"card-helper") %>
+      <% end %>
+    </div>
   <% end %>
 </div>
