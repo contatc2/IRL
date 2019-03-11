@@ -1,0 +1,16 @@
+<fieldset class="form-group radio_buttons optional user_male">
+  <!-- <legend class="col-form-label pt-0">Gender</legend> -->
+  <input type="hidden" name="user[male]" value="">
+  <div class="radio-button-inline">
+    <div class="form-check mr-3">
+      <input class="form-check-input radio_buttons optional" type="radio" value="true" name="user[male]" id="user_male_true">
+      <label class="collection_radio_buttons" for="user_male_true">Man</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input radio_buttons optional" readonly="readonly" type="radio" value="false" name="user[male]" id="user_male_false">
+      <label class="collection_radio_buttons" for="user_male_false">Woman</label>
+    </div>
+  </div>
+</fieldset>
+
+<%#= f.input :male, label: 'Gender', as: :radio_buttons, collection: [['Man', true], ['Woman', false]], label_method: :first, value_method: :second %>

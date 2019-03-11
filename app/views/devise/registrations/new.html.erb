@@ -32,6 +32,8 @@
       <%= f.input :password_confirmation,
                   required: true,
                   input_html: { autocomplete: "new-password" }, hint_html: { class: "from-text"} %>
+      <%= render 'gender' %>
+
       <%= f.input :available, input_html: {checked: true}, hint_html: { class: "from-text"} %>
       <%= f.input :picture, hint_html: { class: "from-text"} %>
       <%= f.input :picture_cache, as: :hidden, hint_html: { class: "from-text"} %>
