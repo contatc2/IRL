@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_07_145530) do
+ActiveRecord::Schema.define(version: 2019_03_09_212404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(version: 2019_03_07_145530) do
     t.index ["helper_id"], name: "index_matches_on_helper_id"
     t.index ["match_one_id"], name: "index_matches_on_match_one_id"
     t.index ["match_two_id"], name: "index_matches_on_match_two_id"
+  end
+
+  create_table "referrals", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "friend_email"
+    t.date "date"
+    t.boolean "accepted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_referrals_on_user_id"
   end
 
   create_table "user_adjectives", force: :cascade do |t|
@@ -83,5 +93,6 @@ ActiveRecord::Schema.define(version: 2019_03_07_145530) do
   add_foreign_key "matches", "users", column: "helper_id"
   add_foreign_key "matches", "users", column: "match_one_id"
   add_foreign_key "matches", "users", column: "match_two_id"
+  add_foreign_key "referrals", "users"
   add_foreign_key "user_adjectives", "users"
 end

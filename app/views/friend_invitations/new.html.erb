@@ -44,9 +44,9 @@
   <p>Didn't find your friend? Share via e-mail:</p>
 
   <div class="form">
-    <%= simple_form_for @invitation, url: share_friend_invitations_path do |f| %>
-      <%= f.input :enter_email, placeholder: "Enter your friend's email" %>
-      <%= f.submit class:"main_action_button mb-0" %>
+    <%= simple_form_for @referral do |f| %>
+      <%= f.input :friend_email, placeholder: "Enter your friend's email" %>
+      <%= f.submit "Send invitation", class:"main_action_button mb-0" %>
     <% end %>
 
   </div>

@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
   has_many :matches
+  has_many :referrals
   has_many :friend_invitations, dependent: :destroy
   has_many :friends, through: :friend_invitations
   has_many :user_adjectives, dependent: :destroy
