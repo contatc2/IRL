@@ -1,12 +1,16 @@
 <div class="cards">
   <% @helper_matches.each do |match| %>
     <div class="d-flex">
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= match.match_one.profile_image_path %>')">
-         <%= link_to match.status, match_path(match), class:"text-decoration-none text-light"  %>
-      </div>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= match.match_two.profile_image_path %>')">
-         <%= link_to match.status, match_path(match), class:"text-decoration-none text-light"  %>
-      </div>
+      <%= link_to match_path(match), class:"text-decoration-none" do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= match.match_one.profile_image_path %>')">
+          <%= match.status  %>
+        </div>
+      <% end %>
+      <%= link_to match_path(match), class:"text-decoration-none" do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= match.match_two.profile_image_path %>')">
+           <%= match.status %>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </div>
