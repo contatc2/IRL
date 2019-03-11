@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_09_212404) do
+ActiveRecord::Schema.define(version: 2019_03_11_121721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2019_03_09_212404) do
     t.boolean "accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["friend_email"], name: "index_referrals_on_friend_email"
     t.index ["user_id"], name: "index_referrals_on_user_id"
   end
 
