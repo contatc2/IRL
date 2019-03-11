@@ -2,7 +2,7 @@ class ReferralsController < ApplicationController
   def create
     @referral = Referral.new(referral_params)
     @referral.user = current_user
-    @referral_params.date = Date.today
+    @referral.date = Date.today
     @referral.save
     @email = @referral.friend_email
     UserMailer.share(@email, current_user).deliver_now

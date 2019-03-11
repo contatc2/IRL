@@ -14,8 +14,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show update] do
     resources :user_adjectives, only: %i[new create edit update]
   end
-
-  get "test", to: "pages#test"
+  resources :referrals, only: %i[create update]
   resources :friend_invitations, only: %i[new create update] do
     collection do
       post 'share'
@@ -23,6 +22,7 @@ Rails.application.routes.draw do
   end
 
   resources :matches, only: %i[new create update show]
+  get "test", to: "pages#test"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

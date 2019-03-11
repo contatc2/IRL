@@ -8,6 +8,7 @@ class FriendInvitationsController < ApplicationController
       @searched_user = User.where("first_name ILIKE ? AND last_name ILIKE ?", @names[0], @names[1])
                            .or(User.where("first_name ILIKE ? AND last_name ILIKE ?", @names[1], @names[0]))
     end
+    @referral = Referral.new
   end
 
   def create
