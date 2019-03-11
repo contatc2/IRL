@@ -2,10 +2,10 @@
 
 <ul>
 
-<%@users.each do |user|  %>
+<%@users.sort.each do |user|  %>
 
   <li>
-  <%= user.user_id %> - <%= user.full_name %>, <%= user.email %>, available: <%=user.available  %>
+  <%= user.id %> - <%= user.full_name %>, <%= user.email %>, available: <%=user.available  %>
   </li>
 
 <% end %>
