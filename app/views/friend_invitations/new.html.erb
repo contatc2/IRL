@@ -22,10 +22,15 @@
 
   <%= simple_form_for :search, url: new_friend_invitation_path, method: :get, html: {class: 'form'} do |f| %>
     <%= f.input :query, label: 'Is your friend already on the platform?', placeholder: " Enter you friend's full name" %>
-      <%= f.submit 'Search friend', class:"main_action_button mb-0" %>
+    <%= f.submit 'Search friend', class:"main_action_button mb-0" %>
+  <% end %>
+
+  <% if @searched_user == [] %>
+      <span>User was not found</span>
   <% end %>
 
   <div class="d-flex justify-content-start flex-wrap mx-5 mt-2">
+
     <% unless @searched_user.nil? %>
       <% @searched_user.each do |user| %>
             <%= link_to friend_invitations_path(@invitation, friend_id: user.id), class: "text-decoration-none", method: :post do %>
