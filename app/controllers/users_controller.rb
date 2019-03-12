@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @pending_invitations = FriendInvitation.where(accepted: nil, user: @user)
     @matches = Match.where(match_one: @user).or(Match.where(match_two: @user))
     @helper_matches = Match.where(helper: @user)
-    if @accepted_invitations.nil? && @pending_invitations.nil?
+    if @accepted_invitations.empty? && @pending_invitations.empty?
       redirect_to new_friend_invitation_path
     end
   end
@@ -27,20 +27,17 @@ class UsersController < ApplicationController
       @useradjs = @user.user_adjectives
       @useradjs.update(adjective: user_adjectives[:adjective], adjective_2: user_adjectives[:adjective_2], adjective_3: user_adjectives[:adjective_3])
     end
-
     redirect_to user_path(@user)
   end
 
   def availability
-    @user = User.find(current_user.id)
-    @user.available = params[:available]
-    if @user.save
-      redirect_to user_path(current_user.id)
-    end
+    @user = current_user
+    @user.update(user_params)
+    redirect_to user_path(@user)
   end
 
   def single_or_not
-    @user = User.find(current_user.id)
+    @user = current_user
   end
 
   private
@@ -52,5 +49,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:user_adjectives, :male_search, :female_search, :available)
   end
-
 end
