@@ -37,4 +37,8 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:user_adjectives, :male_search, :female_search)
   end
+
+  def make_boolean(param)
+    param == 1
+  end
 end

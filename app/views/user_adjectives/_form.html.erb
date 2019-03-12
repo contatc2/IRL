@@ -4,7 +4,7 @@
       <div class="form2">
         <%= simple_form_for @user do |f| %>
 
-          <%= render 'gender_search', f: f %>
+          <%= render 'gender_search' %>
 
           <%= f.simple_fields_for :user_adjectives do |f| %>
             <% if @user.user_adjectives.blank? %>
