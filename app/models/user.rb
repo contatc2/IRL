@@ -38,6 +38,16 @@ class User < ApplicationRecord
     "#{first_name.capitalize} #{last_name.capitalize}"
   end
 
+  def gender_search
+    if male_search && female_search
+      'a man or a woman'
+    elsif male_search
+      'a man'
+    else
+      'a woman'
+    end
+  end
+
   def profile_image_tag
     if picture.present?
       picture.url
