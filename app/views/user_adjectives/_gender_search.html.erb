@@ -1,11 +1,11 @@
 <div class="gender-options">
   <input name="user[male_search]" type="hidden" value="0">
   <input class="gender-input" style="display:none" value="1" type="checkbox" <%= @user.male_search ? 'checked' : '' %> name="user[male_search]" id="user_male_search">
-  <label class="gender-option <%= @user.male_search ? 'active' : '' %>" for="user_male_search">A Man</label>
+  <label class="gender-search <%= @user.male_search ? 'active' : '' %>" for="user_male_search">A Man</label>
 
   <input name="user[female_search]" type="hidden" value="0">
   <input class="gender-input" style="display:none" value="1" type="checkbox" <%= @user.female_search ? 'checked' : '' %> name="user[female_search]" id="user_female_search">
-  <label class="gender-option <%= @user.female_search ? 'active' : '' %>" for="user_female_search">A Woman</label>
+  <label class="gender-search <%= @user.female_search ? 'active' : '' %>" for="user_female_search">A Woman</label>
 </div>
 
 
