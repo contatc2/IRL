@@ -10,15 +10,17 @@
         <!-- if user is available show "search button" -->
           <% if @user.available %>
             <% if @user.user_adjectives.present? %>
-              looking for someone who is <%= @user.user_adjectives.first[:adjective] %>, <%= @user.user_adjectives.first[:adjective_2] %> and <%= @user.user_adjectives.first[:adjective_3] %>
-            <%= link_to "edit my search...", edit_user_user_adjective_path(@user, @user.user_adjective_ids.first), class:"small_link_text_right"  %>
-              <% else %>
-              <%= link_to "my search", new_user_user_adjective_path(@user, @user.user_adjective_ids.first), class:"main_action_button mt-3"  %>
+              looking for <%= @user.gender_search %> who is <%= @user.user_adjectives.first[:adjective] %>, <%= @user.user_adjectives.first[:adjective_2] %> and <%= @user.user_adjectives.first[:adjective_3] %>
+              <div>
+                <%= link_to "edit my search...", edit_user_user_adjective_path(@user, @user.user_adjective_ids.first), class:"small_link_text_right"  %>
+              </div>
+            <% else %>
+              <div>
+               <%= link_to "my search", new_user_user_adjective_path(@user), class:"main_action_button mt-3"  %>
+              </div>
             <% end %>
           <% end %>
-        <%= link_to edit_user_registration_path(@user), class:"small_link_text_right" do %>
-          edit my profile...
-          <% end %>
+          <%= link_to 'edit my profile...', edit_user_registration_path, class:"small_link_text_right" %>
       </div>
       <div class="col-sm-1">
       </div>
