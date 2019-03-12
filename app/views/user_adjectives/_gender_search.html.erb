@@ -1,0 +1,24 @@
+<div class="gender-options">
+  <input name="user[male_search]" type="hidden" value="0">
+  <input class="gender-input" style="display:none" value="1" type="checkbox" <%= @user.male_search ? 'checked' : '' %> name="user[male_search]" id="user_male_search">
+  <label class="gender-option <%= @user.male_search ? 'active' : '' %>" for="user_male_search">A Man</label>
+
+  <input name="user[female_search]" type="hidden" value="0">
+  <input class="gender-input" style="display:none" value="1" type="checkbox" <%= @user.female_search ? 'checked' : '' %> name="user[female_search]" id="user_female_search">
+  <label class="gender-option <%= @user.female_search ? 'active' : '' %>" for="user_female_search">A Woman</label>
+</div>
+
+
+
+  <%#= f.input :male_search, input_html: {value: @user.male_search} %>
+  <%#= f.input :female_search, input_html: {value: @user.female_search}, item_label_class: 'class-name' %>
+
+
+<!--     <input name="user[male_search]" type="hidden" value="0">
+    <input class="form-check-input is-valid boolean optional" value="1" type="checkbox" <%#= @user.male_search ? 'checked' : '' %> name="user[male_search]" id="user_male_search">
+    <label class="form-check-label boolean optional" for="user_male_search">Male search</label>
+
+    <input name="user[female_search]" type="hidden" value="0">
+    <input class="form-check-input boolean optional" value="1" type="checkbox" name="user[female_search]" id="user_female_search">
+    <label class="form-check-label boolean optional" for="user_female_search">Female search</label>
+ -->

@@ -10,11 +10,60 @@
   border-radius: 20px 20px 20px 20px;
 }
 
+.form2{
+  background-color: white;
+  border: solid #4a9ff5;
+  color: #4a9ff5 !important;
+  margin-top: ($spacer * 1);
+  margin-left: ($spacer * 1);
+  margin-right: ($spacer * 1);
+  padding-left: ($spacer * 1);
+  padding-right: ($spacer * 1);
+  padding-top: ($spacer * .5);
+  padding-bottom: ($spacer * .5);
+  border-radius: 20px 20px 20px 20px;
+}
+
 .from-text{
   color: white !important;
+}
+
+.form-text{
+  color: #4a9ff5 !important;
 }
 
 #bob:hover{
   text-decoration: none;
   box-shadow: 0px 3px 4px 2px rgba(0,0,0,0.2);
+}
+
+.gender-options{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 16px;
+}
+
+.gender-option{
+  flex: 0 0 40%;
+  color: black;
+  padding: 8px 16px;
+  text-align: center;
+  border-radius: 4px;
+  background: #CEF9E2;
+  transition: background 0.3s ease;
+  border: 1px solid #0F60C4;
+  opacity: 0.5;
+  &:hover{
+    padding: 7px 15px;
+    color: black;
+    text-decoration: none;
+    border: 2px solid #0F60C4;
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active{
+    background: #4a9ff5;
+    color: white;
+    opacity: 1;
+  }
 }
