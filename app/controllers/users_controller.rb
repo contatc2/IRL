@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @pending_invitations = FriendInvitation.where(accepted: nil, user: @user)
     @matches = Match.where(match_one: @user).or(Match.where(match_two: @user))
     @helper_matches = Match.where(helper: @user)
-    if @accepted_invitations != nil && @pending_invitations != nil
+    if @accepted_invitations.nil? && @pending_invitations.nil?
       redirect_to new_friend_invitation_path
     end
   end
