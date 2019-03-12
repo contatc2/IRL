@@ -1,9 +1,11 @@
 const clickOnGenderOption = () => {
-  const genderOption = document.querySelector('.gender-option');
-  genderOption.addEventListener("click", () => {
-    event.currentTarget.classList.toggle('active');
+  const genderOption = document.querySelectorAll('.gender-option');
+  genderOption.forEach((option) => {
+    option.addEventListener("click", () => {
+      event.currentTarget.classList.toggle('active');
+    });
   });
-}
+};
 
 
 export { clickOnGenderOption };
