@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: %i[show update friends_present]
+  before_action :find_user, only: %i[show update]
   def index
     @users = User.all
   end
