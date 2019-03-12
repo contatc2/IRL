@@ -2,7 +2,11 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!
 
   def home
-    @referral = Referral.new
+    if user_signed_in?
+      redirect_to user_path(current_user)
+    else
+      @referral = Referral.new
+    end
   end
 
   def about
