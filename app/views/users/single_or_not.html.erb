@@ -1,4 +1,13 @@
-<p>Please let us know if you are open to be matched by friends you have selected on RealLife.love</p>
+<div class="min-height">
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2 col-sm-6 text-center">
+        <p>Are you here to find love or help your friends find love?</p>
+        <%= link_to "I am single and want my friends to help",  availability_users_path(@user, user: {available: true}), class:"second_action_button mb-5" %>
+        <%= link_to "I am here to help my friends only", availability_users_path(@user,user: {available: false}), class:"second_action_button" %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to "I am only here to help my friends", availability_users_path(@user,available: false), class:"second_action_button mr-3" %>
-<%= link_to "I am open to my approved friends recomandations",  availability_users_path(@user, available: true), class:"second_action_button mr-3" %>
+
