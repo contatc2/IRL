@@ -1,0 +1,4 @@
+<p>Please let us know if you are open to be matched by friends you have selected on RealLife.love</p>
+
+<%= link_to "I am only here to help my friends", availability_users_path(@user,available: false), class:"second_action_button mr-3" %>
+<%= link_to "I am open to my approved friends recomandations",  availability_users_path(@user, available: true), class:"second_action_button mr-3" %>
