@@ -11,7 +11,7 @@
 </div>
 
     <!-- search your friend in the existing app users -->
-<div class="mt-3">
+<div class="mt-3 text-center">
   <% if @user.available %>
     <div class="catch-paragraph">
       Nominate your helpers below.
@@ -31,6 +31,7 @@
 
     <%= simple_form_for :search, url: new_friend_invitation_path, method: :get, html: {class: 'form'} do |f| %>
       <%= f.input :query, label: 'Are your friends already on RealLife.love?', placeholder: " Enter you friend's full name" %>
+
       <%= f.submit 'Search friend', class:"main_action_button mb-0" %>
     <% end %>
 
