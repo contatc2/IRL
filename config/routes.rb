@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   get "about", to: "pages#about"
   get "terms_and_conditions", to: "pages#terms_and_conditions"
   resources :users, only: %i[index show update] do
+    collection do
+      get 'single_or_not'
+      get 'availability'
+    end
     resources :user_adjectives, only: %i[new create edit update]
   end
   resources :referrals, only: %i[create update]
