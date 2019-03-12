@@ -40,6 +40,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     super
+    raise
   end
 
   # DELETE /resource
