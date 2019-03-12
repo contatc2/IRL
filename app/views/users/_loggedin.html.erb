@@ -20,7 +20,7 @@
           edit my profile...
           <% end %><br>
           <% if @user.available %>
-            <%= link_to "edit my search...", edit_user_user_adjective_path(@user, @user.user_adjective_ids.first), class:"small_link_text_right"  %>
+            <%= link_to "edit my search...", new_user_user_adjective_path(@user, @user.user_adjective_ids.first), class:"small_link_text_right"  %>
           <% end %>
       </div>
       <div class="col-sm-1">
