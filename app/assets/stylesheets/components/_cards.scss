@@ -13,6 +13,48 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
+.card-category-left {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px 0px 0px 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-category-right {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 0px 5px 5px 0px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.position {
+  position: relative;
+  width: 192px;
+  height: 180px;
+}
+
 .banner {
   background-size: cover;
   background-position: center;
