@@ -28,6 +28,18 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def availability
+    @user = User.find(current_user.id)
+    @user.available = params[:available]
+    if @user.save
+      redirect_to user_path(current_user.id)
+    end
+  end
+
+  def single_or_not
+    @user = User.find(current_user.id)
+  end
+
   private
 
   def find_user
@@ -35,10 +47,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:user_adjectives, :male_search, :female_search)
+    params.require(:user).permit(:user_adjectives, :male_search, :female_search, :available)
   end
 
-  def make_boolean(param)
-    param == 1
-  end
 end
