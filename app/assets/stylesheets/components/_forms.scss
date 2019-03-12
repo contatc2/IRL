@@ -43,7 +43,7 @@
   margin-top: 16px;
 }
 
-.gender-option{
+.gender-search{
   flex: 0 0 40%;
   color: black;
   padding: 8px 16px;
@@ -67,3 +67,28 @@
     opacity: 1;
   }
 }
+
+.gender-option{
+  flex: 0 0 40%;
+  color: black;
+  padding: 8px 16px;
+  text-align: center;
+  border-radius: 4px;
+  background: white;
+  transition: background 0.3s ease;
+  border: 1px solid #0F60C4;
+  &:hover{
+    padding: 7px 15px;
+    background: #033fff;
+    color: white;
+    text-decoration: none;
+    border: 2px solid #0F60C4;
+    opacity: 0.4;
+    cursor: pointer;
+  }
+  &.active{
+    background: #033fff;
+    color: white;
+  }
+}
+
