@@ -25,7 +25,13 @@ class FriendInvitationsController < ApplicationController
   def update
     @invitation = FriendInvitation.find(params[:id])
     @invitation.update(invitation_params)
+    UserMailer.friend_acceptation(@invitation.user).deliver_now
     redirect_to user_path(current_user)
+  end
+
+  def share
+    @email = params[:friend_invitation][:enter_email]
+    UserMailer.share(@email, current_user).deliver_now
   end
 
   private
