@@ -17,7 +17,7 @@ class UsersController < ApplicationController
 
   def update
     user_adjectives = params[:user][:user_adjectives]
-    if @user.user_adjectives.blank?
+    if @user.user_adjectives.empty?
       @user.update(user_params)
       @useradjs = UserAdjective.new(adjective: user_adjectives[:adjective], adjective_2: user_adjectives[:adjective_2], adjective_3: user_adjectives[:adjective_3])
       @useradjs.user = @user
@@ -25,7 +25,10 @@ class UsersController < ApplicationController
     else
       @user.update(user_params)
       @useradjs = @user.user_adjectives
-      @useradjs.update(adjective: user_adjectives[:adjective], adjective_2: user_adjectives[:adjective_2], adjective_3: user_adjectives[:adjective_3])
+      if @useradjs.update(adjective: user_adjectives[:adjective], adjective_2: user_adjectives[:adjective_2], adjective_3: user_adjectives[:adjective_3])
+      else
+        render :edit
+      end
     end
     redirect_to user_path(@user)
   end
@@ -47,6 +50,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:user_adjectives, :male_search, :female_search, :available)
+    params.require(:user).permit(:user_adjectives, :adjective, :adjective_2, :adjective_3, :male_search, :female_search, :available)
   end
 end

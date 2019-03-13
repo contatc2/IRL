@@ -16,8 +16,11 @@ class UserAdjectivesController < ApplicationController
   end
 
   # def update
-  #   @useradj.update(useradj_params)
-  #   redirect_to user_path(@user)
+  #   if @useradj.update(useradj_params)
+  #     redirect_to user_path(@user)
+  #   else
+  #     render :edit
+  #   end
   # end
 
   private
@@ -30,7 +33,7 @@ class UserAdjectivesController < ApplicationController
     @useradj = UserAdjective.find(params[:id])
   end
 
-  # def useradj_params
-  #   params.require(:user_adjective).permit(:adjective, :adjective_2, :adjective_3)
-  # end
+  def useradj_params
+    params.require(:user_adjective).permit(:adjective, :adjective_2, :adjective_3)
+  end
 end
