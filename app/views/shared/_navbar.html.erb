@@ -1,15 +1,20 @@
 <div class="navbarIRL navbar navbar-expand navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-logo" do %>
-    <div class="logo">
-      <div class="logo-real">
-        Real
+      <div class="logo">
+        <div class="logo-real">
+          Real
+        </div>
+        <div class="logo-life">
+          Life
+        </div>
+        <!-- <div class="logo-love">
+          <i class="fas fa-heart"></i>love
+        </div> -->
+        <div>
+          <%= image_tag "reallifelove.svg", style: 'height:auto;width:30px;' %>
+        </div>
       </div>
-      <div class="logo-life">
-        Life
-      </div>
-      <div class="logo-love"><i class="fas fa-heart"></i>love
-      </div>
-    </div>
+
   <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
