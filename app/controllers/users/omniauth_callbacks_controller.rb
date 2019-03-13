@@ -43,16 +43,16 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   protected
 
-  def create_invitation(resource)
-    @referrals = Referral.where(friend_email: resource.email)
-    @referrals.each do |referral|
-      invitation = FriendInvitation.new
-      invitation.user = referral.user
-      invitation.friend = resource
-      invitation.save
-      referral.update(accepted: true)
-    end
-  end
+  # def create_invitation(resource)
+  #   @referrals = Referral.where(friend_email: resource.email)
+  #   @referrals.each do |referral|
+  #     invitation = FriendInvitation.new
+  #     invitation.user = referral.user
+  #     invitation.friend = resource
+  #     invitation.save
+  #     referral.update(accepted: true)
+  #   end
+  # end
 
   # The path used when OmniAuth fails
   # def after_omniauth_failure_path_for(scope)
