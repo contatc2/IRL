@@ -18,14 +18,14 @@
           <% if @user.available %>
           <div>
             <% if @user.user_adjectives.present? %>
-              <%= link_to "edit my search", edit_user_user_adjective_path(@user, @user.user_adjective_ids.first), class:"low_key_button"  %>
+              <%= link_to "edit my search", edit_user_user_adjective_path(@user, @user.user_adjective_ids.first), class:"low_key_button mx-2 mb-2"  %>
             <% else %>
-              <%= link_to "my search", new_user_user_adjective_path(@user), class:"main_action_button mx-2"  %>
+              <%= link_to "my search", new_user_user_adjective_path(@user), class:"main_action_button mx-2 mb-2"  %>
             <% end %>
           </div>
           <% end %>
           <div>
-            <%= link_to 'edit my profile', edit_user_registration_path, class:"low_key_button mx-2" %>
+            <%= link_to 'edit my profile', edit_user_registration_path, class:"low_key_button mx-2 mb-2" %>
           </div>
         </div>
       </div>
@@ -66,6 +66,8 @@
                 <%= myfriend.full_name %>
                 <% if myfriend.available %>
                   <small>single</small>
+                <% else %>
+                  <small>helper</small>
                 <% end %>
               </div>
             <% end %>
@@ -78,6 +80,8 @@
                <%= myfriend.full_name %> <i class="fas fa-frog"></i>
                <% if myfriend.available %>
                 <small>single</small>
+              <% else %>
+                <small>helper</small>
                <% end %>
             </div>
           <% end %>
@@ -96,7 +100,11 @@
       <% if @user.available %>
         <div class="p-2">
           <h3>My Matches</h3>
-          <%= render 'mymatches', matches: @matches  %>
+            <% if @matches.nil? %>
+          <p>You don't have any matches yet, nudge your friends.</p>
+          <% else %>
+            <%= render 'mymatches', matches: @matches  %>
+          <% end %>
           <% unless @pending_matches.nil? %>
           <%= render 'mymatches', matches: @pending_matches  %>
           <% end %>
