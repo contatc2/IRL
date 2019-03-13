@@ -48,6 +48,14 @@ class User < ApplicationRecord
     end
   end
 
+  def status
+    if available
+      'single'
+    else
+      'helper'
+    end
+  end
+
   def profile_image_tag
     if picture.present?
       picture.url

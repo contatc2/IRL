@@ -1,37 +1,45 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @user.profile_image_path %>')">
   <div class="container">
     <h1><%= @user.full_name %></h1>
+    <p><%= @user.status %></p>
+    <% if @user.available %>
+      <% if @user.user_adjectives.present? %>
+        <div class="adjectives">
+          Looking for <%= @user.gender_search %> who is <%= @user.user_adjectives.first[:adjective] %>, <%= @user.user_adjectives.first[:adjective_2] %> and <%= @user.user_adjectives.first[:adjective_3] %>.
+        </div>
+      <% end %>
+      <%= link_to new_match_path(@match, match_one: @user), style:"font-size: 1.5em" do %>
+        <i class="fas fa-plus-square"></i> Add match
+      <% end %>
+    <% end %>
   </div>
 </div>
 
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+
 <!-- if user available, show search criteria and matches -->
-  <% if @user.available %>
-    <% if @user.user_adjectives.present? %>
-      <div class="p-3 my-3">
-        Looking for <%= @user.gender_search %> who is <%= @user.user_adjectives.first[:adjective] %>, <%= @user.user_adjectives.first[:adjective_2] %> and <%= @user.user_adjectives.first[:adjective_3] %>
-
+    <% if @user.available %>
+      <div class="p-2 my-3">
+        <% unless @matches.empty?%>
+        <h2>Current Matches</h2>
+          <%= render 'mymatches', matches: @matches  %>
+        <% end %>
       </div>
-    <% end %>
-
-    <div class="p-3 my-3">
-      <h2>Current Matches</h2>
-      <%= render 'mymatches', matches: @matches  %>
-    </div>
-
-
-
-    <%= link_to new_match_path(@match, match_one: @user) do %>
-    Add match<i class="fas fa-plus-square" style="font-size: 1.5em"></i>
-    <% end %>
 
 <!-- show helper page for not available -->
-  <% else %>
-    <div class="p-3 my-3">
-      <% if @helper_matches.nil? %>
-        <p>No matches submitted yet </p>
-      <% else %>
-        <h2>Submitted Matches</h2>
-        <%= render 'helper_matches' %>
-      <% end %>
+    <% else %>
+      <div class="p-2 my-3">
+        <% if @helper_matches.nil? %>
+          <p>No matches submitted yet... </p>
+        <% else %>
+          <h2>Submitted Matches</h2>
+          <%= render 'helper_matches' %>
+        <% end %>
+      </div>
+    <% end %>
     </div>
-  <% end %>
+  </div>
+</div>
