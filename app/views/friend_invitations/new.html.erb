@@ -29,7 +29,7 @@
       <%#= submit_tag 'Search friend', class: "main_action_button mt-3" %>
   <%# end %>
 
-    <%= simple_form_for :search, url: new_friend_invitation_path, method: :get, html: {class: 'form'} do |f| %>
+    <%= simple_form_for :search, url: new_friend_invitation_path, method: :get, html: {class: 'form2'} do |f| %>
       <%= f.input :query, label: 'Are your friends already on RealLife.love?', placeholder: " Enter you friend's full name" %>
 
       <%= f.submit 'Search friend', class:"main_action_button mb-0" %>
@@ -67,7 +67,7 @@
     <p>Send an invite via e-mail to your help them join us:</p>
   <% end %>
 
-  <div class="form">
+  <div class="form2">
     <%= simple_form_for @referral do |f| %>
       <%= f.input :friend_email, placeholder: "Enter your friend's email" %>
       <%= f.submit "Send invitation", class:"main_action_button mb-0" %>
