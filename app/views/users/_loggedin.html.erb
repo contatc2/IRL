@@ -31,19 +31,19 @@
       </div>
 
     <!-- friends invitations -->
-      <div class="invitations">
-        <% unless @invitations.nil? %>
-          <% @invitations.each do |invitation| %>
-            <% if invitation.accepted.nil? %>
-              <p><%= invitation.user.full_name %> has invited you as a trusted friend</p>
-              <%= link_to "Accept invitation",friend_invitation_path(invitation, friend_invitation: {accepted: true}), method: :put, class:"second_action_button mr-3 mb-3" %>
-              <%= link_to friend_invitation_path(invitation, friend_invitation: {accepted: false}), method: :put do %>
-                <i class="fas fa-trash-alt"></i>
+      <% unless @invitations.empty? %>
+        <div class="invitations">
+            <% @invitations.each do |invitation| %>
+              <% if invitation.accepted.nil? %>
+                <p><%= invitation.user.full_name %> has invited you as a trusted friend</p>
+                <%= link_to "Accept invitation",friend_invitation_path(invitation, friend_invitation: {accepted: true}), method: :put, class:"second_action_button mr-3 mb-3" %>
+                <%= link_to friend_invitation_path(invitation, friend_invitation: {accepted: false}), method: :put do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
               <% end %>
             <% end %>
-          <% end %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
 
     <!-- list of friends -->
       <div class="p-2 text-center">

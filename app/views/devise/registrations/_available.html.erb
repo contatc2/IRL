@@ -1,0 +1,12 @@
+<div>
+  <input type="hidden" name="user[available]" value="">
+  <div class="available-options">
+    <div style="flex: 0 0 40%">
+    <input style="display:none" type="radio" value="true" <%= @user.available ? 'checked' : '' %> name="user[available]" id="user_available_true">
+    <label id="available-label" class="available-option <%= @user.available ? 'active' : '' %>" for="user_available_true">Single</label>
+  </div>
+  <div style="flex: 0 0 40%">
+    <input style="display:none" readonly="readonly" type="radio" value="false" <%= @user.available == false ? 'checked' : '' %> name="user[available]" id="user_available_false">
+    <label id="non-available-label" class="available-option <%= @user.available == false ? 'active' : '' %>" for="user_available_false">Here to help</label>
+  </div>
+</div>
