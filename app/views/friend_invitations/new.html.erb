@@ -1,85 +1,71 @@
 <div class="min-height">
-<div class="top_page">
-
-  <p class="mx-3">Invite your friends</p>
-
-  <div class="d-flex justify-content-center">
-    <div>
-      <%= image_tag "invite.svg", class: "mb-3", alt: "data protection", style: 'height:auto;width:400px;' %>
+  <div class="top_page">
+    <p class="mx-3">Invite your friends</p>
+    <div class="d-flex justify-content-center">
+      <div>
+        <%= image_tag "invite.svg", class: "mb-3", alt: "data protection", style: 'height:auto;width:400px;' %>
+      </div>
     </div>
   </div>
-</div>
-
-    <!-- search your friend in the existing app users -->
-<div class="mt-3 text-center">
-  <% if @user.available %>
-    <div class="catch-paragraph">
-      Nominate your helpers below.
-    </div>
-  <% else %>
+      <!-- search your friend in the existing app users -->
+  <div class="mt-3 text-center">
+    <% if @user.available %>
       <div class="catch-paragraph">
-      Feels great to see your friends happy.  Spread the love with RealLife.love.  Invite your single friends and spread the magic!
-    </div>
-  <% end %>
-  <%#= form_tag new_friend_invitation_path, method: :get do %>
-    <%#= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: " Enter you friend full name" %>
-      <%#= submit_tag 'Search friend', class: "main_action_button mt-3" %>
-  <%# end %>
-
-    <%= simple_form_for :search, url: new_friend_invitation_path, method: :get, html: {class: 'form2'} do |f| %>
-      <%= f.input :query, label: 'Are your friends already on RealLife.love?', placeholder: " Enter you friend's full name" %>
-
-      <%= f.submit 'Search friend', class:"main_action_button mb-0" %>
+        Nominate your helpers below.
+      </div>
+    <% else %>
+        <div class="catch-paragraph">
+        Feels great to see your friends happy.  Spread the love with RealLife.love.  Invite your single friends and spread the magic!
+      </div>
     <% end %>
+    <%#= form_tag new_friend_invitation_path, method: :get do %>
+      <%#= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: " Enter you friend full name" %>
+        <%#= submit_tag 'Search friend', class: "main_action_button mt-3" %>
+    <%# end %>
 
-    <% if @searched_user == [] %>
-      <h4 class="mt-3 text-center"><span style="color:red">User is not on the platform yet.</span></h4>
-    <% end %>
+      <%= simple_form_for :search, url: new_friend_invitation_path, method: :get, html: {class: 'form2'} do |f| %>
+        <%= f.input :query, label: 'Are your friends already on RealLife.love?', placeholder: " Enter you friend's full name" %>
 
-    <div class="d-flex justify-content-start flex-wrap mx-5 mt-2">
-
-      <% unless @searched_user.nil? %>
-        <% @searched_user.each do |user| %>
-              <%= link_to friend_invitations_path(@invitation, friend_id: user.id), class: "text-decoration-none", method: :post do %>
-                <div class="avatar-xl-name" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= user.profile_image_path %>')">
-                  <%= user.full_name %>
-                </div>
-              <% end %>
+        <%= f.submit 'Search friend', class:"main_action_button mb-0" %>
+      <% end %>
+      <% if @searched_user == [] %>
+        <h4 class="mt-3 text-center"><span class="catch-paragraph" style="color:green"><%= @names[0] %> is not on the platform yet. You can invite them bellow!</span></h4>
+      <% end %>
+      <div class="d-flex justify-content-start flex-wrap mx-5 mt-2">
+        <% unless @searched_user.nil? %>
+          <% @searched_user.each do |user| %>
+                <%= link_to friend_invitations_path(@invitation, friend_id: user.id), class: "text-decoration-none", method: :post do %>
+                  <div class="avatar-xl-name" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= user.profile_image_path %>')">
+                    <%= user.full_name %>
+                  </div>
+                <% end %>
+          <% end %>
         <% end %>
+      </div>
+
+  </div>
+
+  <!-- Invite friend through e-mail -->
+
+
+  <div class="mt-3 text-center">
+    <div class="form2">
+      <% if @user.available %>
+        <p class="mb-0">Your friend isn't on RealLife.love yet?</p>
+        <p>Send an invite via e-mail to ask for help:</p>
+      <% else %>
+        <p class="mb-0">Your friend is not on RealLife.love yet?</p>
+        <p>Send an invite to offer your help:</p>
+      <% end %>
+      <%= simple_form_for @referral do |f| %>
+        <%= f.input :friend_email, placeholder: "Enter your friend's email",  label: false  %>
+        <%= f.submit "Send invitation", class:"main_action_button mb-0" %>
       <% end %>
     </div>
-
-</div>
-
-<!-- Invite friend through e-mail -->
-
-
-<div class="mt-3 text-center">
-
-  <% if @user.available %>
-    <p class="mb-0">Your trusted helpers are not on RealLife.love yet?</p>
-    <p>Send an invite via e-mail to your trusted helpers:</p>
-  <% else %>
-    <p class="mb-0">Your friend is not on RealLife.love yet?</p>
-    <p>Send an invite via e-mail to your help them join us:</p>
-  <% end %>
-
-  <div class="form2">
-    <%= simple_form_for @referral do |f| %>
-      <%= f.input :friend_email, placeholder: "Enter your friend's email" %>
-      <%= f.submit "Send invitation", class:"main_action_button mb-0" %>
-    <% end %>
-
   </div>
-
-</div>
-
-
-
-
 </div>
 
 

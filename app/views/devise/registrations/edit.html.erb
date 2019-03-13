@@ -14,7 +14,7 @@
             </label>
             <%= f.input :picture_cache, as: :hidden %>
             <% if resource.token.nil? %>
-              <%= f.input :email, required: true, autofocus: true %>
+              <%= f.input :email, required: true, autofocus: true, placeholder: 'email',  label: false  %>
             <% end %>
 
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -22,20 +22,20 @@
             <% end %>
             <% if resource.token.nil? %>
               <%= f.input :password,
-                          hint: "leave it blank if you don't want to change it",
+                          hint: "leave blank if you don't want to change it",
                           required: false,
-                          input_html: { autocomplete: "new-password" } %>
+                          input_html: { autocomplete: "new-password" }, placeholder: 'change your password (optional)',  label: false %>
               <%= f.input :password_confirmation,
                           required: false,
-                          input_html: { autocomplete: "new-password" } %>
+                          input_html: { autocomplete: "new-password" }, placeholder: 'confirm new password',  label: false %>
             <% end %>
             <%#= f.input :current_password,
                         hint: "we need your current password to confirm your changes",
                         required: true,
                         input_html: { autocomplete: "current-password" } %>
-            <%= f.input :first_name %>
-            <%= f.input :last_name %>
-            <%= f.input :location %>
+            <%= f.input :first_name, placeholder: 'First Name',  label: false %>
+            <%= f.input :last_name, placeholder: 'Last Name',  label: false %>
+            <%= f.input :location, placeholder: 'Location',  label: false  %>
             <%= f.input :date_of_birth, as: :date, start_year: Date.today.year - 18,
                                       end_year: Date.today.year - 100,
                                       order: %i(day month year)  %>
