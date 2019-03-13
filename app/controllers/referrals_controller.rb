@@ -5,7 +5,7 @@ class ReferralsController < ApplicationController
     @referral.date = Date.today
     @referral.save
     @email = @referral.friend_email
-    UserMailer.share(@email, current_user).deliver_now
+    UserMailer.invite(@email, current_user).deliver_now
   end
 
   def update
