@@ -6,7 +6,7 @@ class Match < ApplicationRecord
   def status
     if match_one_accepted && match_two_accepted
       'Accepted'
-    elsif !match_one_accepted || !match_two_accepted
+    elsif match_one_accepted == false || match_two_accepted == false
       'Rejected'
     else
       'Pending'
