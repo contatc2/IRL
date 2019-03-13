@@ -12,13 +12,20 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
   small {
   font-size: 16px;
   font-weight: lighter;
   font-style: italic;
   }
 }
-
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+}
 .card-category-left {
   background-size: cover;
   background-position: center;
