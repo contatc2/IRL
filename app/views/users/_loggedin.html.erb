@@ -5,11 +5,11 @@
       <div class="show-intro">
         <div class="show-intro-left">
           <%#= cl_image_tag(@user.profile_image_path, gravity:"faces", crop:"fill", class:"profile-picture") %>
-          <p>Hi <%= @user.first_name %>,</p>
+          <h4>Hi <%= @user.first_name.capitalize %>,</h4>
     <!-- if user is available show "search button" or edit search -->
           <% if @user.available %>
             <% if @user.user_adjectives.present? %>
-              <p>You're looking for <%= @user.gender_search %> who is <%= @user.user_adjectives.first[:adjective] %>, <%= @user.user_adjectives.first[:adjective_2] %> and <%= @user.user_adjectives.first[:adjective_3] %></p>
+              <p>You're looking for <%= @user.gender_search %> who is <%= @user.user_adjectives.first[:adjective] %>, <%= @user.user_adjectives.first[:adjective_2] %> and <%= @user.user_adjectives.first[:adjective_3] %>.</p>
             <% end %>
           <% end %>
         </div>
@@ -31,12 +31,12 @@
       </div>
 
     <!-- friends invitations -->
-      <div>
+      <div class="invitations">
         <% unless @invitations.nil? %>
           <% @invitations.each do |invitation| %>
             <% if invitation.accepted.nil? %>
               <p><%= invitation.user.full_name %> has invited you as a trusted friend</p>
-              <%= link_to "Accept invitation",friend_invitation_path(invitation, friend_invitation: {accepted: true}), method: :put, class:"second_action_button mr-3" %>
+              <%= link_to "Accept invitation",friend_invitation_path(invitation, friend_invitation: {accepted: true}), method: :put, class:"second_action_button mr-3 mb-3" %>
               <%= link_to friend_invitation_path(invitation, friend_invitation: {accepted: false}), method: :put do %>
                 <i class="fas fa-trash-alt"></i>
               <% end %>
@@ -48,9 +48,9 @@
     <!-- list of friends -->
       <div class="p-2 text-center">
         <% if @user.available %>
-          <h3>Friends helping with your search</h3>
+          <h4>Friends helping with your search</h4>
           <% else %>
-          <h3>Friends you are helping in their search</h3>
+          <h4>Friends you are helping in their search</h4>
         <% end %>
 
         <div class="cards">
@@ -64,11 +64,7 @@
             <%= link_to user_path(myfriend), class:"text-decoration-none" do %>
               <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= myfriend.profile_image_path %>')">
                 <%= myfriend.full_name %>
-                <% if myfriend.available %>
-                  <small>single</small>
-                <% else %>
-                  <small>helper</small>
-                <% end %>
+                <small><%= myfriend.status %></small>
               </div>
             <% end %>
           <% end %>
@@ -78,11 +74,7 @@
           <%= link_to user_path(myfriend), class:"text-decoration-none" do %>
             <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= myfriend.profile_image_path %>')">
                <%= myfriend.full_name %> <i class="fas fa-frog"></i>
-               <% if myfriend.available %>
-                <small>single</small>
-              <% else %>
-                <small>helper</small>
-               <% end %>
+                <small><%= myfriend.status %></small>
             </div>
           <% end %>
         <% end %>
@@ -99,10 +91,10 @@
       <!-- if user is available show matches profiles -->
       <% if @user.available %>
         <div class="p-2">
-          <h3>My Matches</h3>
-            <% if @matches.nil? %>
+            <% if @matches.empty? %>
           <p>You don't have any matches yet, nudge your friends.</p>
           <% else %>
+            <h4>My Matches</h4>
             <%= render 'mymatches', matches: @matches  %>
           <% end %>
           <% unless @pending_matches.nil? %>
