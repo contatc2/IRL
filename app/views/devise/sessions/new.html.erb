@@ -10,8 +10,12 @@
 </div>
 
 <h2>Log in</h2>
-
-<div class="form">
+<div class="text-center">
+  <%= link_to user_facebook_omniauth_authorize_path, class: "loginBtn--facebook" do %>
+    <i class="fab fa-facebook-f"></i> | Login with Facebook
+  <% end %>
+</div>
+<div class="form2">
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
       <%= f.input :email,
@@ -25,7 +29,7 @@
     </div>
 
     <div class="form-actions text-center">
-      <%= f.button :submit, "Log in", class: "second_action_button" %>
+      <%= f.button :submit, "Log in", class: "main_action_button" %>
     </div>
   <% end %>
 </div>
