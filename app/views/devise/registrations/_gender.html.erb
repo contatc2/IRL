@@ -1,15 +1,15 @@
-
+<div>
   <input type="hidden" name="user[male]" value="">
   <div class="gender-options">
-    <div class="form-check">
+    <div style="flex: 0 0 40%">
     <input style="display:none" type="radio" value="true" <%= @user.male ? 'checked' : '' %> name="user[male]" id="user_male_true">
     <label id="male-label" class="gender-option <%= @user.male ? 'active' : '' %>" for="user_male_true">Man</label>
   </div>
-  <div class="form-check">
-    <input style="display:none" readonly="readonly" type="radio" value="false" <%= !@user.male ? 'checked' : '' %> name="user[male]" id="user_male_false">
-    <label id="female-label" class="gender-option <%= !@user.male ? 'active' : '' %>" for="user_male_false">Woman</label>
+  <div style="flex: 0 0 40%">
+    <input style="display:none" readonly="readonly" type="radio" value="false" <%= @user.male == false ? 'checked' : '' %> name="user[male]" id="user_male_false">
+    <label id="female-label" class="gender-option <%= @user.male == false ? 'active' : '' %>" for="user_male_false">Woman</label>
   </div>
-  </div>
+</div>
 
 <!-- <script>
   const male = document.getElementById('user_male_true')

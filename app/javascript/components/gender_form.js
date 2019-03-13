@@ -30,6 +30,31 @@ const clickOnGenderOption = () => {
   });
 };
 
+const selectAvailable = () => {
+  const availableLabel = document.getElementById('available-label')
+  const nonAvailableLabel = document.getElementById('non-available-label')
+  const availableOption = document.querySelectorAll('.available-option');
+  availableOption.forEach((option) => {
+    option.addEventListener("click", () => {
+      if (event.currentTarget.classList.contains('active')) {
+        console.log(event.currentTarget.classList.contains('active'))
+
+      } else {
+        if (event.currentTarget == availableLabel) {
+          event.currentTarget.classList.add('active');
+          nonAvailableLabel.classList.remove('active')
+        } else {
+          event.currentTarget.classList.add('active');
+          availableLabel.classList.remove('active')
+        }
+      }
+    });
+  });
+};
+
+
+export { selectAvailable };
+
 
 // export { clickOnGenderOption };
 export { clickOnGenderOption };

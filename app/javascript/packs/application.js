@@ -5,3 +5,6 @@ clickOnGenderOption();
 
 import { selectGender } from '../components/gender_form';
 selectGender();
+
+import { selectAvailable } from '../components/gender_form';
+selectAvailable();
