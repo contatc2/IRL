@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     if user_signed_in?
       redirect_to user_path(current_user)
     else
-      @referral = Referral.new
+      @share = FriendInvitation.new
     end
   end
 
