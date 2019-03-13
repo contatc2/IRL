@@ -31,7 +31,6 @@ class FriendInvitationsController < ApplicationController
 
   def share
     @email = params[:referral][:friend_email]
-    UserMailer.share(@email).deliver_now
   end
 
   private
