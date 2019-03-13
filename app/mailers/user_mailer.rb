@@ -11,10 +11,9 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: "Welcome #{@user.first_name} you just signed up!", track_opens: 'true')
   end
 
-  def share(email, user)
-    @user = user
-    @url  = 'https://www.reallife.love'
-    mail(to: email, subject: "#{@user.first_name} has invited you to join IRL")
+  def share(email)
+    @url = 'https://www.reallife.love'
+    mail(to: email, subject: "Somebody invites you to join IRL")
   end
 
   def match_created(user, user2)

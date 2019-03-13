@@ -34,17 +34,22 @@
     <p class="mb-0">The perfect match is not on IRL yet?</p>
     <p>Share via e-mail:</p>
 
-    <div class="form">
-      <%= simple_form_for @referral do |f| %>
-        <%= f.input :friend_email, placeholder: "Enter your friend's email" %>
-        <%= f.submit "Send invitation", class:"main_action_button mb-0" %>
-      <% end %>
-
-    </div>
+  <div class="mt-3 text-center">
+  <div class="form2">
+    <%= simple_form_for @share, url: share_friend_invitations_path, method: 'post' do |f| %>
+      <%= f.input :friend_email, placeholder: "Enter your friend's email" %>
+      <%= f.submit "Send invitation", class:"main_action_button mb-0" %>
+    <% end %>
 
   </div>
 
+</div>
 
+
+
+
+
+  </div>
 
 
 

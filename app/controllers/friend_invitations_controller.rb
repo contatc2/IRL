@@ -1,6 +1,6 @@
 class FriendInvitationsController < ApplicationController
   before_action :set_user, only: %i[create update new share]
-
+  skip_before_action :authenticate_user!, only: [:share]
   def new
     @invitation = FriendInvitation.new
     if params[:search].present?
@@ -29,6 +29,11 @@ class FriendInvitationsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def share
+    @email = params[:referral][:friend_email]
+    UserMailer.share(@email).deliver_now
+  end
+
   private
 
   def set_user
@@ -36,6 +41,6 @@ class FriendInvitationsController < ApplicationController
   end
 
   def invitation_params
-    params.require(:friend_invitation).permit(:enter_email, :friend_id, :accepted, :id)
+    params.require(:friend_invitation).permit(:friend_id, :accepted, :id)
   end
 end
