@@ -5,7 +5,7 @@
 <% end %>
 <div class="min-height">
 <div class="container">
-  <h2>Would you like to be introduced to <%= mymatch.full_name %>?</h2>
+  <h4>Would you like to be introduced to <%= mymatch.full_name %>?</h4>
   <% unless @match.helper == current_user %>
     <div class="d-flex w-100 justify-content-around p-3">
       <% if @match.match_one == current_user %>
@@ -38,9 +38,11 @@
     </div>
   </div>
 
-  <div class="text-center">
-    <h2>Comment from <%= myhelper.first_name %></h2>
-    <%= @match.intro_message %>
+  <div class="mt-3">
+    <h4>Comment from <%= myhelper.first_name %></h4>
+    <div class="invitations">
+      <%= @match.intro_message %>
+    </div>
   </div>
 
 
