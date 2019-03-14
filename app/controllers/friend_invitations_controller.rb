@@ -24,7 +24,7 @@ class FriendInvitationsController < ApplicationController
   def update
     @invitation = FriendInvitation.find(params[:id])
     @invitation.update(invitation_params)
-    UserMailer.friend_acceptation(@invitation.user, current_user).deliver_now
+    UserMailer.friend_acceptation(@invitation.user, current_user).deliver_now unless @invitation.accepted == false
     redirect_to user_path(current_user)
   end
 

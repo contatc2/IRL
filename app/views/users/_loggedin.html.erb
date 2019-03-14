@@ -104,7 +104,7 @@
       <!-- if user is not available show submitted matches with both profiles and status -->
       <% else %>
         <div class="p-2">
-          <% if @helper_matches.nil? %>
+          <% if @helper_matches.empty? %>
             <p>Create your first match today! </p>
           <% else %>
             <h2>My submitted Matches</h2>
