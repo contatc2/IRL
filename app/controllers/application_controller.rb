@@ -7,7 +7,9 @@ class ApplicationController < ActionController::Base
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [:available, :first_name, :last_name, :picture, :male, :date_of_birth])
     # For additional in app/views/devise/registrations/edit.html.erb
-    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :location, :date_of_birth, :picture, :available, :male])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :location, :date_of_birth,
+                                                              :picture, :available, :male, :facebook_profile,
+                                                              :twitter_profile, :instagram_profile, :linkedin_profile])
   end
 
   def default_url_options
