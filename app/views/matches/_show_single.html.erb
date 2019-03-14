@@ -17,6 +17,7 @@
     <h4>Thank you for responding; we are waiting for <= mymatch.first_name %>'s response, do not hesitate to nudge them.</h4>
   <% else %>
     <h4><%= mymatch.full_name %> has a great deal to do lately and will pass this opportunity for now.  Let's find some more matches!</h4>
+    <% end %>
 <% elsif i_accepted == false %>
     <h4>Next time. Feel free to nudge <%= myhelper.first_name %> for more matches.</h4>
 <% else %>
