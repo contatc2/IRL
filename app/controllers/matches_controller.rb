@@ -15,8 +15,8 @@ class MatchesController < ApplicationController
     @match = Match.new(match_params)
     @match.helper = current_user
     @match.match_two = User.find(params[:match][:match_two])
-    UserMailer.match_created(@match.match_one, @match.match_two, @match.helper).deliver_now
     @match.save
+    UserMailer.match_created(@match.match_one, @match.match_two, @match.helper, @match.intro_message).deliver_now
     redirect_to user_path(@match.match_one)
   end
 
