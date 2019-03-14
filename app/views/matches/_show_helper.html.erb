@@ -5,19 +5,19 @@
 </div>
 
 <% if @match.status == "Accepted" %>
-  <h4>Congratulations, we have a match, <= @current_user.first_name %> and <= mymatch.first_name %> let's hope for magic.</h4>
+  <h4>Congratulations, we have a match, <%= @current_user.first_name %> and <%= mymatch.first_name %> let's hope for magic.</h4>
 <% elsif  @match.match_one_accepted.nil? %>
-  <h4>We are waiting for <= @match.match_one.first_name %>'s answer, do not hesitate to nudge them.</h4>
+  <h4>We are waiting for <%= @match.match_one.first_name %>'s answer, do not hesitate to nudge them.</h4>
 <% elsif @match.match_two_accepted.nil? %>
-  <h4>We are waiting for <= @match.match_two.first_name %>'s response, do not hesitate to nudge them.</h4>
+  <h4>We are waiting for <%= @match.match_two.first_name %>'s response, do not hesitate to nudge them.</h4>
 <% else %>
   <% if @match.match_one_accepted == false %>
-    <h4><= @match.match_one.first_name %> passed on this one, thanks for helping.</h4>
+    <h4><%= @match.match_one.first_name %> passed on this one, thanks for helping.</h4>
   <% else %>
-    <h4><= @match.match_two.first_name %> passed on this one, thanks for helping.</h4>
+    <h4><%= @match.match_two.first_name %> passed on this one, thanks for helping.</h4>
   <% end %>
 <% end %>
-      
+
 <div class="show-flex">
   <div style="position: absolute; left: 40%; top: 40%; z-index: 10; color: #fff; font-size: 18px">
     <%= @match.status  %>
