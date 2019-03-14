@@ -108,6 +108,7 @@
 
 .loginBtn--facebook:active {
   box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
+}
 
 
 // Button scss for profile picture.
@@ -115,51 +116,4 @@
   display: table;
   width: 100%;
   height: 100vh;
-}
-
-#social-test {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  font-size: 30px;
-  h2 {
-    color: #fff;
-    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
-    font-weight: 100;
-  }
-  .social {
-    padding-left: 0px;
-  }
-  li {
-    color: rgba(103, 211, 34, 0.5);
-    list-style-type: none;
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    border: 1px solid #053FFF;
-    cursor: pointer;
-    margin-left: 10px;
-    margin-bottom: 20px;
-    transition: ease .3s;
-    &:hover {
-      color: #FF6684;
-      border: 1px solid rgba(255, 255, 255, 1);
-    }
-  }
-}
-
-.social:hover > li {
-  opacity: 0.5;
-}
-
-.social:hover > li:hover {
-  opacity: 1;
-}
-}
-
-
-.small_link_text_right {
-  text-align: right !important;
-  color: black !important;
 }

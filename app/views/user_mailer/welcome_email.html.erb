@@ -4,6 +4,10 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
+    <div>
+      <%= render 'shared/logo' %>
+      <%= image_tag current_user.profile_image_tag, class: "avatar" %>
+    </div>
     <h1>Welcome to IRL, <%= @user.first_name %></h1>
     <p>
       You have successfully signed up to the website,

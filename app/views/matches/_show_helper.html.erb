@@ -1,5 +1,8 @@
 
-<!--         <h2><%= @match.status %></h2> -->
+<div class="invitations">
+    <h4>Comment from <%= current_user.first_name %></h4>
+      <%= @match.intro_message %>
+</div>
 
 <% if @match.status == "Accepted" %>
   <h4>Congratulations, we have a match, <= @current_user.first_name %> and <= mymatch.first_name %> let's hope for magic.</h4>
@@ -14,29 +17,34 @@
     <h4><= @match.match_two.first_name %> passed on this one, thanks for helping.</h4>
   <% end %>
 <% end %>
-
-  <!-- put picture of match one and match two instead, same as submitted matches partials in users-show - no helper avatar -->
-
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= mymatch.profile_image_tag %>')">
-          <%= link_to user_path(myhelper), class:"text-decoration-none" do %>
-          <%= cl_image_tag(myhelper.profile_image_path, width:50, height:50, gravity:"faces", crop:"fill", class:"card-helper") %>
-        <% end %>
-        </div>
-        <p>
-
-
-<div class="mt-3">
-
-  <div class="invitations">
-  <h4>My comment %></h4>
-  <%= @match.intro_message %>
+      
+<div class="show-flex">
+  <div style="position: absolute; left: 40%; top: 40%; z-index: 10; color: #fff; font-size: 18px">
+    <%= @match.status  %>
   </div>
+  <%= link_to user_path(@match.match_one), class:"text-decoration-none d-flex position margin-top-bottom" do %>
+    <div class="card-category-left-helperpage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @match.match_one.profile_image_path %>'); width: 100%; height: 100%;">
+    </div>
+  <% end %>
+  <%= link_to user_path(@match.match_two), class:"text-decoration-none d-flex position margin-top-bottom" do %>
+    <div class="card-category-right-helperpage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @match.match_two.profile_image_path %>'); width: 100%; height: 100%;">
+    </div>
+<% end %>
 </div>
 
-<div>
-  <p><i class="fab fa-facebook-square"></i></p>
-  <p><i class="fab fa-twitter-square"></i></p>
-  <p><i class="fab fa-instagram"></i></p>
-  <p><i class="fab fa-linkedin"></i></p>
-</div>
+  <div class="show-flex">
+    <div class="card-category-right-helperpage">
+      <p><i class="fab fa-facebook-square"></i> <%= @match.match_one.facebook_profile %></p>
+      <p><i class="fab fa-twitter-square"></i> <%= @match.match_one.twitter_profile %></p>
+      <p><i class="fab fa-instagram"></i> <%= @match.match_one.instagram_profile %></p>
+      <p><i class="fab fa-linkedin"></i> <%= @match.match_one.linkedin_profile %></p>
+    </div>
+
+    <div class="card-category-right-helperpage">
+      <p><i class="fab fa-facebook-square"></i> <%= @match.match_two.facebook_profile %></p>
+      <p><i class="fab fa-twitter-square"></i> <%= @match.match_two.twitter_profile %></p>
+      <p><i class="fab fa-instagram"></i> <%= @match.match_two.instagram_profile %></p>
+      <p><i class="fab fa-linkedin"></i> <%= @match.match_two.linkedin_profile %></p>
+    </div>
+  </div>
 

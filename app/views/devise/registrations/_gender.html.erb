@@ -1,7 +1,6 @@
-<div>
-  <input type="hidden" name="user[male]" value="">
-  <div class="gender-options">
-    <div style="flex: 0 0 40%">
+<input type="hidden" name="user[male]" value="">
+<div class="gender-options">
+  <div style="flex: 0 0 40%">
     <input style="display:none" type="radio" value="true" <%= @user.male ? 'checked' : '' %> name="user[male]" id="user_male_true">
     <label id="male-label" class="gender-option <%= @user.male ? 'active' : '' %>" for="user_male_true">Man</label>
   </div>

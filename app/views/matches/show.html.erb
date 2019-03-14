@@ -4,26 +4,20 @@
     <p class="mx-3">Review your match</p>
     <div class="d-flex justify-content-center">
       <div>
-        <%= image_tag "please2.svg", class: "mb-3", alt: "data protection", style: 'height:auto;width:150px;' %>
+        <%= image_tag "please2.svg", class: "mb-3", alt: "RealLife.love match", style: 'height:auto;width:150px;' %>
       </div>
     </div>
   </div>
 
   <div class="container">
     <div class="row text-center">
-      <div class="col-xs-12" >
-
+      <div class="col col-xs-10" >
         <% if @match.helper == current_user %>
-
           <%= render 'show_helper' %>
-
         <% else %>
-
           <%= render 'show_single' %>
-
         <% end %>
-
-        </div>
+      </div>
     </div>
   </div>
 
