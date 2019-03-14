@@ -38,6 +38,10 @@ class User < ApplicationRecord
     "#{first_name.capitalize} #{last_name.capitalize}"
   end
 
+  def first_name_cap
+    first_name.capitalize
+  end
+
   def gender_search
     if male_search && female_search
       'a man or a woman'
