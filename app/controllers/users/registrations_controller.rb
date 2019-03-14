@@ -12,6 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     build_resource(sign_up_params)
+    # raise
     resource.save
     yield resource if block_given?
     if resource.persisted?
