@@ -1,4 +1,5 @@
 class ReferralsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:share]
   def create
     @referral = Referral.new(referral_params)
     @referral.user = current_user
@@ -9,6 +10,11 @@ class ReferralsController < ApplicationController
   end
 
   def update
+  end
+
+  def share
+    @email = params[:referral][:friend_email]
+    UserMailer.share(@email).deliver_now
   end
 
   private
