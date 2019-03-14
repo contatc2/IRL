@@ -1,0 +1,71 @@
+<% if @match.match_one == current_user %>
+  <% mymatch = @match.match_two %>
+<% else %>
+  <% mymatch = @match.match_one %>
+<% end %>
+<% myhelper = @match.helper %>
+
+
+        <h4><%= myhelper.first_name %> would like to introduce you to <%= mymatch.full_name %>?</h4>
+<!--         TO UNCOMMENT AND FIX
+        <h4>
+          <% if current_user == @match.match_one %>
+            <% if @match.match_one_accepted? %>
+            <% else %>
+              <%= myhelper.first_name %> would like to introduce you to <%= mymatch.full_name %>?
+            <% end %>
+          <% elsif current_user == @match.match_two %>
+            <% if @match.match_two_accepted? %>
+            <% else %>
+            <h4><%= myhelper.first_name %> would like to introduce you to <%= mymatch.full_name %>?</h4>
+            <% end %>
+          <% else %>
+             <% if @match.match_one_accepted == true && @match.match_two_accepted == true %>
+             Congratulations, we have a match, <= @match.match_one.first_name %> and <= @match.match_two.first_name %> let's hope for magic.
+            <% elsif  current_user.match_one_accepted? != true %>
+              We are waiting for <= @match.match_one.first_name %>'s answer, do not hesitate to nudge them
+            <% elsif current_user.match_two_accepted? != true %>
+              We are waiting for <= @match.match_two.first_name %>'s response, do not hesitate to nudge them
+            <% end %>
+          <% end %>
+        </h4> -->
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= mymatch.profile_image_tag %>')">
+          <%= link_to user_path(myhelper), class:"text-decoration-none" do %>
+          <%= cl_image_tag(myhelper.profile_image_path, width:50, height:50, gravity:"faces", crop:"fill", class:"card-helper") %>
+        <% end %>
+        </div>
+        <p>
+          <% if @match.status == "Pending" %>
+               <h4>Thank you for responding; we are awaiting for <%= mymatch.full_name %>'s response.</h4>
+          <% elsif  @match.status == "Rejected" %>
+              <h4><%= mymatch.full_name %> has a great deal to do lately and will pass this opportunity for now.  Let's find some more matches!</h4>
+            <!--   JE NE CROIS PAS QU'IL EXISTE UN STATUS ACCEPTED -->
+      <!--     <% elsif  @match.status == "Accepted" %>
+              <h4><%= mymatch.full_name %> would be intersted in getting to know you too.  Why don't you reach out to him on WhatsApp or phone.  His details are bellow.</h4> -->
+          <% else%>
+            <% unless @match.helper == current_user %>
+              <% if @match.match_one == current_user %>
+                <%= link_to "Yes",match_path(@match, match: {match_one_accepted: true}), method: :put, class:"main_action_button mb-0" %>
+                <%= link_to "No",match_path(@match, match: {match_one_accepted: false}), method: :put, class:"low_key_button" %>
+              <% else %>
+                <%= link_to "Yes",match_path(@match, match: {match_two_accepted: true}), method: :put, class:"main_action_button mb-0" %>
+                <%= link_to "No",match_path(@match, match: {match_two_accepted: false}), method: :put, class:"low_key_button" %>
+              <% end %>
+            <% end %>
+          <% end %>
+<!--         <h2><%= @match.status %></h2> -->
+        <div class="mt-3">
+
+          <div class="invitations">
+          <h4>Comment from <%= myhelper.first_name %></h4>
+          <%= @match.intro_message %>
+          </div>
+        </div>
+        <div>
+          <p><i class="fab fa-facebook-square"></i></p>
+          <p><i class="fab fa-twitter-square"></i></p>
+          <p><i class="fab fa-instagram"></i></p>
+          <p><i class="fab fa-linkedin"></i></p>
+        </div>
+
+
