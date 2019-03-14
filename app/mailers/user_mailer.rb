@@ -22,12 +22,13 @@ class UserMailer < ApplicationMailer
     mail(to: email, subject: "A friend invites you to join IRL")
   end
 
-  def match_created(user, user2)
+  def match_created(user, user2, helper)
     @user1 = user
     @user2 = user2
+    @helper = helper
     @url = 'https://www.reallife.love'
-    mail(to: @user.email, subject: "Hey #{@user.first_name} you just matched!", track_opens: 'true')
-    mail(to: @user2.email, subject: "Hey #{@user2.first_name} you just matched!", track_opens: 'true')
+    mail(to: @user.email, subject: "Hey #{@user.first_name} you have a new match!", track_opens: 'true')
+    mail(to: @user2.email, subject: "Hey #{@user2.first_name} you have a new match!", track_opens: 'true')
   end
 
   def friend_acceptation(user, friend)

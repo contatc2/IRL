@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "fblogin", to: "pages#fblogin"
   get "about", to: "pages#about"
   get "terms_and_conditions", to: "pages#terms_and_conditions"
+
   resources :users, only: %i[index show update] do
     collection do
       get 'single_or_not'
@@ -18,12 +19,14 @@ Rails.application.routes.draw do
     end
     resources :user_adjectives, only: %i[new create edit update]
   end
-  resources :referrals, only: %i[create update]
-  resources :friend_invitations, only: %i[new create update] do
+
+  resources :referrals, only: %i[create update] do
     collection do
       post 'share'
     end
   end
+  resources :friend_invitations, only: %i[new create update]
+
 
   resources :matches, only: %i[new create update show]
   get "test", to: "pages#test"
