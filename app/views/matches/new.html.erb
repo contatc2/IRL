@@ -16,7 +16,7 @@
 
       <%= f.hidden_field :match_one_id, value: params[:match_one] %>
 
-      <%= f.input :match_two, label: 'Who would be the perfect match?', label_method: :full_name, collection: @friends %>
+      <%= f.association :match_two, label: 'Who would be the perfect match?', label_method: :full_name, collection: @friends %>
 
       <%= f.input :intro_message %>
     </div>
