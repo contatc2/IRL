@@ -7,7 +7,10 @@ class MatchesController < ApplicationController
   def new
     @match = Match.new
     @match_one = User.find(params[:match_one])
-    @friends = current_user.friends.where(available: true)
+    single_friends_invited = current_user.friends.where(available: true)
+    # raise
+    single_friends_other = FriendInvitation.where(accepted: true, friend: current_user).map(&:user).select { |user| user.available == true }
+    @friends = single_friends_invited + single_friends_other
     @referral = Referral.new
   end
 
