@@ -2,10 +2,9 @@ class FriendInvitationsController < ApplicationController
   before_action :set_user, only: %i[create update new share]
   def new
     @invitation = FriendInvitation.new
-    if params[:search].present?
-      @names = params[:search][:query].split
-      @searched_user = User.where("first_name ILIKE ? AND last_name ILIKE ?", @names[0], @names[1])
-                           .or(User.where("first_name ILIKE ? AND last_name ILIKE ?", @names[1], @names[0]))
+    @search = params[:query]
+    if @search.present?
+      @searched_user = User.search_by_name_and_email(@search)
     end
     @referral = Referral.new
   end
