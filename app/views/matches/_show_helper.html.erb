@@ -1,14 +1,19 @@
 
-
 <!--         <h2><%= @match.status %></h2> -->
 
-             <% if @match.status == "Accepted" %>
-             Congratulations, we have a match, <= @match.match_one.first_name %> and <= @match.match_two.first_name %> let's hope for magic.
-            <% elsif  current_user.match_one_accepted.nil? %>
-              We are waiting for <= @match.match_one.first_name %>'s answer, do not hesitate to nudge them
-            <% elsif current_user.match_two_accepted? != true %>
-              We are waiting for <= @match.match_two.first_name %>'s response, do not hesitate to nudge them
-            <% end %>
+<% if @match.status == "Accepted" %>
+  <h4>Congratulations, we have a match, <= @current_user.first_name %> and <= mymatch.first_name %> let's hope for magic.</h4>
+<% elsif  @match.match_one_accepted.nil? %>
+  <h4>We are waiting for <= @match.match_one.first_name %>'s answer, do not hesitate to nudge them.</h4>
+<% elsif @match.match_two_accepted.nil? %>
+  <h4>We are waiting for <= @match.match_two.first_name %>'s response, do not hesitate to nudge them.</h4>
+<% else %>
+  <% if @match.match_one_accepted == false %>
+    <h4><= @match.match_one.first_name %> passed on this one, thanks for helping.</h4>
+  <% else %>
+    <h4><= @match.match_two.first_name %> passed on this one, thanks for helping.</h4>
+  <% end %>
+<% end %>
 
   <!-- put picture of match one and match two instead, same as submitted matches partials in users-show - no helper avatar -->
 
@@ -20,17 +25,18 @@
         <p>
 
 
-        <div class="mt-3">
+<div class="mt-3">
 
-          <div class="invitations">
-          <h4>Comment from <%= current_user.first_name %></h4>
-          <%= @match.intro_message %>
-          </div>
-        </div>
-        <div>
-          <p><i class="fab fa-facebook-square"></i></p>
-          <p><i class="fab fa-twitter-square"></i></p>
-          <p><i class="fab fa-instagram"></i></p>
-          <p><i class="fab fa-linkedin"></i></p>
-        </div>
+  <div class="invitations">
+  <h4>My comment %></h4>
+  <%= @match.intro_message %>
+  </div>
+</div>
+
+<div>
+  <p><i class="fab fa-facebook-square"></i></p>
+  <p><i class="fab fa-twitter-square"></i></p>
+  <p><i class="fab fa-instagram"></i></p>
+  <p><i class="fab fa-linkedin"></i></p>
+</div>
 
