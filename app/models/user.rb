@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include PgSearch
   after_create :send_welcome_email
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -11,7 +12,11 @@ class User < ApplicationRecord
   has_many :friends, through: :friend_invitations
   has_many :user_adjectives, dependent: :destroy
   mount_uploader :picture, PhotoUploader
-  # validates :gender_search, inclusion: { in: ('Man' 'Woman') }
+  pg_search_scope :search_by_name_and_email,
+                  against: %i[first_name last_name email],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
