@@ -15,6 +15,7 @@ class ReferralsController < ApplicationController
   def share
     @email = params[:referral][:friend_email]
     UserMailer.share(@email).deliver_now
+    redirect_to new_friend_invitation_path
   end
 
   private
