@@ -4,12 +4,12 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Awesome <%= @user.first_name %>,</h1>
+    <h1>Awesome <%= @user.first_name_cap %>,</h1>
     <p>
       <%= @helper.full_name %> has just proposed a new match for you :)
     </p>
 
-    <p>Comment from <%= @helper.first_name %>:</p>
+    <p>Comment from <%= @helper.first_name_cap %>:</p>
     <p><%= @intro %></p>
     <p>
       To login to the site, click <a href="<%= @url %>" target="blank">https://wwww.reallife.love</a>
