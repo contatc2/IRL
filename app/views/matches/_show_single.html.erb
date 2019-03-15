@@ -14,7 +14,7 @@
     <% if @match.status == "Accepted" %>
       <p><strong><%= mymatch.full_name %></strong> would be interested in getting to know you too.  Why don't you reach out to him on WhatsApp or phone? His details are below:</p>
     <% elsif mymatch_accepted.nil? %>
-      <p>Thank you for responding; we are waiting for <= mymatch.first_name_cap %>'s response, stay tuned.</p>
+      <p>Thank you for responding; we are waiting for <%= mymatch.first_name_cap %>'s response, stay tuned.</p>
     <% else %>
       <p><%= mymatch.full_name %> has a great deal to do lately and will pass this opportunity for now. Let's find some more matches!</p>
       <% end %>
@@ -49,11 +49,25 @@
   </div>
 </div>
 
-<div>
-  <p><i class="fab fa-facebook-square"></i></p>
-  <p><i class="fab fa-twitter-square"></i></p>
-  <p><i class="fab fa-instagram"></i></p>
-  <p><i class="fab fa-linkedin"></i></p>
+<div class="show-flex">
+  <div style="flex-grow: 1">
+    <div class="square_social_links">
+      <%= link_to @match.match_one.facebook_profile, class:"match_social_urls" do %>
+        <i class="fab fa-facebook"></i>
+      <% end %>
+      <%= link_to @match.match_one.twitter_profile, class:"match_social_urls" do %>
+          <i class="fab fa-twitter"></i>
+      <% end %>
+    </div>
+    <div class="square_social_links">
+      <%= link_to @match.match_one.instagram_profile, class:"match_social_urls" do %>
+        <i class="fab fa-instagram"></i>
+      <% end %>
+      <%= link_to @match.match_one.linkedin_profile, class:"match_social_urls" do %>
+        <i class="fab fa-linkedin"></i>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 
