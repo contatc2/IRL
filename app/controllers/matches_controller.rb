@@ -17,7 +17,7 @@ class MatchesController < ApplicationController
   def create
     @match = Match.new(match_params)
     @match.helper = current_user
-    @match.match_two = User.find(params[:match][:match_two])
+    @match.match_two_id = User.find(params[:match][:match_two_id])
     @match.save
     UserMailer.match_created(@match.match_one, @match.helper, @match.intro_message).deliver_now
     UserMailer.match_created(@match.match_two, @match.helper, @match.intro_message).deliver_now
