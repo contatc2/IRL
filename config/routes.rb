@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'messages/create'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
@@ -28,7 +29,10 @@ Rails.application.routes.draw do
   resources :friend_invitations, only: %i[new create update]
 
 
-  resources :matches, only: %i[new create update show]
+  resources :matches, only: %i[new create update show] do
+    resources :messages, only: :create
+  end
+
   get "test", to: "pages#test"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
