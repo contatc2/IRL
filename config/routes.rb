@@ -30,7 +30,9 @@ Rails.application.routes.draw do
 
 
   resources :matches, only: %i[new create update show] do
-    resources :messages, only: :create
+    resources :chat_rooms, only: :show do
+      resources :messages, only: :create
+    end
   end
 
   get "test", to: "pages#test"

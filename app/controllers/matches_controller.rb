@@ -2,7 +2,8 @@ class MatchesController < ApplicationController
   before_action :find_match, only: %i[show update]
 
   def show
-    @chat_room = Match.includes(messages: :user).find(params[:id])
+    @chat_room = ChatRoom.includes(messages: :user).find(params[:id])
+    @message = Message.new
   end
 
   def new

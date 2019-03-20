@@ -1,8 +1,8 @@
 class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
-    @match = Match.find(params(:match_id))
-    @message.match = @match
+    @chat_room = ChatRoom.find(params(:match_room_id))
+    @message.match_room = @chat_room
     message.user = current_user
     if @message.save
       respond_to do |format|
