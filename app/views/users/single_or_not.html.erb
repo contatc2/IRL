@@ -1,10 +1,10 @@
 <div class="min-height">
   <div class="container mt-3">
     <div class="row">
-      <div class="col-xs-8 col-xs-offset-2 col-sm-6 text-center">
+      <div class="col-xs-8 col-sm-6 text-center">
         <p>Are you here to find love or help your friends find love?</p>
-        <%= link_to "I am single and want my friends to help",  availability_users_path(@user, user: {available: true}), class:"second_action_button mb-5" %>
-        <%= link_to "I am here to help my friends only", availability_users_path(@user,user: {available: false}), class:"second_action_button" %>
+        <%= link_to "I am single and want my friends to help",  user_path(@user, user: {available: true}), method: :put, class:"second_action_button mb-5" %>
+        <%= link_to "I am here to help my friends only", user_path(@user,user: {available: false}),method: :put, class:"second_action_button" %>
       </div>
     </div>
   </div>

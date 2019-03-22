@@ -10,7 +10,6 @@ class User < ApplicationRecord
   has_many :referrals
   has_many :friend_invitations, dependent: :destroy
   has_many :friends, through: :friend_invitations
-  has_many :user_adjectives, dependent: :destroy
   has_many :messages, dependent: :destroy
   mount_uploader :picture, PhotoUploader
   pg_search_scope :search_by_name_and_email,

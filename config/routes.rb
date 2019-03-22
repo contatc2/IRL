@@ -9,13 +9,13 @@ Rails.application.routes.draw do
   get 'fblogin', to: 'pages#fblogin'
   get 'about', to: 'pages#about'
   get 'terms_and_conditions', to: 'pages#terms_and_conditions'
+  get 'test', to: 'pages#test'
 
-  resources :users, only: %i[index show update] do
+  resources :users, only: %i[index edit show update] do
     collection do
       get 'single_or_not'
       get 'availability'
     end
-    resources :user_adjectives, only: %i[new create edit update]
   end
 
   resources :referrals, only: %i[create update] do
@@ -30,7 +30,6 @@ Rails.application.routes.draw do
     get 'messages', to: 'messages#create'
   end
 
-  get 'test', to: 'pages#test'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
