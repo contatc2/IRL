@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
-  get 'messages/create'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  # devise_scope :user do
-  #   delete 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
-  # end
+
   root to: 'pages#home'
   get "fblogin", to: "pages#fblogin"
   get "about", to: "pages#about"
@@ -30,9 +27,7 @@ Rails.application.routes.draw do
 
 
   resources :matches, only: %i[new create update show] do
-    resources :chat_rooms, only: :show do
-      resources :messages, only: :create
-    end
+    resources :messages, only: :create
   end
 
   get "test", to: "pages#test"

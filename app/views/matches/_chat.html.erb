@@ -1,12 +1,12 @@
-      <div class="chat-header"><h4>Chat</h4></div>
-      <div class="messages">
-        <% @chat_room.messages.each do |message| %>
-          <%= render "messages/message", message: message %>
-        <% end %>
-      </div>
-      <div id="create-message">
-        <%= simple_form_for [ @chat_room, @message ], remote: true do |f| %>
-          <%= f.input :content, label: false %>
-          <%= f.submit %>
-        <% end %>
-      </div>
+<div class="chat-header"><h4>Chat</h4></div>
+<div class="messages">
+  <% @match.messages.each do |message| %>
+    <%= render "messages/message", message: message %>
+  <% end %>
+</div>
+<div id="create-message">
+  <%= simple_form_for [ @match, @message ], remote: true do |f| %>
+    <%= f.input :content, label: false %>
+    <%= f.submit %>
+  <% end %>
+</div>

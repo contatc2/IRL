@@ -1,9 +1,10 @@
 class MessagesController < ApplicationController
   def create
+    binding.pry
     @message = Message.new(message_params)
-    @chat_room = ChatRoom.find(params(:match_room_id))
-    @message.match_room = @chat_room
-    message.user = current_user
+    @match = Match.find(params(:match_id))
+    @message.match = @match
+    @message.user = current_user
     if @message.save
       respond_to do |format|
         format.html { redirect to match_path(@match) }

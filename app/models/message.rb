@@ -1,6 +1,6 @@
 class Message < ApplicationRecord
   belongs_to :user
-  belongs_to :chat_room
+  belongs_to :match
   validates :content, presence: true, allow_blank: false
 
   def from?(some_user)
