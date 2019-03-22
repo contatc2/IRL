@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_11_124636) do
+ActiveRecord::Schema.define(version: 2019_03_22_152025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,16 @@ ActiveRecord::Schema.define(version: 2019_03_11_124636) do
     t.index ["helper_id"], name: "index_matches_on_helper_id"
     t.index ["match_one_id"], name: "index_matches_on_match_one_id"
     t.index ["match_two_id"], name: "index_matches_on_match_two_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "match_id"
+    t.index ["match_id"], name: "index_messages_on_match_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "referrals", force: :cascade do |t|
@@ -87,6 +97,9 @@ ActiveRecord::Schema.define(version: 2019_03_11_124636) do
     t.boolean "male"
     t.boolean "male_search"
     t.boolean "female_search"
+    t.string "adjective_1"
+    t.string "adjective_2"
+    t.string "adjective_3"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -96,6 +109,8 @@ ActiveRecord::Schema.define(version: 2019_03_11_124636) do
   add_foreign_key "matches", "users", column: "helper_id"
   add_foreign_key "matches", "users", column: "match_one_id"
   add_foreign_key "matches", "users", column: "match_two_id"
+  add_foreign_key "messages", "matches"
+  add_foreign_key "messages", "users"
   add_foreign_key "referrals", "users"
   add_foreign_key "user_adjectives", "users"
 end

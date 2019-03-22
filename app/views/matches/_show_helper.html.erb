@@ -1,8 +1,4 @@
-
-<div class="invitations mt-3">
-    <h4>Your comment:</h4>
-      <%= @match.intro_message %>
-</div>
+<!-- content according to status -->
 
 <% if @match.status == "Accepted" %>
   <p>Congratulations, we have a match, <strong><%= @current_user.first_name_cap %></strong> and <strong><%= mymatch.first_name_cap %></strong> let's hope for magic!</p>
@@ -22,6 +18,7 @@
   <% end %>
 <% end %>
 
+<!-- matches pictures -->
 <div class="show-flex">
   <div style="position: absolute; left: 40%; top: 40%; z-index: 10; color: #fff; font-size: 18px">
     <%= @match.status  %>
@@ -37,41 +34,16 @@
 </div>
 
 <div class="show-flex">
-  <div style="flex-grow: 1">
-    <div class="square_social_links">
-      <%= link_to @match.match_one.facebook_profile, class:"match_social_urls" do %>
-        <i class="fab fa-facebook"></i>
-      <% end %>
-      <%= link_to @match.match_one.twitter_profile, class:"match_social_urls" do %>
-          <i class="fab fa-twitter"></i>
-      <% end %>
-    </div>
-    <div class="square_social_links">
-      <%= link_to @match.match_one.instagram_profile, class:"match_social_urls" do %>
-        <i class="fab fa-instagram"></i>
-      <% end %>
-      <%= link_to @match.match_one.linkedin_profile, class:"match_social_urls" do %>
-        <i class="fab fa-linkedin"></i>
-      <% end %>
-    </div>
-  </div>
-  <div style="flex-grow: 1">
-    <div class="square_social_links">
-      <%= link_to @match.match_two.facebook_profile, class:"match_social_urls" do %>
-        <i class="fab fa-facebook"></i>
-      <% end %>
-      <%= link_to @match.match_two.twitter_profile, class:"match_social_urls" do %>
-        <i class="fab fa-twitter"></i>
-      <% end %>
-    </div>
-    <div class="square_social_links">
-      <%= link_to @match.match_two.instagram_profile, class:"match_social_urls" do %>
-        <i class="fab fa-instagram"></i>
-      <% end %>
-      <%= link_to @match.match_two.linkedin_profile, class:"match_social_urls" do %>
-        <i class="fab fa-linkedin"></i>
-      <% end %>
-    </div>
-  </div>
+
+    <%= render 'social_icons', user: @match.match_one %>
+    <%= render 'social_icons', user: @match.match_two %>
+
 </div>
+
+<div class="invitations mt-3">
+    <h4>Your comment:</h4>
+      <%= @match.intro_message %>
+</div>
+
+<%= render 'chat' %>
 
