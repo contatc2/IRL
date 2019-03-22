@@ -80,7 +80,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def after_sign_up_path_for(resource)
     if current_user.available
-      new_user_user_adjective_path(resource)
+      edit_user_path(resource)
     else
       user_path(resource)
     end

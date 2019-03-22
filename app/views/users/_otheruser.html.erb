@@ -3,9 +3,9 @@
     <h1><%= @user.full_name %></h1>
     <p><%= @user.status %></p>
     <% if @user.available %>
-      <% if @user.user_adjectives.present? %>
+      <% if @user.adjective_1.present? %>
         <div class="adjectives">
-          Looking for <%= @user.gender_search %> who is <%= @user.user_adjectives.first[:adjective] %>, <%= @user.user_adjectives.first[:adjective_2] %> and <%= @user.user_adjectives.first[:adjective_3] %>.
+          Looking for <%= @user.gender_search %> who is <%= @user.user.adjective_1 %>, <%= @user.adjective_2 %> and <%= @user.adjective_3 %>.
         </div>
       <% end %>
       <%= link_to new_match_path(@match, match_one: @user), style:"font-size: 1.5em" do %>
