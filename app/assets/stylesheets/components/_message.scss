@@ -48,13 +48,15 @@ input.form-control {
   color: #868686;
   &:focus {
     outline: none;
-    border: 1px solid blue;
+    border: 1px solid $blue;
     box-shadow: none;
   }
 }
 .chat-header {
-  background-color: #4F2F4C;
+  background-color: $light-blue;
   color: white;
+  font-size: 16px;
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.2);
   padding: 10px 20px;
   margin-top: 10px;
   h4 {

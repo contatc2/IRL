@@ -1,8 +1,8 @@
 class MessagesController < ApplicationController
   def create
-    binding.pry
+    # binding.pry
     @message = Message.new(message_params)
-    @match = Match.find(params(:match_id))
+    @match = Match.find(params[:match_id])
     @message.match = @match
     @message.user = current_user
     if @message.save
