@@ -9,3 +9,12 @@
     <%= f.input :content, label: false %>
   <% end %>
 </div>
+
+<% content_for :after_js do %>
+  <script>
+    App['match_<%= @match.id %>'] = App.cable.subscriptions.create(
+      { channel: 'MatchesChannel', match_id: <%= @match.id %> },
+      { received: (data) => console.log(data) }
+    )
+  </script>
+<% end %>
