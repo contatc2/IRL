@@ -4,7 +4,7 @@
 
 <div class="messages">
   <% @match.messages.each do |message| %>
-    <%= render "messages/message", message: message %>
+    <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
   <% end %>
 </div>
 

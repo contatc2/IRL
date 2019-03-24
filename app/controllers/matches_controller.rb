@@ -23,7 +23,7 @@ class MatchesController < ApplicationController
     @match.save
     UserMailer.match_created(@match.match_one, @match.helper, @match.intro_message).deliver_now
     UserMailer.match_created(@match.match_two, @match.helper, @match.intro_message).deliver_now
-    redirect_to user_path(@match.match_one)
+    redirect_to user_path(current_user)
   end
 
   def update

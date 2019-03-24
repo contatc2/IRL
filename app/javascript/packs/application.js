@@ -8,6 +8,3 @@ selectGender();
 
 import { selectAvailable } from '../components/gender_form';
 selectAvailable();
-
-import { scrollLastMessageIntoView } from '../components/scroll';
-// scrollLastMessageIntoView();
