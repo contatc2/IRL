@@ -54,8 +54,5 @@ const selectAvailable = () => {
 
 
 export { selectAvailable };
-
-
-// export { clickOnGenderOption };
 export { clickOnGenderOption };
 export { selectGender };
