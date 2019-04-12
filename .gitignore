@@ -15,4 +15,4 @@ yarn-error.log
 .env*
 .env*
 .env*
-cloudinary.yml
+cloudinary.rb
