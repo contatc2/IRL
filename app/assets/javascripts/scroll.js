@@ -1,8 +1,9 @@
 const scrollLastMessageIntoView = () => {
   const messages = document.querySelectorAll('.message');
-  const lastMessage = messages.last;
+  const last_index = messages.length - 1 ;
+  const lastMessage = messages.item( last_index );
 
-  if (lastMessage !== undefined) {
+  if (lastMessage !== null) {
     lastMessage.scrollIntoView();
   }
 }
