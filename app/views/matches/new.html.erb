@@ -1,18 +1,17 @@
 <div class="top_page">
-
   <p class="mx-3">Create a Match </p>
-
   <div class="d-flex justify-content-center">
     <div>
       <%= image_tag "lock.svg", class: "mb-3", alt: "data protection", style: 'height:auto;width:100px;' %>
     </div>
   </div>
 </div>
-    <!-- create @matchable_friends for @match_one, removing @match_one and users already matched -->
-    <% @match_one = User.find(params[:match_one]) %>
-    <% @friends.delete(@match_one) %>
-    <% @already_matched = Match.where(match_one: @match_one, helper: current_user).map(&:match_two) + Match.where(match_two: @match_one, helper: current_user).map(&:match_one) %>
-    <% @friends_matchable = @friends - @already_matched %>
+
+<!-- create @matchable_friends for @match_one, removing @match_one and users already matched -->
+<% @match_one = User.find(params[:match_one]) %>
+<% @friends.delete(@match_one) %>
+<% @already_matched = Match.where(match_one: @match_one, helper: current_user).map(&:match_two) + Match.where(match_two: @match_one, helper: current_user).map(&:match_one) %>
+<% @friends_matchable = @friends - @already_matched %>
 
 <% if @friends_matchable.present? %>
   <div class="form2 my-3 text-center">
