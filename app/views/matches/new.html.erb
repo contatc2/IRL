@@ -8,21 +8,24 @@
     </div>
   </div>
 </div>
+    <!-- create @matchable_friends for @match_one, removing @match_one and users already matched -->
+    <% @match_one = User.find(params[:match_one]) %>
+    <% @friends.delete(@match_one) %>
+    <% @already_matched = Match.where(match_one: @match_one, helper: current_user).map(&:match_two) + Match.where(match_two: @match_one, helper: current_user).map(&:match_one) %>
+    <% @friends_matchable = @friends - @already_matched %>
 
-<div class="form2 my-3 text-center">
-  <div class="form-inputs">
-    <%= simple_form_for @match do |f| %>
-
-    <%= f.hidden_field :match_one_id, value: params[:match_one] %>
-
-    <%= f.association :match_two, label: 'Who would be the perfect match?', label_method: :full_name, collection: @friends %>
-
-    <%= f.input :intro_message %>
+<% if @friends_matchable.present? %>
+  <div class="form2 my-3 text-center">
+    <div class="form-inputs">
+      <%= simple_form_for @match do |f| %>
+      <%= f.hidden_field :match_one_id, value: @match_one.id %>
+      <%= f.association :match_two, label: 'Who would be the perfect match?', label_method: :full_name, collection: @friends_matchable %>
+      <%= f.input :intro_message %>
+    </div>
+      <%= f.submit class:"main_action_button mb-0" %>
+    <% end %>
   </div>
-
-    <%= f.submit class:"main_action_button mb-0" %>
-  <% end %>
-</div>
+<% end %>
 
 <div class="mt-3 text-center">
   <p class="mb-0">The perfect match is not on IRL yet?</p>
