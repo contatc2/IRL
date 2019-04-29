@@ -19,23 +19,28 @@
       <%= simple_form_for @match do |f| %>
       <%= f.hidden_field :match_one_id, value: @match_one.id %>
       <%= f.association :match_two, label: 'Who would be the perfect match?', label_method: :full_name, collection: @friends_matchable %>
-      <%= f.input :intro_message %>
+      <%= f.input :intro_message, placeholder: "I thought you would be great for each other..." %>
     </div>
       <%= f.submit class:"main_action_button mb-0" %>
     <% end %>
   </div>
 <% end %>
 
+<div class="mt-3 text-center">
+  <p class="mb-0">The perfect match is not on IRL yet?</p>
+  <p>Invite them to join and give a glimpse to <%= @match_one.first_name.capitalize %>:</p>
+
 <div class="form2 my-3 text-center">
   <div class="form-inputs">
     <%= simple_form_for @pseudo_match do |f| %>
     <%= f.hidden_field :match_one_id, value: @match_one.id %>
-    <%= f.input :match_two_first_name %>
-    <%= f.input :match_two_email %>
-    <%= f.input :match_two_picture %>
-    <%= f.input :intro_message %>
+    <%= f.input :match_two_first_name, label: 'Who would be the perfect match?', placeholder: "Enter the match's first name" %>
+    <%= f.input :match_two_email, label: false, placeholder: "Enter the match's email", hint: "your friend will get an invitation" %>
+    <%= f.input :match_two_picture, label: false, hint: 'Add a screen shot of their social media profile' %>
+    <%= f.input :match_two_picture_cache, as: :hidden %>
+    <%= f.input :intro_message, placeholder: "I thought you would be great for each other..." %>
   </div>
-    <%= f.submit class:"main_action_button mb-0" %>
+    <%= f.submit 'Create match and invite your friend', class:"main_action_button mb-0" %>
   <% end %>
 </div>
 

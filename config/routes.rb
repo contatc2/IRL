@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     get 'messages', to: 'messages#create'
   end
 
+  resources :pseudo_matches, only: %i[create update show]
+
   mount ActionCable.server => "/cable"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
