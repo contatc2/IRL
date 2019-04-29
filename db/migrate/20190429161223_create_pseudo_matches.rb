@@ -7,7 +7,7 @@ class CreatePseudoMatches < ActiveRecord::Migration[5.2]
       t.string :match_two_email
       t.string :match_two_first_name
       t.string :match_two_picture
-      t.boolean :match_one_state
+      t.boolean :match_one_accepted
       t.date :date
 
       t.timestamps

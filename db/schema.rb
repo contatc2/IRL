@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2019_04_29_161223) do
     t.string "match_two_email"
     t.string "match_two_first_name"
     t.string "match_two_picture"
-    t.boolean "match_one_state"
+    t.boolean "match_one_accepted"
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
