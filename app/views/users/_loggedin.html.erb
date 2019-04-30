@@ -6,6 +6,7 @@
         <div class="show-intro-left">
           <%#= cl_image_tag(@user.profile_image_path, gravity:"faces", crop:"fill", class:"profile-picture") %>
           <h4>Hi <%= @user.first_name_cap %>,</h4>
+
     <!-- if user is available show "search button" or edit search -->
           <% if @user.available %>
             <% if @user.adjective_1.present? %>
@@ -31,55 +32,17 @@
       </div>
 
     <!-- friends invitations -->
-      <% unless @invitations.empty? %>
-        <div class="invitations">
-            <% @invitations.each do |invitation| %>
-              <% if invitation.accepted.nil? %>
-                <p><%= invitation.user.full_name %> has invited you as a trusted friend</p>
-                <%= link_to "Accept invitation",friend_invitation_path(invitation, friend_invitation: {accepted: true}), method: :put, class:"second_action_button mr-3 mb-3" %>
-                <%= link_to friend_invitation_path(invitation, friend_invitation: {accepted: false}), method: :put do %>
-                  <i class="fas fa-trash-alt"></i>
-                <% end %>
-              <% end %>
-            <% end %>
-        </div>
-      <% end %>
+  <% unless @invitations.empty? %>
+    <%= render 'invitations' %>
+  <% end %>
 
     <!-- list of friends -->
-      <div class="p-3 text-center">
-        <% if @user.available %>
-          <h4>Friends helping with your search</h4>
-          <% else %>
-          <h4>Friends you are helping in their search</h4>
-        <% end %>
+  <div class="p-3 text-center">
+    <%= render 'myfriends' %>
+  </div>
 
-        <div class="cards">
-        <!-- accepted friends -->
-          <% @accepted_invitations.each do |invitation| %>
-            <% if invitation.friend == @user %>
-              <% myfriend = invitation.user %>
-            <% else %>
-              <% myfriend = invitation.friend %>
-            <% end %>
-            <%= link_to user_path(myfriend), class:"text-decoration-none" do %>
-              <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= myfriend.profile_image_path %>')">
-                <%= myfriend.full_name %>
-                <small><%= myfriend.status %></small>
-              </div>
-            <% end %>
-          <% end %>
-        <!-- pending friends -->
-        <% @pending_invitations.each do |invitation| %>
-          <% myfriend = invitation.friend %>
-          <%= link_to user_path(myfriend), class:"text-decoration-none" do %>
-            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= myfriend.profile_image_path %>')">
-               <%= myfriend.full_name %> <i class="fas fa-frog"></i>
-                <small><%= myfriend.status %></small>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+
+
     <!-- link to invite more friends -->
     <div class="text-center">
       <% if @user.available %>
