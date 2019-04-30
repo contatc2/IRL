@@ -8,6 +8,7 @@ class MatchesController < ApplicationController
 
   def new
     @match = Match.new
+    @pseudo_match = PseudoMatch.new
     @match_one = User.find(params[:match_one])
     single_friends_invited = current_user.friends.where(available: true)
     single_friends_other = FriendInvitation.where(accepted: true, friend: current_user)

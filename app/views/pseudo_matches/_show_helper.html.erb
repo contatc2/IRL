@@ -1,0 +1,20 @@
+<!-- TODO only match_one can accept, review the logic accordingly -->
+
+
+<!-- matches pictures -->
+<div class="show-flex">
+  <div style="position: absolute; left: 40%; top: 40%; z-index: 10; color: #fff; font-size: 18px">
+    <%#= @pseudo_match.status  %>
+  </div>
+
+  <%= render 'matches/match_picture', user: @pseudo_match.match_one %>
+  <div class="d-flex position margin-top-bottom card-category-right-helperpage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @pseudo_match.match_two_picture %>');">
+  </div>
+
+</div>
+
+<!-- to be removed and merged in chat -->
+<div class="invitations mt-3">
+    <h4>Your comment:</h4>
+      <%= @pseudo_match.intro_message %>
+</div>
