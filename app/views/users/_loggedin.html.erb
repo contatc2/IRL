@@ -62,7 +62,7 @@
           <%= render 'mymatches', matches: @matches  %>
         <% end %>
 
-        <% unless @pseudo_matches.nil? %>
+        <% unless @pseudo_matches.empty? %>
           <%= render 'pseudo_matches'  %>
         <% end %>
       </div>
@@ -70,7 +70,7 @@
 
       <!-- show submitted matches with both profiles and status or nudge to create matches -->
       <div class="p-2 text-center">
-        <% if @helper_matches.empty? %>
+        <% if @helper_matches.empty? || @helper_pseudo_matches.empty? %>
           <p>Create your first match today! </p>
         <% else %>
           <h4>My submitted Matches</h4>
