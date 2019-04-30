@@ -1,9 +1,7 @@
 class PseudoMatchesController < ApplicationController
-  before_action :find_match, only: :update
+  before_action :find_match, only: %i[show update]
 
   def show
-    @pseudo_match = PseudoMatch.includes(messages: :user).find(params[:id])
-    @message = Message.new
   end
 
   def create
