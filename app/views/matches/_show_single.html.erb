@@ -2,10 +2,12 @@
 <% if @match.match_one == current_user %>
   <% mymatch = @match.match_two %>
   <% i_accepted = @match.match_one_accepted %>
+  <% match_accepted = match_one_accepted %>
   <% mymatch_accepted = @match.match_two_accepted %>
 <% else %>
   <% mymatch = @match.match_one %>
   <% i_accepted = @match.match_two_accepted %>
+  <% match_accepted = match_two_accepted %>
   <% mymatch_accepted = @match.match_one_accepted %>
 <% end %>
 <% myhelper = @match.helper %>
@@ -28,8 +30,8 @@
 <!-- buttons to accept or decline match -->
       <div class="mb-3">
         <% if @match.match_one == current_user %>
-          <%= link_to "Yes",match_path(@match, match: {match_one_accepted: true}), method: :put, class:"main_action_button mb-0" %>
-          <%= link_to "No",match_path(@match, match: {match_one_accepted: false}), method: :put, class:"low_key_button" %>
+          <%= link_to "Yes",match_path(@match, match: {match_accepted: true}), method: :put, class:"main_action_button mb-0" %>
+          <%= link_to "No",match_path(@match, match: {match_accepted: false}), method: :put, class:"low_key_button" %>
         <% else %>
           <%= link_to "Yes",match_path(@match, match: {match_two_accepted: true}), method: :put, class:"main_action_button mb-0" %>
           <%= link_to "No",match_path(@match, match: {match_two_accepted: false}), method: :put, class:"low_key_button" %>
