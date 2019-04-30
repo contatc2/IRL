@@ -9,7 +9,9 @@ class UsersController < ApplicationController
     @accepted_invitations = FriendInvitation.where(accepted: true, user: @user).or(FriendInvitation.where(accepted: true, friend: @user))
     @pending_invitations = FriendInvitation.where(accepted: nil, user: @user)
     @matches = Match.where(match_one: @user).or(Match.where(match_two: @user)).reject { |match| match.status == "Rejected" }
+    @pseudo_matches = PseudoMatch.where(match_one: @user)
     @helper_matches = Match.where(helper: @user)
+    @helper_pseudo_matches = PseudoMatch.where(helper: @user)
     if @accepted_invitations.empty? && @pending_invitations.empty? && @invitations.empty?
       redirect_to new_friend_invitation_path
     end

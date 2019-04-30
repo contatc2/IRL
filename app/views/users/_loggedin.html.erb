@@ -62,8 +62,8 @@
           <%= render 'mymatches', matches: @matches  %>
         <% end %>
 
-        <% unless @pending_matches.nil? %>
-          <%= render 'mymatches', matches: @pending_matches  %>
+        <% unless @pseudo_matches.nil? %>
+          <%= render 'pseudo_matches'  %>
         <% end %>
       </div>
     <% end %>
@@ -74,7 +74,8 @@
           <p>Create your first match today! </p>
         <% else %>
           <h4>My submitted Matches</h4>
-          <%= render 'helper_matches' %>
+          <%= render 'helper_matches', matches: @helper_matches %>
+          <%= render 'helper_pseudo_matches', matches: @helper_pseudo_matches %>
         <% end %>
       </div>
     </div>
