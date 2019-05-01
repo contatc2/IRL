@@ -3,9 +3,7 @@ class FriendInvitationsController < ApplicationController
   def new
     @invitation = FriendInvitation.new
     @search = params[:query]
-    if @search.present?
-      @searched_user = User.search_by_name_and_email(@search)
-    end
+    @searched_user = User.search_by_name_and_email(@search) if @search.present?
     @referral = Referral.new
   end
 

@@ -12,7 +12,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     build_resource(sign_up_params)
-    # raise
     resource.save
     yield resource if block_given?
     if resource.persisted?
@@ -20,6 +19,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
         create_invitation(resource) if Referral.where(friend_email: resource.email).present?
+        create_match(resource) if PseudoMatch.where(match_two_email: resource.email).present?
         respond_with resource, location: after_sign_up_path_for(resource)
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
@@ -90,7 +90,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
         intro_message: pseudo_match.intro_message
       )
       match.save
+
       pseudo_match.update(converted: true)
+      invitation = FriendInvitation.new(
+        user: pseudo_match.helper,
+        friend: resource
+      )
+      invitation.save
     end
   end
 
