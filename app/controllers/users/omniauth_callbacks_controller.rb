@@ -42,40 +42,40 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     redirect_to root_path
   end
 
-  protected
+  # protected
 
-  def create_invitation(resource)
-    @referrals = Referral.where(friend_email: resource.email, accepted: nil)
-    @referrals.each do |referral|
-      invitation = FriendInvitation.new(
-        user: referral.user,
-        friend: resource
-      )
-      invitation.save
-      referral.update(accepted: true)
-    end
-  end
+  # def create_invitation(resource)
+  #   @referrals = Referral.where(friend_email: resource.email, accepted: nil)
+  #   @referrals.each do |referral|
+  #     invitation = FriendInvitation.new(
+  #       user: referral.user,
+  #       friend: resource
+  #     )
+  #     invitation.save
+  #     referral.update(accepted: true)
+  #   end
+  # end
 
-  def create_match(resource)
-    @pseudo_matches = PseudoMatch.where(match_two_email: resource.email, converted: nil)
-    @pseudo_matches.each do |pseudo_match|
-      match = Match.new(
-        helper: pseudo_match.helper,
-        match_one: pseudo_match.match_one,
-        match_one_accepted: pseudo_match.match_one_accepted,
-        match_two: resource,
-        intro_message: pseudo_match.intro_message
-      )
-      match.save
+  # def create_match(resource)
+  #   @pseudo_matches = PseudoMatch.where(match_two_email: resource.email, converted: nil)
+  #   @pseudo_matches.each do |pseudo_match|
+  #     match = Match.new(
+  #       helper: pseudo_match.helper,
+  #       match_one: pseudo_match.match_one,
+  #       match_one_accepted: pseudo_match.match_one_accepted,
+  #       match_two: resource,
+  #       intro_message: pseudo_match.intro_message
+  #     )
+  #     match.save
 
-      pseudo_match.update(converted: true)
-      invitation = FriendInvitation.new(
-        user: pseudo_match.helper,
-        friend: resource
-      )
-      invitation.save
-    end
-  end
+  #     pseudo_match.update(converted: true)
+  #     invitation = FriendInvitation.new(
+  #       user: pseudo_match.helper,
+  #       friend: resource
+  #     )
+  #     invitation.save
+  #   end
+  # end
 
   # The path used when OmniAuth fails
   # def after_omniauth_failure_path_for(scope)
