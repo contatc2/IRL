@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_29_161223) do
+ActiveRecord::Schema.define(version: 2019_05_01_081355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_04_29_161223) do
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "converted"
     t.index ["helper_id"], name: "index_pseudo_matches_on_helper_id"
     t.index ["match_one_id"], name: "index_pseudo_matches_on_match_one_id"
   end

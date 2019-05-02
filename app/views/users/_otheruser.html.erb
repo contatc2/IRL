@@ -23,20 +23,24 @@
 <!-- if user available, show search criteria and matches -->
     <% if @user.available %>
       <div class="p-2 my-3">
-        <% unless @matches.empty?%>
+        <% unless @matches.empty? %>
         <h2>Current Matches</h2>
           <%= render 'mymatches', matches: @matches  %>
+        <% end %>
+        <% unless @pseudo_matches.empty? %>
+          <%= render 'pseudo_matches'  %>
         <% end %>
       </div>
 
 <!-- show helper page for not available -->
     <% else %>
       <div class="p-2 my-3">
-        <% if @helper_matches.nil? %>
+        <% if @helper_matches.empty? || @helper_pseudo_matches.empty? %>
           <p>No matches submitted yet... </p>
         <% else %>
           <h2>Submitted Matches</h2>
           <%= render 'helper_matches' %>
+          <%= render 'helper_pseudo_matches', matches: @helper_pseudo_matches %>
         <% end %>
       </div>
     <% end %>
