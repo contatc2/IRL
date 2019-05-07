@@ -36,6 +36,15 @@
     <%= f.hidden_field :match_one_id, value: @match_one.id %>
     <%= f.input :match_two_first_name, label: 'Who would be the perfect match?', placeholder: "Enter the match's first name" %>
     <%= f.input :match_two_email, label: false, placeholder: "Enter the match's email", hint: "your friend will get an invitation" %>
+    <div class="d-flex">
+      <span class="match-search-urls">Find them on:</span>
+      <%= link_to 'https://www.facebook.com/', class:"match-search-urls" do %>
+        <i class="fab fa-facebook"></i>
+      <% end %>
+      <%= link_to 'https://www.linkedin.com/', class:"match-search-urls" do %>
+        <i class="fab fa-linkedin"></i>
+      <% end %>
+    </div>
     <%= f.input :match_two_picture, label: false, hint: 'Add a screen shot of their social media profile' %>
     <%= f.input :match_two_picture_cache, as: :hidden %>
     <%= f.input :intro_message, placeholder: "I thought you would be great for each other..." %>
