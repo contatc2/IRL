@@ -37,11 +37,11 @@
     <%= f.input :match_two_first_name, label: 'Who would be the perfect match?', placeholder: "Enter the match's first name" %>
     <%= f.input :match_two_email, label: false, placeholder: "Enter the match's email", hint: "your friend will get an invitation" %>
     <div class="d-flex">
-      <span class="match-search-urls">Find them on:</span>
-      <%= link_to 'https://www.facebook.com/', class:"match-search-urls" do %>
+      <p class="mb-2 mt-2 mr-2">Find them on:</p>
+      <%= link_to 'https://www.facebook.com/', target: :_blank, class:"match_social_urls" do %>
         <i class="fab fa-facebook"></i>
       <% end %>
-      <%= link_to 'https://www.linkedin.com/', class:"match-search-urls" do %>
+      <%= link_to 'https://www.linkedin.com/', target: :_blank, class:"match_social_urls" do %>
         <i class="fab fa-linkedin"></i>
       <% end %>
     </div>
