@@ -6,28 +6,24 @@
 
 <div class="cards mt-3">
 <!-- accepted friends -->
-  <% @accepted_invitations.each do |invitation| %>
-    <% if invitation.friend == @user %>
-      <% myfriend = invitation.user %>
-    <% else %>
-      <% myfriend = invitation.friend %>
-    <% end %>
-    <%= link_to user_path(myfriend), class:"text-decoration-none" do %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= myfriend.profile_image_path %>')">
+  <% @single_friends.each do |myfriend| %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= myfriend.profile_image_path %>')">
+      <%= link_to user_path(myfriend), class:"text-decoration-none text-white" do %>
         <%= myfriend.full_name %>
         <small><%= myfriend.status %></small>
-      </div>
-    <% end %>
-  <% end %>
-<!-- pending friends -->
-<% @pending_invitations.each do |invitation| %>
-  <% myfriend = invitation.friend %>
-  <%= link_to user_path(myfriend), class:"text-decoration-none" do %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= myfriend.profile_image_path %>')">
-       <%= myfriend.full_name %> <i class="fas fa-frog"></i>
-        <small><%= myfriend.status %></small>
+        <small>Looking for <%= myfriend.gender_search %> who is <%= myfriend.adjective_1 %>, <%= myfriend.adjective_2 %> and <%= myfriend.adjective_3 %></small>
+      <% end %>
+      <%= link_to new_match_path(@match, match_one: myfriend), style:"font-size: 0.75em", class:"text-decoration-none text-white" do %>
+        <i class="fas fa-plus-square"></i> Add match
+      <% end %>
     </div>
   <% end %>
-<% end %>
+<!-- pending friends -->
+  <% @pending_invitations.each do |invitation| %>
+    <% myfriend = invitation.friend %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
+         <%= myfriend.full_name %> <i class="fas fa-frog"></i>
+      </div>
+  <% end %>
 </div>
 

@@ -6,13 +6,15 @@ class UsersController < ApplicationController
 
   def show
     @invitations = FriendInvitation.where(friend: @user, accepted: nil)
-    @accepted_invitations = FriendInvitation.where(accepted: true, user: @user).or(FriendInvitation.where(accepted: true, friend: @user))
+    @friends = @user.friends + FriendInvitation.where(accepted: true, friend: @user).map(&:user)
+    @single_friends = @friends.select(&:available)
+    @helpers = @friends - @single_friends
     @pending_invitations = FriendInvitation.where(accepted: nil, user: @user)
     @matches = Match.where(match_one: @user).or(Match.where(match_two: @user)).reject { |match| match.status == "Rejected" }
     @pseudo_matches = PseudoMatch.where(match_one: @user, converted: nil)
     @helper_matches = Match.where(helper: @user)
     @helper_pseudo_matches = PseudoMatch.where(helper: @user, converted: nil)
-    redirect_to new_friend_invitation_path if @accepted_invitations.empty? && @pending_invitations.empty? && @invitations.empty?
+    redirect_to new_friend_invitation_path if @friends.empty? && @pending_invitations.empty? && @invitations.empty?
   end
 
   def edit
