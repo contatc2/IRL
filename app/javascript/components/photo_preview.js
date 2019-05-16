@@ -17,7 +17,8 @@ const displayPreview = (input) => {
       document.getElementById('photo-preview').src = event.currentTarget.result;
     }
     reader.readAsDataURL(input.files[0])
-    document.getElementById('photo-preview').classList.remove('d-none');
+    document.getElementById('photo-preview').classList.remove('d-none')
+    document.getElementById('photo-hint').classList.add('d-none');
   }
 }
 
