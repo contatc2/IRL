@@ -55,8 +55,14 @@
                 <%= myfriend.full_name %>
                 <small><%= myfriend.status %></small><br>
                 <small><i class="fas fa-search"></i> : <%= myfriend.gender_search %>, <%= myfriend.adjective_1 %>, <%= myfriend.adjective_2 %> & <%= myfriend.adjective_3 %></small>
-              <%= link_to friend_invitations_path(friend_id: myfriend.id), method: :post, style:"font-size: 0.75em", class:"text-decoration-none text-white mt-3" do %>
-                <i class="fas fa-plus-square"></i> Add friend
+              <% if current_user.friends.include?(myfriend) || myfriend.friends.include?(current_user) %>
+                <%= link_to new_match_path(@match, match_one: myfriend), style:"font-size: 0.75em", class:"text-decoration-none text-white mt-3" do %>
+                  <i class="fas fa-plus-square"></i> Add match
+                <% end %>
+              <% else %>
+                <%= link_to friend_invitations_path(friend_id: myfriend.id), method: :post, style:"font-size: 0.75em", class:"text-decoration-none text-white mt-3" do %>
+                  <i class="fas fa-plus-square"></i> Add friend
+                <% end %>
               <% end %>
             </div>
           <% end %>
