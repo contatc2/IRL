@@ -35,7 +35,7 @@
                                       order: %i(day month year)  %>
           <%= render 'gender' %>
           <%= render 'available' %>
-          <div class="d-flex justify-content-center mt-3">
+          <div class="d-flex justify-content-center align-items-center mt-3">
             <%= f.input :picture, input_html: { class: 'd-none', id: 'photo-input'}, label_html: { class: 'second_action_button'}, label: 'Upload profile picture' %>
             <%= image_tag "", width: 100, height: 100, class: "ml-3 d-none", id: "photo-preview" %>
           </div>
