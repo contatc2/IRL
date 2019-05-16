@@ -8,3 +8,7 @@ selectGender();
 
 import { selectAvailable } from '../components/gender_form';
 selectAvailable();
+
+
+import { previewImageOnFileSelect } from '../components/photo_preview';
+previewImageOnFileSelect();
