@@ -35,12 +35,11 @@
                                       order: %i(day month year)  %>
           <%= render 'gender' %>
           <%= render 'available' %>
-
-          <label class="btn btn-primary" id="bob">Add a picture
-            <span style="display:none;">
-              <%= f.input :picture, multiple: false, name: 'upload a profile picture' %>
-            </span>
-          </label>
+          <div class="d-flex justify-content-center align-items-center mt-3">
+            <%= f.input :picture, input_html: { class: 'd-none', id: 'photo-input'}, label_html: { class: 'second_action_button'}, label: 'Upload profile picture' %>
+            <%= image_tag "", width: 100, height: 100, class: "ml-3 d-none", id: "photo-preview" %>
+          </div>
+          <%= f.input :picture_cache, as: :hidden %>
         </div>
         <div class="form-actions mt-3">
           <%= f.button :submit, "Sign up", class: "main_action_button mb-0" %>
