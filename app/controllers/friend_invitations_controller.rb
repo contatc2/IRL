@@ -15,9 +15,9 @@ class FriendInvitationsController < ApplicationController
     @invitation.friend = User.find(params[:friend_id])
     @invitation.user = current_user
     if @invitation.save
-      flash[:success] = "Your invitation has been sent"
       UserMailer.friend_invitation(current_user, @invitation.friend).deliver_now
-      redirect_to user_path(@user)
+      redirect_to user_path(@user), info: "You have invited #{@invitation.friend.first_name_cap}.<br>
+      #{view_context.link_to('Add more friends', new_friend_invitation_path, class: 'alert-link')}.".html_safe
     else
       render :new
     end
