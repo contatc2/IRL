@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_22_202348) do
+ActiveRecord::Schema.define(version: 2019_05_01_081355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,22 @@ ActiveRecord::Schema.define(version: 2019_03_22_202348) do
     t.bigint "match_id"
     t.index ["match_id"], name: "index_messages_on_match_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "pseudo_matches", force: :cascade do |t|
+    t.bigint "helper_id"
+    t.bigint "match_one_id"
+    t.text "intro_message"
+    t.string "match_two_email"
+    t.string "match_two_first_name"
+    t.string "match_two_picture"
+    t.boolean "match_one_accepted"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "converted"
+    t.index ["helper_id"], name: "index_pseudo_matches_on_helper_id"
+    t.index ["match_one_id"], name: "index_pseudo_matches_on_match_one_id"
   end
 
   create_table "referrals", force: :cascade do |t|
@@ -101,5 +117,7 @@ ActiveRecord::Schema.define(version: 2019_03_22_202348) do
   add_foreign_key "matches", "users", column: "match_two_id"
   add_foreign_key "messages", "matches"
   add_foreign_key "messages", "users"
+  add_foreign_key "pseudo_matches", "users", column: "helper_id"
+  add_foreign_key "pseudo_matches", "users", column: "match_one_id"
   add_foreign_key "referrals", "users"
 end

@@ -3,9 +3,10 @@ class FriendInvitationsController < ApplicationController
   def new
     @invitation = FriendInvitation.new
     @search = params[:query]
-    if @search.present?
-      @searched_user = User.search_by_name_and_email(@search)
-    end
+    @friends = @user.friends + FriendInvitation.where(accepted: true, friend: @user).map(&:user)
+    @pending_invitations = FriendInvitation.where(accepted: nil, user: @user)
+    @removed_user = @friends + @pending_invitations
+    @searched_user = User.search_by_name_and_email(@search) if @search.present?
     @referral = Referral.new
   end
 
@@ -14,6 +15,8 @@ class FriendInvitationsController < ApplicationController
     @invitation.friend = User.find(params[:friend_id])
     @invitation.user = current_user
     if @invitation.save
+      flash[:success] = "Your invitation has been sent"
+      UserMailer.friend_invitation(current_user, @invitation.friend).deliver_now
       redirect_to user_path(@user)
     else
       render :new

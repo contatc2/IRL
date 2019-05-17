@@ -1,0 +1,37 @@
+<!-- users logic -->
+<% mymatch = @pseudo_match.match_two_first_name %>
+<% mymatch_image = @pseudo_match.match_two_picture %>
+<% i_accepted = @pseudo_match.match_one_accepted %>
+<% myhelper = @pseudo_match.helper %>
+
+<!-- text displaying according to status -->
+<div class="mt-3">
+  <% if i_accepted %>
+      <p>Thank you for responding; we are waiting for <%= mymatch.capitalize %>'s response, stay tuned.</p>
+  <% elsif i_accepted == false %>
+      <p>Next time... Feel free to nudge <strong><%= myhelper.first_name_cap %></strong> for more matches and give feedback on this one.</p>
+  <% else %>
+      <p><strong><%= myhelper.first_name_cap %></strong> would like to introduce you to <strong><%= mymatch.capitalize %></strong>. Up to you!</p>
+
+<!-- buttons to accept or decline match -->
+      <div class="mb-3">
+        <%= link_to "Yes",pseudo_match_path(@pseudo_match, pseudo_match: {match_one_accepted: true}), method: :put, class:"main_action_button mb-0" %>
+        <%= link_to "No",pseudo_match_path(@pseudo_match, pseudo_match: {match_one_accepted: false}), method: :put, class:"low_key_button" %>
+      </div>
+  <% end %>
+</div>
+
+
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= mymatch_image %>')">
+  <%= link_to user_path(myhelper), class:"text-decoration-none" do %>
+  <%= cl_image_tag(myhelper.profile_image_path, width:50, height:50, gravity:"faces", crop:"fill", class:"card-helper") %>
+<% end %>
+</div>
+
+
+<div class="my-3">
+  <div class="invitations">
+    <h4>Comment from <%= myhelper.first_name_cap %></h4>
+    <%= @pseudo_match.intro_message %>
+  </div>
+</div>
