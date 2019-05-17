@@ -1,0 +1,7 @@
+<% users.each do |user| %>
+  <%= link_to friend_invitations_path(@invitation, friend_id: user.id), class: "text-decoration-none", method: :post do %>
+    <div class="avatar-xl-name" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= user.profile_image_path %>')">
+      <%= user.full_name %>
+    </div>
+  <% end %>
+<% end %>

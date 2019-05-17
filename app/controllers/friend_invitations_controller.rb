@@ -3,6 +3,9 @@ class FriendInvitationsController < ApplicationController
   def new
     @invitation = FriendInvitation.new
     @search = params[:query]
+    @friends = @user.friends + FriendInvitation.where(accepted: true, friend: @user).map(&:user)
+    @pending_invitations = FriendInvitation.where(accepted: nil, user: @user)
+    @removed_user = @friends + @pending_invitations
     @searched_user = User.search_by_name_and_email(@search) if @search.present?
     @referral = Referral.new
   end
