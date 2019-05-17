@@ -1,18 +1,33 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <div>
-    </div>
-    <h1>Welcome to IRL, <%= @user.first_name_cap %></h1>
-    <p>
-      You have successfully signed up to Real Life. You can start inviting your friends.
-    </p>
-    <p>
-      To login to the site, click <a href="<%= @url %>" target="blank">https://wwww.reallife.love</a>
-    </p>
-    <p>Thanks for joining and have a great day!</p>
-  </body>
-</html>
+<div align="center">
+  <%= image_tag "https://res.cloudinary.com/dk6htg4y0/image/upload/v1556886591/emails/welcome_email/dreamer.svg", class: "mb-3", alt: "Welcome", style: 'height:auto;width:400px;' %>
+  <h1>Hi <%= @user.first_name_cap %> </h1>
+  <p>
+    Bye bye dating jungle, hello RealLife.love!
+  </p>
+  <p>
+    It might be your helper's cute legal assistant or a friend at the sports club.  It might be somebody your helper already had in mind or it might be an idea that will come to them in a month's time.
+  </p>
+  <p>
+    By using RealLife.love the process is easy.
+    With helpers making digital introductions from their existing network, we get genuine and confidential matches.
+  </p>
+  <%= image_tag "https://res.cloudinary.com/dk6htg4y0/image/upload/v1556886591/emails/welcome_email/tresor3.svg", class: "mb-3", alt: "Welcome", style: 'height:auto;width:200px;' %>
+  <p>
+    To succeed, <b>you need to add helpers to your profile</b>.
+    <br>
+    You just need one helper to get started, while the more helpers you nominate the more the more likely you will be matched.
+  </p>
+    <%= link_to "Add helper", @url, class: "main_action_button" %>
+  <p>
+    <b>always stay in control:</b>
+    <li>
+      you accept your helpers sugestions
+    </li>
+    <li>
+      your match will need to login to get to know you
+    </li>
+    <br>
+    RealLife.love is free for everyone get your <s>radar</s> helpers on today.
+  </p>
+    <%= link_to "Add helper, now  :-)", @url, class: "main_action_button" %>
+</div>

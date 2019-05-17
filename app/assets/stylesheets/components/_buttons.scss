@@ -75,8 +75,7 @@
 .loginBtn--facebook {
   box-sizing: border-box;
   position: relative;
-  /* width: 13em;  - apply for fixed size */
-  margin: 0.2em;
+  margin: 10px 25px 10px 25px;
   padding: 10px 25px 10px 25px;
   border: none;
   text-align: left;
@@ -85,20 +84,10 @@
   border-radius: 10px;
   font-size: 16px;
   color: #FFF;
-  background-color: #4C69BA;
-  /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
+  background-color: #4267B2;
   text-shadow: 0 -1px 0 #354C8C;
 }
-// .loginBtn--facebook:before {
-//   content: "";
-//   box-sizing: border-box;
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 34px;
-//   height: 100%;
-//   border-right: #364e92 1px solid;
-// }
+
 .loginBtn--facebook:hover,
 .loginBtn--facebook:focus {
   color: #FFF;
