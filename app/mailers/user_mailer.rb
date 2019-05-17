@@ -37,6 +37,13 @@ class UserMailer < ApplicationMailer
     mail(to: email, subject: "#{@helper.first_name} has a great match waiting for you on IRL", track_opens: 'true')
   end
 
+  def friend_invitation(user, friend)
+    @user = user
+    @friend = friend
+    @url = 'https://www.reallife.love'
+    mail(to: @friend.email, subject: "Hey #{@friend.first_name} you have a new friend request!", track_opens: 'true')
+  end
+
   def friend_acceptation(user, friend)
     @user = user
     @friend = friend
