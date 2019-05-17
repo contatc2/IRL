@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
   def show
     @invitations = FriendInvitation.where(friend: @user, accepted: nil)
-
     @friends = @user.friends + FriendInvitation.where(accepted: true, friend: @user).map(&:user)
     @single_friends = @friends.select(&:available)
     @helpers = @friends - @single_friends
