@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'fblogin', to: 'pages#fblogin'
   get 'about', to: 'pages#about'
   get 'terms_and_conditions', to: 'pages#terms_and_conditions'
+  get 'privacy_policy', to: 'pages#privacy_policy'
   get 'test', to: 'pages#test'
 
   resources :users, only: %i[index edit show update] do
