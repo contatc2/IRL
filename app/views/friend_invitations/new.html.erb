@@ -32,14 +32,15 @@
         <%#= f.input :query, label: 'Are your friends already on RealLife.love?', placeholder: " Enter you friend's full name" %>
         <%#= f.submit 'Search friend', class:"main_action_button mb-0" %>
       <%# end %>
-      <% if @searched_user == [] || @searched_user == [@user] %>
-        <h4 class="mt-3 text-center"><span class="catch-paragraph" style="color:green"><%= @search %> is not on the platform yet. You can send an invite below!</span></h4>
-      <% elsif @searched_user - [@user] - @removed_user == [] %>
-        <h4 class="mt-3 text-center"><span class="catch-paragraph" style="color:green">You have already invited or been invited by <%= @search %>. If you want to invite someone else, you can send an invite through e-mail below!</span></h4>
-      <% end %>
       <div class="d-flex justify-content-start flex-wrap mx-5 mt-2">
         <% unless @searched_user.nil? %>
-          <%= render 'searched_user', users: @searched_user - [@user] - @removed_user %>
+          <% if @searched_user == [] || @searched_user == [@user] %>
+            <h4 class="mt-3 text-center"><span class="catch-paragraph" style="color:green"><%= @search %> is not on the platform yet. You can send an invite below!</span></h4>
+          <% elsif @searched_user - [@user] - @removed_user == [] %>
+            <h4 class="mt-3 text-center"><span class="catch-paragraph" style="color:green">You have already invited or been invited by <%= @search %>. If you want to invite someone else, you can send an invite through e-mail below!</span></h4>
+          <% else %>
+            <%= render 'searched_user', users: @searched_user - [@user] - @removed_user %>
+          <% end %>
         <% end %>
       </div>
 
