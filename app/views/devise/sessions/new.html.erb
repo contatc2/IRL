@@ -14,6 +14,10 @@
   <%= link_to user_facebook_omniauth_authorize_path, class: "loginBtn--facebook" do %>
     <i class="fab fa-facebook-f"></i> | Continue with Facebook
   <% end %>
+  <div class="small-paragraph">
+    We don’t post to Facebook!<br>
+    By singing in, you agree to our <%= link_to terms_and_conditions_path, class: "small-paragraph" do %>terms of service<% end %> and <%= link_to privacy_policy_path, class: "small-paragraph" do %>privacy policy<% end %>
+  </div>
 </div>
 <div class="form2">
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
