@@ -1,27 +1,18 @@
 .form{
-  background-color: #4a9ff5;
+  background-color: $sky-blue;
   color: white !important;
-  margin-left: ($spacer * 2);
-  margin-right: ($spacer * 2);
-  padding-left: ($spacer * 1);
-  padding-right: ($spacer * 1);
-  padding-top: ($spacer * .5);
-  padding-bottom: ($spacer * .5);
-  border-radius: 20px 20px 20px 20px;
+  margin: 0 ($spacer * 2);
+  padding:($spacer * .5) ($spacer * 1) ;
+  border-radius: 20px;
 }
 
 .form2{
   background-color: white;
-  border: solid #4a9ff5;
-  color: #4a9ff5 !important;
+  border: solid $sky-blue;
+  color: $sky-blue !important;
+  padding:($spacer * .5) ($spacer * 1) ;
   margin-top: ($spacer * 1);
-  margin-left: ($spacer * 1);
-  margin-right: ($spacer * 1);
-  padding-left: ($spacer * 1);
-  padding-right: ($spacer * 1);
-  padding-top: ($spacer * .5);
-  padding-bottom: ($spacer * .5);
-  border-radius: 20px 20px 20px 20px;
+  border-radius: 20px;
 }
 
 .from-text{
@@ -29,7 +20,7 @@
 }
 
 .form-text{
-  color: #4a9ff5 !important;
+  color: $sky-blue !important;
 }
 
 
@@ -37,23 +28,23 @@
 .gender-search{
   flex: 0 0 40%;
   color: black;
-  padding: 8px 16px;
+  padding: ($spacer * 1) ($spacer * 2);
   text-align: center;
   border-radius: 4px;
   background: #CEF9E2;
   transition: background 0.3s ease;
-  border: 1px solid #0F60C4;
+  border: 1px solid $darker-blue;
   opacity: 0.5;
   &:hover{
     padding: 7px 15px;
     color: black;
     text-decoration: none;
-    border: 2px solid #0F60C4;
+    border: 2px solid $darker-blue;
     opacity: 1;
     cursor: pointer;
   }
   &.active{
-    background: #4a9ff5;
+    background: $sky-blue;
     color: white;
     opacity: 1;
   }
@@ -73,18 +64,18 @@
   border-radius: 4px;
   background: white;
   transition: background 0.3s ease;
-  border: 1px solid #0F60C4;
+  border: 1px solid $darker-blue;
   &:hover{
     padding: 7px 15px;
-    background: #033fff;
+    background: $dark-blue;
     color: white;
     text-decoration: none;
-    border: 2px solid #0F60C4;
+    border: 2px solid $darker-blue;
     opacity: 0.4;
     cursor: pointer;
   }
   &.active{
-    background: #033fff;
+    background: $dark-blue;
     color: white;
   }
 }
@@ -100,23 +91,23 @@
 .available-option{
   width: 100%;
   color: black;
-  padding: 8px 16px;
+  padding: ($spacer * 1) ($spacer * 2);
   text-align: center;
   border-radius: 4px;
   background: white;
   transition: background 0.3s ease;
-  border: 1px solid #0F60C4;
+  border: 1px solid $darker-blue;
   &:hover{
     padding: 7px 15px;
-    background: #033fff;
+    background: $dark-blue;
     color: white;
     text-decoration: none;
-    border: 2px solid #0F60C4;
+    border: 2px solid $darker-blue;
     opacity: 0.4;
     cursor: pointer;
   }
   &.active{
-    background: #033fff;
+    background: $dark-blue;
     color: white;
   }
 }

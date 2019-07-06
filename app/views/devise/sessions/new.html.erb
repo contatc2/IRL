@@ -1,39 +1,36 @@
 <div class="top_page">
-
-  <p class="mx-3">Welcome back</p>
-
-  <div class="d-flex justify-content-center">
-    <div>
-      <%= image_tag "lock.svg", class: "mb-3", alt: "data protection", style: 'height:auto;width:100px;' %>
+    <p class="mx-3">Welcome back</p>
+    <div class="d-flex justify-content-center">
+        <div>
+            <%= image_tag "lock.svg", class: "mb-3", alt: "data protection", style: 'height:auto;width:100px;' %>
+        </div>
     </div>
-  </div>
 </div>
-
-<h2>Log in</h2>
-<div class="text-center">
-  <%= link_to user_facebook_omniauth_authorize_path, class: "loginBtn--facebook" do %>
-    <i class="fab fa-facebook-f"></i> | Continue with Facebook
-  <% end %>
-</div>
-<div class="form2">
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="form-inputs">
-      <%= f.input :email,
+<div class="container">
+    <h2>Log in</h2>
+    <div class="text-center">
+        <%= link_to user_facebook_omniauth_authorize_path, class: "loginBtn--facebook" do %>
+        <i class="fab fa-facebook-f"></i> | Continue with Facebook
+        <% end %>
+    </div>
+    <div class="form2">
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+            <%= f.input :email,
                   required: false,
                   autofocus: true,
                   input_html: { autocomplete: "email" } %>
-      <%= f.input :password,
+            <%= f.input :password,
                   required: false,
                   input_html: { autocomplete: "current-password" } %>
-      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
+        <div class="form-actions text-center">
+            <%= f.button :submit, "Log in", class: "main_action_button" %>
+        </div>
+        <% end %>
     </div>
-
-    <div class="form-actions text-center">
-      <%= f.button :submit, "Log in", class: "main_action_button" %>
+    <div class="pl-3 pt-3">
+        <%= render "devise/shared/links" %>
     </div>
-  <% end %>
-</div>
-
-<div class="pl-3">
-  <%= render "devise/shared/links" %>
 </div>

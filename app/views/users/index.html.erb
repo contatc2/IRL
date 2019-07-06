@@ -1,14 +1,11 @@
 <h1>list of users</h1>
-
 <ul>
-
-<%@users.sort.each do |user|  %>
-
-  <li>
-  <%= user.id %> - <%= user.full_name %>, <%= user.email %>, available: <%=user.available  %>
-  </li>
-
-<% end %>
-
-
+    <%@users.sort.each do |user|  %>
+    <li>
+        <%= user.id %> -
+        <%= user.full_name %>,
+        <%= user.email %>, available:
+        <%=user.available  %>
+    </li>
+    <% end %>
 </ul>

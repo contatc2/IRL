@@ -1,23 +1,22 @@
 <div class="cards">
-  <% matches.each do |match| %>
+    <% matches.each do |match| %>
     <% if match.match_one == @user %>
-      <% mymatch = match.match_two %>
+    <% mymatch = match.match_two %>
     <% else %>
-      <% mymatch = match.match_one %>
+    <% mymatch = match.match_one %>
     <% end %>
-
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= mymatch.profile_image_path %>');">
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= mymatch.profile_image_path %>');">
         <%= link_to user_path(match.helper), class:"text-decoration-none" do %>
-          <%= cl_image_tag(match.helper.profile_image_path, width:50, height:50, gravity:"faces", crop:"fill", class:"card-helper") %>
+        <%= cl_image_tag(match.helper.profile_image_path, width:50, height:50, gravity:"faces", crop:"fill", class:"card-helper") %>
         <% end %>
-
         <%= mymatch.full_name  %>
         <% if match.status == "Accepted" %>
-          <i class="fas fa-check"></i>
+        <i class="fas fa-check"></i>
         <% else %>
-          <small><%= match.status %></small>
+        <small>
+            <%= match.status %></small>
         <% end %>
         <%= link_to "", match_path(match), class: "text-decoration-none card-link" %>
-      </div>
-  <% end %>
+    </div>
+    <% end %>
 </div>

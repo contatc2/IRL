@@ -1,72 +1,49 @@
 <div class="top_page">
-  <p class="mx-3">Where friends help match you</p>
-  <div class="d-flex justify-content-between">
-    <div></div>
-    <div class="flex-grow-1">
-      <%= image_tag "undraw_love_xfcv_nobkg.svg", class: "hero_image mt-5", alt: "RealLife.love" %>
+    <p class="mx-3">Where friends help match you</p>
+    <div class="d-flex justify-content-between">
+        <div class="flex-grow-1">
+            <%= image_tag "undraw_love_xfcv_nobkg.svg", class: "hero_image mt-5", alt: "RealLife.love" %>
+        </div>
     </div>
-    <div></div>
-  </div>
 </div>
 <div class="container">
-  <h2>Find a real person</h2>
-  <div class="catch-paragraph">
-    Find your match through your friends.<br>
-    Nominate friends, stay in control.<br>
-    RealLife.love is free to join today!
-  </div>
-  <div class="my-2 row justify-content-center">
-    <%= link_to "ASK FRIENDS TO MATCH YOU", fblogin_path, class: "main_action_button" %>
-  </div>
-  <div class="text-center">
-    <%= image_tag "angel.svg", class: "mb-3", alt: "data protection", style: 'height:auto;width:250px;' %>
-  </div>
-  <h2>Help your friends </h2>
-  <div class="catch-paragraph">
-    Nudge about potential matches and give them the opportunity to pursue this further.<br>
-    RealLife.love is free to join today!
-  </div>
-  <div class="my-2 row justify-content-center">
-    <%= link_to "HELP YOUR FRIENDS", fblogin_path, class: "main_action_button" %>
-  </div>
-
-  <div class="mt-3 text-center">
-    <p class="mb-0">Your friend is not on IRL yet?</p>
-    <p>Share via e-mail:</p>
-
-  <div class="mt-3 text-center">
-  <div class="form2">
-    <%= simple_form_for @share, url: share_referrals_path, method: 'post' do |f| %>
-      <%= f.input :friend_email, placeholder: "Enter your friend's email" %>
-      <%= f.submit "Send invitation", class:"main_action_button mb-0" %>
-    <% end %>
-
-  </div>
-
-</div>
-
-
-
-
-
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <h2><%= link_to 'About RealLife.love', about_path, class: "text-decoration-none text-dark"  %> </h2>
-  <div class="catch-paragraph">
-    We do not share your information.<br>
-    RealLife.love is free to use without limits.<br>
-  </div>
+    <h2>Find a real person</h2>
+    <div class="catch-paragraph">
+        Find your match through your friends.<br>
+        Nominate friends, stay in control.<br>
+        RealLife.love is free to join today!
+    </div>
+    <div class="my-2 row justify-content-center">
+        <%= link_to "ASK FRIENDS TO MATCH YOU", fblogin_path, class: "main_action_button" %>
+    </div>
+    <div class="text-center">
+        <%= image_tag "angel.svg", class: "mb-3", alt: "data protection", style: 'height:auto;width:250px;' %>
+    </div>
+    <h2>Help your friends </h2>
+    <div class="catch-paragraph">
+        Nudge about potential matches and give them the opportunity to pursue this further.<br>
+        RealLife.love is free to join today!
+    </div>
+    <div class="my-2 row justify-content-center">
+        <%= link_to "HELP YOUR FRIENDS", fblogin_path, class: "main_action_button" %>
+    </div>
+    <div class="mt-3 text-center">
+        <p class="mb-0">Your friend is not on IRL yet?</p>
+        <p>Share via e-mail:</p>
+        <div class="mt-3 text-center">
+            <div class="form2">
+                <%= simple_form_for @share, url: share_referrals_path, method: 'post' do |f| %>
+                <%= f.input :friend_email, placeholder: "Enter your friend's email" %>
+                <%= f.submit "Send invitation", class:"main_action_button mb-0" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <h2>
+        <%= link_to 'About RealLife.love', about_path, class: "text-decoration-none text-dark"  %>
+    </h2>
+    <div class="catch-paragraph">
+        We do not share your information.<br>
+        RealLife.love is free to use without limits.<br>
+    </div>
 </div>

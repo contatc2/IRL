@@ -1,19 +1,7 @@
 <% if @user == current_user %>
 <!-- account page for user currently logged in  -->
-
-  <%= render 'loggedin' %>
-
+<%= render 'loggedin' %>
 <!-- profile page for user not currently logged in  -->
 <% else %>
-
-  <%= render 'otheruser' %>
-
+<%= render 'otheruser' %>
 <% end %>
-
-
-
-
-
-
-
-

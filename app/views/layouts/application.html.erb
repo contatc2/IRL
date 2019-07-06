@@ -54,10 +54,10 @@
        }(document, 'script', 'facebook-jssdk'));
     </script>
 
-    <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
 
-    <div class="min-height">
+    <div class="container-fluid min-height">
+    <%= render 'shared/navbar' %>
       <%= yield %>
     </div>
 
