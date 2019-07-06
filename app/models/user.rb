@@ -4,20 +4,20 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+    :recoverable, :rememberable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
   has_many :matches
   has_many :pseudo_matches
-  has_many :referrals
+  has_many :referrals, dependent: :destroy
   has_many :friend_invitations, dependent: :destroy
   has_many :friends, through: :friend_invitations
   has_many :messages, dependent: :destroy
   mount_uploader :picture, PhotoUploader
   pg_search_scope :search_by_name_and_email,
-                  against: %i[first_name last_name email],
-                  using: {
-                    tsearch: { prefix: true }
-                  }
+    against: %i[first_name last_name email],
+  using: {
+    tsearch: { prefix: true }
+  }
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
