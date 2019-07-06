@@ -10,7 +10,10 @@ class User < ApplicationRecord
   has_many :pseudo_matches
   has_many :referrals, dependent: :destroy
   has_many :friend_invitations, dependent: :destroy
-  has_many :friends, through: :friend_invitations
+  has_many :friendship_ones, foreign_key: 'friend_two_id', class_name: 'Friendship'
+  has_many :friend_ones, through: :friendship_ones, source: :friend_two
+  has_many :friendship_twos, foreign_key: 'friend_one_id', class_name: 'Friendship'
+  has_many :friend_twos, through: :friendship_twos, source: :friend_one
   has_many :messages, dependent: :destroy
   mount_uploader :picture, PhotoUploader
   pg_search_scope :search_by_name_and_email,
@@ -46,6 +49,10 @@ class User < ApplicationRecord
 
   def first_name_cap
     first_name.capitalize
+  end
+
+  def friends
+    friend_ones + friend_twos
   end
 
   def gender_search

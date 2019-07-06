@@ -3,10 +3,10 @@ class FriendInvitationsController < ApplicationController
   def new
     @invitation = FriendInvitation.new
     @search = params[:query]
-    @friends = @user.friends + FriendInvitation.where(accepted: true, friend: @user).map(&:user)
+    @friends = @user.friends
     @pending_invitations = FriendInvitation.where(accepted: nil, user: @user)
-    @removed_user = @friends + @pending_invitations
-    @searched_user = User.search_by_name_and_email(@search) if @search.present?
+    @users_to_remove = @friends + @pending_invitations + [@user]
+    @search_results = User.search_by_name_and_email(@search) if @search.present?
     @referral = Referral.new
   end
 
@@ -26,7 +26,10 @@ class FriendInvitationsController < ApplicationController
   def update
     @invitation = FriendInvitation.find(params[:id])
     @invitation.update(invitation_params)
-    UserMailer.friend_acceptation(@invitation.user, current_user).deliver_now unless @invitation.accepted == false
+    if @invitation.accepted
+      UserMailer.friend_acceptation(@invitation.user, current_user).deliver_now
+      Friendship.create(friend_one: @invitation.user, friend_two: @invitation.friend)
+    end
     redirect_to user_path(current_user)
   end
 

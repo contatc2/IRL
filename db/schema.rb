@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_01_081355) do
+ActiveRecord::Schema.define(version: 2019_07_06_200735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 2019_05_01_081355) do
     t.datetime "updated_at", null: false
     t.index ["friend_id"], name: "index_friend_invitations_on_friend_id"
     t.index ["user_id"], name: "index_friend_invitations_on_user_id"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer "friend_one_id"
+    t.integer "friend_two_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friend_one_id", "friend_two_id"], name: "index_friendships_on_friend_one_id_and_friend_two_id", unique: true
+    t.index ["friend_one_id"], name: "index_friendships_on_friend_one_id"
+    t.index ["friend_two_id"], name: "index_friendships_on_friend_two_id"
   end
 
   create_table "matches", force: :cascade do |t|
