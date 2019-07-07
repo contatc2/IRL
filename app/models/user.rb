@@ -6,15 +6,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
-  has_many :matches
-  has_many :pseudo_matches
-  has_many :referrals, dependent: :destroy
-  has_many :friend_invitations, dependent: :destroy
-  has_many :friendship_ones, foreign_key: 'friend_two_id', class_name: 'Friendship'
-  has_many :friend_ones, through: :friendship_ones, source: :friend_two
-  has_many :friendship_twos, foreign_key: 'friend_one_id', class_name: 'Friendship'
-  has_many :friend_twos, through: :friendship_twos, source: :friend_one
-  has_many :messages, dependent: :destroy
+  has_many :matches, foreign_key: 'helper_id', dependent: :delete_all
+  has_many :pseudo_matches, foreign_key: 'helper_id', dependent: :delete_all
+  has_many :referrals, dependent: :delete_all
+  has_many :friend_invitations, dependent: :delete_all
+  has_many :friendships, foreign_key: 'friend_one_id'
+  has_many :friend_twos, through: :friendships, source: :friend_two
+  has_many :reverse_friendships, class_name: 'Friendship', foreign_key: 'friend_two_id'
+  has_many :friend_ones, through: :reverse_friendships, source: :friend_one
+  has_many :messages, dependent: :delete_all
   mount_uploader :picture, PhotoUploader
   pg_search_scope :search_by_name_and_email,
     against: %i[first_name last_name email],

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_06_200735) do
+ActiveRecord::Schema.define(version: 2019_07_07_162050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,13 +26,14 @@ ActiveRecord::Schema.define(version: 2019_07_06_200735) do
   end
 
   create_table "friendships", force: :cascade do |t|
-    t.integer "friend_one_id"
-    t.integer "friend_two_id"
+    t.bigint "friend_one_id"
+    t.bigint "friend_two_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["friend_one_id", "friend_two_id"], name: "index_friendships_on_friend_one_id_and_friend_two_id", unique: true
-    t.index ["friend_one_id"], name: "index_friendships_on_friend_one_id"
-    t.index ["friend_two_id"], name: "index_friendships_on_friend_two_id"
+    t.bigint "friend_invitation_id"
+    t.index ["friend_invitation_id"], name: "index_friendships_on_friend_invitation_id"
+    t.index ["friend_one_id"], name: "index_friendships_on_friend_one_id", unique: true
+    t.index ["friend_two_id"], name: "index_friendships_on_friend_two_id", unique: true
   end
 
   create_table "matches", force: :cascade do |t|
@@ -122,6 +123,9 @@ ActiveRecord::Schema.define(version: 2019_07_06_200735) do
 
   add_foreign_key "friend_invitations", "users"
   add_foreign_key "friend_invitations", "users", column: "friend_id"
+  add_foreign_key "friendships", "friend_invitations"
+  add_foreign_key "friendships", "users", column: "friend_one_id"
+  add_foreign_key "friendships", "users", column: "friend_two_id"
   add_foreign_key "matches", "users", column: "helper_id"
   add_foreign_key "matches", "users", column: "match_one_id"
   add_foreign_key "matches", "users", column: "match_two_id"

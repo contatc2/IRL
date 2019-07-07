@@ -28,7 +28,7 @@ class FriendInvitationsController < ApplicationController
     @invitation.update(invitation_params)
     if @invitation.accepted
       UserMailer.friend_acceptation(@invitation.user, current_user).deliver_now
-      Friendship.create(friend_one: @invitation.user, friend_two: @invitation.friend)
+      @invitation.friendships.create(friend_one: @invitation.user, friend_two: @invitation.friend)
     end
     redirect_to user_path(current_user)
   end
