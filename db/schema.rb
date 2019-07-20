@@ -32,8 +32,9 @@ ActiveRecord::Schema.define(version: 2019_07_07_162050) do
     t.datetime "updated_at", null: false
     t.bigint "friend_invitation_id"
     t.index ["friend_invitation_id"], name: "index_friendships_on_friend_invitation_id"
-    t.index ["friend_one_id"], name: "index_friendships_on_friend_one_id", unique: true
-    t.index ["friend_two_id"], name: "index_friendships_on_friend_two_id", unique: true
+    t.index ["friend_one_id", "friend_two_id"], name: "index_friendships_on_friend_one_id_and_friend_two_id", unique: true
+    t.index ["friend_one_id"], name: "index_friendships_on_friend_one_id"
+    t.index ["friend_two_id"], name: "index_friendships_on_friend_two_id"
   end
 
   create_table "matches", force: :cascade do |t|
