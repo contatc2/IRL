@@ -27,8 +27,9 @@ class FriendInvitationsController < ApplicationController
     @invitation = FriendInvitation.find(params[:id])
     @invitation.update(invitation_params)
     if @invitation.accepted
+      @friendship = Friendship.create(friend_one: @invitation.user, friend_two: @invitation.friend)
+      @friendship.friend_invitation = @invitation
       UserMailer.friend_acceptation(@invitation.user, current_user).deliver_now
-      @invitation.friendships.create(friend_one: @invitation.user, friend_two: @invitation.friend)
     end
     redirect_to user_path(current_user)
   end
