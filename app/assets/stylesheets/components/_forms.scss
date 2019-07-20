@@ -28,7 +28,7 @@
 .gender-search{
   flex: 0 0 40%;
   color: black;
-  padding: ($spacer * 1) ($spacer * 2);
+  padding: ($spacer * 0.5) ($spacer * 1);
   text-align: center;
   border-radius: 4px;
   background: #CEF9E2;
@@ -91,7 +91,7 @@
 .available-option{
   width: 100%;
   color: black;
-  padding: ($spacer * 1) ($spacer * 2);
+  padding: ($spacer * 0.5) ($spacer * 1);
   text-align: center;
   border-radius: 4px;
   background: white;
