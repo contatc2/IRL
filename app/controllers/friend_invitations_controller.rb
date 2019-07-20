@@ -3,9 +3,12 @@ class FriendInvitationsController < ApplicationController
   def new
     @invitation = FriendInvitation.new
     @search = params[:query]
-    @friends = @user.friends
-    @pending_invitations = FriendInvitation.where(accepted: nil, user: @user)
-    @users_to_remove = @friends + @pending_invitations + [@user]
+    friends = @user.friends
+    friends_invited = FriendInvitation.where(accepted: nil, user: @user).map(&:friend)
+    have_invited_me = FriendInvitation.where(accepted: nil, friend: @user).map(&:user)
+    pending_invitations = friends_invited + have_invited_me
+
+    @users_to_remove = friends + pending_invitations + [@user]
     @search_results = User.search_by_name_and_email(@search) if @search.present?
     @referral = Referral.new
   end
@@ -27,8 +30,9 @@ class FriendInvitationsController < ApplicationController
     @invitation = FriendInvitation.find(params[:id])
     @invitation.update(invitation_params)
     if @invitation.accepted
-      @friendship = Friendship.create(friend_one: @invitation.user, friend_two: @invitation.friend)
+      @friendship = Friendship.new(friend_one: @invitation.user, friend_two: @invitation.friend)
       @friendship.friend_invitation = @invitation
+      @friendship.save!
       UserMailer.friend_acceptation(@invitation.user, current_user).deliver_now
     end
     redirect_to user_path(current_user)
