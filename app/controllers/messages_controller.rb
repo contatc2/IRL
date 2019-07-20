@@ -1,6 +1,5 @@
 class MessagesController < ApplicationController
   def create
-    # binding.pry
     @message = Message.new(message_params)
     @match = Match.find(params[:match_id])
     @message.match = @match

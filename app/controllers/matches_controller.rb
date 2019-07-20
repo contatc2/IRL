@@ -10,10 +10,10 @@ class MatchesController < ApplicationController
     @match = Match.new
     @pseudo_match = PseudoMatch.new
     @match_one = User.find(params[:match_one])
-    single_friends_invited = current_user.friends.where(available: true)
-    single_friends_other = FriendInvitation.where(accepted: true, friend: current_user)
-                                           .map(&:user)&.select(&:available)
-    @friends = single_friends_invited + single_friends_other
+    single_friends = current_user.friends.select(&:available)
+    single_friends_invited = FriendInvitation.where(accepted: nil, user: current_user)
+    .map(&:friend)&.select(&:available)
+    @friends = single_friends_invited + single_friends
     @referral = Referral.new
   end
 
