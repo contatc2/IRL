@@ -9,14 +9,21 @@
     </div>
   </div>
 </div>
+<!-- list of invitations received -->
+<% unless @pending_friend_invitations.empty? %>
+  <%= render 'invitations' %>
+<% end %>
+<!-- list of friends -->
 <div class="p-3 text-center">
   <h4>Friends you are helping find Love</h4>
   <%= render 'my_single_friends' %>
   <%= render 'my_pending_invitations' %>
 </div>
 <!-- link to invite more friends -->
-<div class="text-center">
-  <%= link_to "help other friends by inviting them", new_friend_invitation_path, class:"main_action_button mt-3"  %>
+<div class="text-right">
+  <%= link_to new_friend_invitation_path, style:"font-size: 2em", class:"text-decoration-none mt-3" do %>
+    Help more friends <i class="fas fa-plus-square"></i>
+  <% end %>
 </div>
 <div class="p-2 text-center">
   <% if @helper_matches.empty? || @helper_pseudo_matches.empty? %>

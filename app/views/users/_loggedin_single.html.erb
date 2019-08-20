@@ -20,14 +20,20 @@
         </div>
       </div>
     </div>
+    <!-- list of invitations received -->
+    <% unless @pending_friend_invitations.empty? %>
+      <%= render 'invitations' %>
+    <% end %>
     <!-- list of friends -->
     <div class="p-3 text-center">
       <h4>Friends helping me find Love</h4>
       <%= render 'myfriends' %>
     </div>
     <!-- link to invite more friends -->
-    <div class="text-center">
-      <%= link_to "broaden your opportunities by inviting more friends to help you", new_friend_invitation_path, class:"main_action_button mt-3"  %>
+    <div class="text-right">
+      <%= link_to new_friend_invitation_path, style:"font-size: 2em", class:"text-decoration-none mt-3" do %>
+        Invite more friends <i class="fas fa-plus-square"></i>
+      <% end %>
     </div>
     <!-- if user is available show matches profiles -->
     <div class="p-3 text-center">

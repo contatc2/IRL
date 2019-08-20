@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @helper_matches = Match.where(helper: @user)
     @helper_pseudo_matches = PseudoMatch.where(helper: @user, converted: nil)
 
-    redirect_to new_friend_invitation_path if friends.empty? && @pending_invitations.empty? && @invitations.empty?
+    redirect_to new_friend_invitation_path if @friends.empty? && @pending_user_invitations.empty? && @pending_friend_invitations.empty?
   end
 
   def edit
