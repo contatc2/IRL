@@ -55,6 +55,10 @@ class User < ApplicationRecord
     friend_ones + friend_twos
   end
 
+  def search
+    adjective_1.present? ? "#{gender_search}, #{adjective_1}, #{adjective_2} & #{adjective_3}" : gender_search
+  end
+
   def gender_search
     if male_search && female_search
       'a man or a woman'
