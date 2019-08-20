@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><%= meta_title %></title>
     <meta name="description" content="<%= meta_description %>">
-
     <!-- Facebook Open Graph data -->
     <meta property="og:title" content="<%= meta_title %>" />
     <meta property="og:type" content="website" />
@@ -13,7 +12,6 @@
     <meta property="og:image" content="<%= meta_image %>" />
     <meta property="og:description" content="<%= meta_description %>" />
     <meta property="og:site_name" content="<%= meta_title %>" />
-
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
@@ -21,17 +19,13 @@
     <meta name="twitter:description" content="<%= meta_description %>">
     <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
     <meta name="twitter:image:src" content="<%= meta_image %>">
-
     <%= favicon_link_tag 'favicon.ico' %>
-
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
-
   <body>
-
     <script>
       window.fbAsyncInit = function() {
         FB.init({
@@ -40,11 +34,11 @@
           xfbml      : true,
           version    : 'v3.2'
         });
-
+      
         FB.AppEvents.logPageView();
-
+      
       };
-
+      
       (function(d, s, id){
          var js, fjs = d.getElementsByTagName(s)[0];
          if (d.getElementById(id)) {return;}
@@ -53,19 +47,16 @@
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
     </script>
-
-
-    <div class="container-fluid min-height">
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
+    <% unless params[:controller] == "pages" && params[:action] == "home" %>
+      <div class="container-fluid min-height">
+      <% end %>
       <%= yield %>
     </div>
-
     <%= render 'shared/footer' %>
-
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <%= yield :after_js %>
-
   </body>
 </html>
