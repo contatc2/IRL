@@ -1,0 +1,36 @@
+<div class="show-intro">
+  <div class="show-intro-left">
+    <h4>Hi
+      <%= @user.first_name_cap %>,</h4>
+  </div>
+  <div class="show-intro-right">
+    <div>
+      <%= link_to 'edit my profile', edit_user_registration_path, class:"low_key_button mx-2 mb-2" %>
+    </div>
+  </div>
+</div>
+<!-- list of invitations received -->
+<% unless @pending_friend_invitations.empty? %>
+  <%= render 'invitations' %>
+<% end %>
+<!-- list of friends -->
+<div class="p-3 text-center">
+  <h4>Friends you are helping find Love</h4>
+  <%= render 'my_single_friends' %>
+  <%= render 'my_pending_invitations' %>
+</div>
+<!-- link to invite more friends -->
+<div class="text-right">
+  <%= link_to new_friend_invitation_path, style:"font-size: 2em", class:"text-decoration-none mt-3" do %>
+    Help more friends <i class="fas fa-plus-square"></i>
+  <% end %>
+</div>
+<div class="p-2 text-center">
+  <% if @helper_matches.empty? || @helper_pseudo_matches.empty? %>
+    <p>Create your first match today! </p>
+  <% else %>
+    <h4>My submitted Matches</h4>
+    <%= render 'helper_matches', matches: @helper_matches %>
+    <%= render 'helper_pseudo_matches', matches: @helper_pseudo_matches %>
+  <% end %>
+</div>

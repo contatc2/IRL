@@ -1,0 +1,9 @@
+<div class="cards mt-3">
+  <!-- pending friends -->
+  <% @pending_user_invitations.each do |invitation| %>
+    <% myfriend = invitation.friend %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= myfriend.profile_image_path %>')">
+      <%= myfriend.full_name %> <i class="fas fa-frog"></i>
+    </div>
+  <% end %>
+</div>

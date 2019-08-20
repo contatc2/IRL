@@ -1,75 +1,9 @@
 <div class="row">
-    <div class="col-xs-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-        <div class="show-intro">
-            <div class="show-intro-left">
-                <%#= cl_image_tag(@user.profile_image_path, gravity:"faces", crop:"fill", class:"profile-picture") %>
-                <h4>Hi
-                    <%= @user.first_name_cap %>,</h4>
-                <!-- if user is available show "search button" or edit search -->
-                <% if @user.available %>
-                <% if @user.adjective_1.present? %>
-                <p>You're looking for
-                    <%= @user.gender_search %> who is
-                    <%= @user.adjective_1 %>,
-                    <%= @user.adjective_2 %> and
-                    <%= @user.adjective_3 %>.</p>
-                <% end %>
-                <% end %>
-            </div>
-            <div class="show-intro-right">
-                <% if @user.available %>
-                <div>
-                    <% if @user.adjective_1.present? %>
-                    <%= link_to "edit my search", edit_user_path(@user), class:"low_key_button mx-2 mb-2"  %>
-                    <% else %>
-                    <%= link_to "my search", edit_user_path(@user), class:"main_action_button mx-2 mb-2"  %>
-                    <% end %>
-                </div>
-                <% end %>
-                <div>
-                    <%= link_to 'edit my profile', edit_user_registration_path, class:"low_key_button mx-2 mb-2" %>
-                </div>
-            </div>
-        </div>
-        <!-- friends invitations -->
-        <% unless @invitations.empty? %>
-        <%= render 'invitations' %>
-        <% end %>
-        <!-- list of friends -->
-        <div class="p-3 text-center">
-            <%= render 'myfriends' %>
-        </div>
-        <!-- link to invite more friends -->
-        <div class="text-center">
-            <% if @user.available %>
-            <%= link_to "broaden your opportunities by inviting more friends to help you", new_friend_invitation_path, class:"main_action_button mt-3"  %>
-            <% else %>
-            <%= link_to "help other friends by inviting them", new_friend_invitation_path, class:"main_action_button mt-3"  %>
-            <% end %>
-        </div>
-        <!-- if user is available show matches profiles -->
-        <% if @user.available %>
-        <div class="p-3 text-center">
-            <% if @matches.empty? %>
-            <p>You don't have any matches yet, nudge your friends.</p>
-            <% else %>
-            <h4>My Matches</h4>
-            <%= render 'mymatches', matches: @matches  %>
-            <% end %>
-            <% unless @pseudo_matches.empty? %>
-            <%= render 'pseudo_matches'  %>
-            <% end %>
-        </div>
-        <% end %>
-        <!-- show submitted matches with both profiles and status or nudge to create matches -->
-        <div class="p-2 text-center">
-            <% if @helper_matches.empty? || @helper_pseudo_matches.empty? %>
-            <p>Create your first match today! </p>
-            <% else %>
-            <h4>My submitted Matches</h4>
-            <%= render 'helper_matches', matches: @helper_matches %>
-            <%= render 'helper_pseudo_matches', matches: @helper_pseudo_matches %>
-            <% end %>
-        </div>
-    </div>
+  <div class="col-xs-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+    <% if @user.available %>
+      <%= render 'loggedin_single'  %>
+    <% else %>
+      <%= render 'loggedin_helper'  %>
+    <% end %>
+  </div>
 </div>
