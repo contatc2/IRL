@@ -1,26 +1,5 @@
-<% if @user.available %>
-  <h4>Friends helping me find Love</h4>
-<% else %>
-  <h4>Friends you are helping find Love</h4>
-<% end %>
 <div class="cards mt-3">
-  <% @single_friends.each do |myfriend| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= myfriend.profile_image_path %>')">
-      <%= link_to user_path(myfriend), class:"text-decoration-none text-white" do %>
-        <%= myfriend.full_name %>
-        <small>
-          <%= myfriend.status %></small><br>
-        <small><i class="fas fa-search"></i> :
-          <%= myfriend.search %></small>
-      <% end %>
-      <%= link_to new_match_path(@match, match_one: myfriend), style:"font-size: 0.75em", class:"text-decoration-none text-white mt-3" do %>
-        <i class="fas fa-plus-square"></i> Add match
-      <% end %>
-    </div>
-  <% end %>
-</div>
-<div class="cards mt-3">
-  <% @helpers.each do |myfriend| %>
+  <% @friends.each do |myfriend| %>
     <%= link_to user_path(myfriend), class:"text-decoration-none text-white" do %>
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= myfriend.profile_image_path %>')">
         <%= myfriend.full_name %>
@@ -28,14 +7,5 @@
           <%= myfriend.status %></small>
       </div>
     <% end %>
-  <% end %>
-</div>
-<div class="cards mt-3">
-  <!-- pending friends -->
-  <% @pending_invitations.each do |invitation| %>
-    <% myfriend = invitation.friend %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= myfriend.profile_image_path %>')">
-      <%= myfriend.full_name %> <i class="fas fa-frog"></i>
-    </div>
   <% end %>
 </div>
