@@ -50,6 +50,7 @@
       <% end %>
       <%@chat_room = ChatRoom.find_by(user_one: @user, user_two: current_user) || ChatRoom.find_by(user_two: @user, user_one: current_user) %>
       <%= render 'chat' %>
+      <%= link_to 'back to my profile', user_path(current_user)  %>
     </div>
   </div>
 </div>

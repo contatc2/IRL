@@ -54,8 +54,8 @@
 
 
 .low_key_button{
-  color: #4A4A4A;
-  border: 1px solid #4A4A4A;
+  color: $light-gray;
+  border: 1px solid $light-gray;
   margin: auto;
   padding: 8px 24px;
   display: inline-block;
@@ -63,12 +63,12 @@
   font-weight: lighter;
   opacity: 0.6;
   transition: opacity 0.3s ease;
-}
-
-.low_key_button:hover{
+  &:hover{
   opacity: 1;
   text-decoration: none;
 }
+}
+
 
 .full_width_button{
   color: white;

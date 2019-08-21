@@ -6,6 +6,27 @@
   margin-top: 8px;
 }
 
+.tabs {
+  padding: 8px;
+  display: flex;
+  width: 150px;
+  justify-content: space-between;
+  a {
+    color: $light-gray;
+    opacity: 0.6;
+    &:hover {
+      text-decoration: none;
+      opacity: 1;
+      box-shadow: inset 0px -11px 1px -10px $light-gray;
+    }
+  }
+}
+a.active {
+  font-weight: bold;
+  box-shadow: inset 0px -12px 1px -10px $light-gray;
+}
+
+
 .show-intro-left {
   flex-grow: 1;
 }

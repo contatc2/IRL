@@ -56,12 +56,14 @@ input.form-control {
 .chat-header {
   background-color: white;
   color: $light-blue;
-  border-bottom: 1px solid $light-gray;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
   font-size: 16px;
   padding: 10px 20px;
   margin-top: 10px;
   h4 {
+    font-weight: bold;
     margin: 0;
+/*    text-shadow: 1px 1px 3px rgb(102, 205, 170)*/
   }
 }
 

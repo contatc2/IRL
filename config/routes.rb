@@ -15,7 +15,10 @@ Rails.application.routes.draw do
   resources :users, only: %i[index edit show update] do
     collection do
       get 'single_or_not'
-      get 'availability'
+    end
+    member do
+      get 'show_helper'
+      get 'show_single'
     end
   end
 

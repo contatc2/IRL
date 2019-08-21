@@ -1,0 +1,8 @@
+container = document.getElementById('loggedin_container')
+tabHelper = document.getElementById('show_helper')
+tabSingle = document.getElementById('show_single')
+
+
+container.innerHTML = "<%= j render 'loggedin_helper'%>"
+tabHelper.classList.toggle("active")
+tabSingle.classList.toggle("active")

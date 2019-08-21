@@ -25,6 +25,7 @@ gem 'pg_search'
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem "letter_opener"
+  gem 'htmlbeautifier'
 end
 
 group :development, :test do

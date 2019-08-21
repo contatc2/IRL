@@ -1,7 +1,13 @@
 <div class="row">
   <div class="col-xs-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
     <% if @user.available %>
-      <%= render 'loggedin_single'  %>
+      <div class="tabs">
+        <%= link_to 'single', show_single_user_path(@user), id: 'show_single', class: 'active',  remote: true %>
+        <%= link_to 'helper', show_helper_user_path(@user), id: 'show_helper', remote: true %>
+      </div>
+      <div id="loggedin_container">
+        <%= render 'loggedin_single'  %>
+      </div>
     <% else %>
       <%= render 'loggedin_helper'  %>
     <% end %>

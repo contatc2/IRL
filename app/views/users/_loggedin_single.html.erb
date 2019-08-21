@@ -1,51 +1,47 @@
-<div class="row">
-  <div class="col-xs-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-    <div class="show-intro">
-      <div class="show-intro-left">
-        <h4>Hi
-          <%= @user.first_name_cap %>,</h4>
-        <p>You're looking for
-          <%= @user.search %>.</p>
-      </div>
-      <div class="show-intro-right">
-        <div>
-          <% if @user.adjective_1.present? %>
-            <%= link_to "edit my search", edit_user_path(@user), class:"low_key_button mx-2 mb-2"  %>
-          <% else %>
-            <%= link_to "my search", edit_user_path(@user), class:"main_action_button mx-2 mb-2"  %>
-          <% end %>
-        </div>
-        <div>
-          <%= link_to 'edit my profile', edit_user_registration_path, class:"low_key_button mx-2 mb-2" %>
-        </div>
-      </div>
-    </div>
-    <!-- list of invitations received -->
-    <% unless @pending_friend_invitations.empty? %>
-      <%= render 'invitations' %>
-    <% end %>
-    <!-- list of friends -->
-    <div class="p-3 text-center">
-      <h4>Friends helping me find Love</h4>
-      <%= render 'myfriends' %>
-    </div>
-    <!-- link to invite more friends -->
-    <div class="text-right">
-      <%= link_to new_friend_invitation_path, style:"font-size: 2em", class:"text-decoration-none mt-3" do %>
-        Invite more friends to help <i class="fas fa-plus-square"></i>
-      <% end %>
-    </div>
-    <!-- if user is available show matches profiles -->
-    <div class="p-3 text-center">
-      <% if @matches.empty? %>
-        <p>You don't have any matches yet, nudge your friends.</p>
+<div class="show-intro">
+  <div class="show-intro-left">
+    <h4>Hi
+      <%= @user.first_name_cap %>,</h4>
+    <p>You're looking for
+      <%= @user.search %>.</p>
+  </div>
+  <div class="show-intro-right">
+    <div>
+      <% if @user.adjective_1.present? %>
+        <%= link_to "edit my search", edit_user_path(@user), class:"low_key_button mx-2 mb-2"  %>
       <% else %>
-        <h4>My Matches</h4>
-        <%= render 'mymatches', matches: @matches  %>
+        <%= link_to "my search", edit_user_path(@user), class:"main_action_button mx-2 mb-2"  %>
       <% end %>
-      <% unless @pseudo_matches.empty? %>
-        <%= render 'pseudo_matches'  %>
-      <% end %>
+    </div>
+    <div>
+      <%= link_to 'edit my profile', edit_user_registration_path, class:"low_key_button mx-2 mb-2" %>
     </div>
   </div>
+</div>
+<!-- list of invitations received -->
+<% unless @pending_friend_invitations.empty? %>
+  <%= render 'invitations' %>
+<% end %>
+<!-- list of friends -->
+<div class="p-3 text-center">
+  <h4>Friends helping me find Love</h4>
+  <%= render 'myfriends' %>
+</div>
+<!-- link to invite more friends -->
+<div class="text-right">
+  <%= link_to new_friend_invitation_path, style:"font-size: 2em", class:"text-decoration-none mt-3" do %>
+    Invite more friends to help <i class="fas fa-plus-square"></i>
+  <% end %>
+</div>
+<!-- if user is available show matches profiles -->
+<div class="p-3 text-center">
+  <% if @matches.empty? %>
+    <p>You don't have any matches yet, nudge your friends.</p>
+  <% else %>
+    <h4>My Matches</h4>
+    <%= render 'mymatches', matches: @matches  %>
+  <% end %>
+  <% unless @pseudo_matches.empty? %>
+    <%= render 'pseudo_matches'  %>
+  <% end %>
 </div>
