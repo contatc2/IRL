@@ -33,6 +33,7 @@ class FriendInvitationsController < ApplicationController
       @friendship = Friendship.new(friend_one: @invitation.user, friend_two: @invitation.friend)
       @friendship.friend_invitation = @invitation
       @friendship.save!
+      ChatRoom.create!(user_one: @friendship.friend_one, user_two: @friendship.friend_two)
       UserMailer.friend_acceptation(@invitation.user, current_user).deliver_now
     end
     redirect_to user_path(current_user)

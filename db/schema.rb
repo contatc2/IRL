@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_07_162050) do
+ActiveRecord::Schema.define(version: 2019_08_20_175746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chat_rooms", force: :cascade do |t|
+    t.bigint "user_one_id"
+    t.bigint "user_two_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_one_id", "user_two_id"], name: "index_chat_rooms_on_user_one_id_and_user_two_id", unique: true
+    t.index ["user_one_id"], name: "index_chat_rooms_on_user_one_id"
+    t.index ["user_two_id"], name: "index_chat_rooms_on_user_two_id"
+  end
 
   create_table "friend_invitations", force: :cascade do |t|
     t.boolean "accepted"
@@ -56,8 +66,8 @@ ActiveRecord::Schema.define(version: 2019_07_07_162050) do
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "match_id"
-    t.index ["match_id"], name: "index_messages_on_match_id"
+    t.bigint "chat_room_id"
+    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -122,6 +132,8 @@ ActiveRecord::Schema.define(version: 2019_07_07_162050) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "chat_rooms", "users", column: "user_one_id"
+  add_foreign_key "chat_rooms", "users", column: "user_two_id"
   add_foreign_key "friend_invitations", "users"
   add_foreign_key "friend_invitations", "users", column: "friend_id"
   add_foreign_key "friendships", "friend_invitations"
@@ -130,7 +142,7 @@ ActiveRecord::Schema.define(version: 2019_07_07_162050) do
   add_foreign_key "matches", "users", column: "helper_id"
   add_foreign_key "matches", "users", column: "match_one_id"
   add_foreign_key "matches", "users", column: "match_two_id"
-  add_foreign_key "messages", "matches"
+  add_foreign_key "messages", "chat_rooms"
   add_foreign_key "messages", "users"
   add_foreign_key "pseudo_matches", "users", column: "helper_id"
   add_foreign_key "pseudo_matches", "users", column: "match_one_id"

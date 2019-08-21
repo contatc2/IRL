@@ -24,11 +24,13 @@ Rails.application.routes.draw do
       post 'share'
     end
   end
+
   resources :friend_invitations, only: %i[new create update]
 
+  resources :matches, only: %i[new create update show]
 
-  resources :matches, only: %i[new create update show] do
-    get 'messages', to: 'messages#create'
+  resources :chat_rooms, only: :show do
+    resources :messages, only: :create
   end
 
   resources :pseudo_matches, only: %i[create update show]

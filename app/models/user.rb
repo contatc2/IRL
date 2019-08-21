@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :reverse_friendships, class_name: 'Friendship', foreign_key: 'friend_two_id'
   has_many :friend_ones, through: :reverse_friendships, source: :friend_one
   has_many :messages, dependent: :delete_all
+  has_many :chat_rooms_one, foreign_key: 'user_one_id', dependent: :delete_all
+  has_many :chat_rooms_two, foreign_key: 'user_two_id', dependent: :delete_all
   mount_uploader :picture, PhotoUploader
   pg_search_scope :search_by_name_and_email,
     against: %i[first_name last_name email],
