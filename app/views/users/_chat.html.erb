@@ -1,16 +1,18 @@
-<div class="chat-header">
-  <h4>Chat</h4>
-</div>
-<div class="messages">
-  <% @chat_room.messages.each do |message| %>
-    <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
-  <% end %>
-</div>
-<div id="create-message">
-  <%= simple_form_for [ @chat_room, @message ], html: {class: 'form-inline'}, method: :get, remote: true do |f| %>
-    <%= f.input :content, label: false %>
-    <%= f.submit 'send', class: 'second_action_button' %>
-  <% end %>
+<div class="chat-container">
+  <div class="chat-header">
+    <h4>Chat</h4>
+  </div>
+  <div class="messages">
+    <% @chat_room.messages.each do |message| %>
+      <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
+    <% end %>
+  </div>
+  <div id="create-message">
+    <%= simple_form_for [ @chat_room, @message ], html: {class: 'form-inline chat-input'}, remote: true do |f| %>
+      <%= f.input :content, label: false, class: 'chat-input' %>
+      <%= f.submit 'send', class: 'send_button' %>
+    <% end %>
+  </div>
 </div>
 <% content_for :after_js do %>
   <script>

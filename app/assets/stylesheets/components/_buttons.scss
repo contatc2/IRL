@@ -28,15 +28,30 @@
   background: #CEF9E2;
   transition: background 0.3s ease;
   border: 1px solid #0F60C4;
-}
-
-.second_action_button:hover{
+  &:hover{
   padding: 7px 23px;
   background: #CEF9E2;
   color: black;
   text-decoration: none;
   border: 2px solid #0F60C4;
+  }
 }
+
+.send_button{
+  color: $light-blue;
+  padding: 8px 24px;
+  font-weight: bold;
+  display: inline-block;
+  background: transparent;
+  transition: background 0.3s ease;
+  border: none;
+  &:hover{
+  color: #CEF9E2;
+  text-decoration: none;
+  border: none;
+  }
+}
+
 
 .low_key_button{
   color: #4A4A4A;

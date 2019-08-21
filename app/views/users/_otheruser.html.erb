@@ -1,81 +1,55 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @user.profile_image_path %>')">
-    <div class="container">
-        <h1>
-            <%= @user.full_name %>
-        </h1>
-        <p>
-            <%= @user.status %>
-        </p>
-        <% if @user.available %>
-        <% if @user.adjective_1.present? %>
+  <div class="container">
+    <h1>
+      <%= @user.full_name %>
+    </h1>
+    <p>
+      <%= @user.status %>
+    </p>
+    <% if @user.available %>
+      <% if @user.adjective_1.present? %>
         <div class="adjectives">
-            Looking for
-            <%= @user.gender_search %> who is
-            <%= @user.adjective_1 %>,
-            <%= @user.adjective_2 %> and
-            <%= @user.adjective_3 %>.
+          Looking for
+          <%= @user.gender_search %> who is
+          <%= @user.adjective_1 %>,
+          <%= @user.adjective_2 %> and
+          <%= @user.adjective_3 %>.
         </div>
-        <% end %>
-        <%= link_to new_match_path(@match, match_one: @user), style:"font-size: 1.5em" do %>
+      <% end %>
+      <%= link_to new_match_path(@match, match_one: @user), style:"font-size: 1.5em" do %>
         <i class="fas fa-plus-square"></i> Add match
-        <% end %>
-        <% end %>
-    </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-            <!-- if user available, show search criteria and matches -->
-            <% if @user.available %>
-            <div class="p-2 my-3">
-                <% unless @matches.empty? %>
-                <h2>Current Matches</h2>
-                <%= render 'mymatches', matches: @matches  %>
-                <% end %>
-                <% unless @pseudo_matches.empty? %>
-                <%= render 'pseudo_matches'  %>
-                <% end %>
-            </div>
-            <!-- show helper page for not available -->
-            <% else %>
-            <div class="p-2 my-3">
-                <% if @helper_matches.empty? || @helper_pseudo_matches.empty? %>
-                <p>No matches submitted yet... </p>
-                <% else %>
-                <h2>Submitted Matches</h2>
-                <%= render 'helper_matches' %>
-                <%= render 'helper_pseudo_matches', matches: @helper_pseudo_matches %>
-                <% end %>
-            </div>
-            <% end %>
-            <!-- show single friends -->
-            <% @single_friends.delete(current_user) %>
-            <% unless @single_friends.empty? %>
-            <h2>Single friends</h2>
-            <div class="cards my-3">
-                <% @single_friends.each do |myfriend| %>
-                <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= myfriend.profile_image_path %>')">
-                    <%= myfriend.full_name %>
-                    <small>
-                        <%= myfriend.status %></small><br>
-                    <small><i class="fas fa-search"></i> :
-                        <%= myfriend.gender_search %>,
-                        <%= myfriend.adjective_1 %>,
-                        <%= myfriend.adjective_2 %> &
-                        <%= myfriend.adjective_3 %></small>
-                    <% if current_user.friends.include?(myfriend) || myfriend.friends.include?(current_user) %>
-                    <%= link_to new_match_path(@match, match_one: myfriend), style:"font-size: 0.75em", class:"text-decoration-none text-white mt-3" do %>
-                    <i class="fas fa-plus-square"></i> Add match
-                    <% end %>
-                    <% else %>
-                    <%= link_to friend_invitations_path(friend_id: myfriend.id), method: :post, style:"font-size: 0.75em", class:"text-decoration-none text-white mt-3" do %>
-                    <i class="fas fa-plus-square"></i> Add friend
-                    <% end %>
-                    <% end %>
-                </div>
-                <% end %>
-            </div>
-            <% end %>
+  <div class="row">
+    <div class="col-xs-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <!-- if user available, show search criteria and matches -->
+      <% if @user.available %>
+        <div class="p-2 my-3">
+          <% unless @matches.empty? %>
+            <h2>Current Matches</h2>
+            <%= render 'mymatches', matches: @matches  %>
+          <% end %>
+          <% unless @pseudo_matches.empty? %>
+            <%= render 'pseudo_matches'  %>
+          <% end %>
         </div>
+        <!-- show helper page for not available should be restricted to user logged in-->
+      <% else %>
+        <div class="p-2 my-3">
+          <% if @helper_matches.empty? || @helper_pseudo_matches.empty? %>
+            <p>No matches submitted yet... </p>
+          <% else %>
+            <h2>Submitted Matches</h2>
+            <%= render 'helper_matches' %>
+            <%= render 'helper_pseudo_matches', matches: @helper_pseudo_matches %>
+          <% end %>
+        </div>
+      <% end %>
+      <%@chat_room = ChatRoom.find_by(user_one: @user, user_two: current_user) || ChatRoom.find_by(user_two: @user, user_one: current_user) %>
+      <%= render 'chat' %>
     </div>
+  </div>
 </div>
