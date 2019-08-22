@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
   def welcome_email(user)
-  @user = user
+    @user = user
     @url  = 'https://www.reallife.love'
     mail(to: @user.email, subject: "Welcome #{@user.first_name} you just signed up!", track_opens: 'true')
   end
@@ -27,7 +27,14 @@ class UserMailer < ApplicationMailer
     @helper = helper
     @intro = intro
     @url = 'https://www.reallife.love'
-    mail(to: @user.email, subject: "Hey #{@user.first_name} you have a new match!", track_opens: 'true')
+    mail(to: @user.email, subject: "Hey #{@user.first_name} you have a new match proposal!", track_opens: 'true')
+  end
+
+  def match_accepted(user, match)
+    @user = user
+    @match = match
+    @url = 'https://www.reallife.love'
+    mail(to: @user.email, subject: "Hey #{@user.first_name}, it's a match with #{@match.first_name}!", track_opens: 'true')
   end
 
   def match_invite(email, helper, intro)

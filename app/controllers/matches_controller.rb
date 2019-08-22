@@ -21,12 +21,16 @@ class MatchesController < ApplicationController
     @match.match_two = User.find(params[:match][:match_two_id])
     @match.save
     UserMailer.match_created(@match.match_one, @match.helper, @match.intro_message).deliver_now
-    UserMailer.match_created(@match.match_two, @match.helper, @match.intro_message).deliver_now
     redirect_to user_path(current_user)
   end
 
   def update
     @match.update(match_params)
+    params[:match_one_accepted] && UserMailer.match_created(@match.match_two, @match.helper, @match.intro_message).deliver_now
+    if params[:match_two_accepted]
+      UserMailer.match_accepted(@match.match_one, @match.match_two).deliver_now
+      UserMailer.match_accepted(@match.match_two, @match.match_one).deliver_now
+    end
     redirect_to user_path(current_user)
   end
 

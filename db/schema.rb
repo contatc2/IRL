@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_20_175746) do
+ActiveRecord::Schema.define(version: 2019_08_22_151211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,8 @@ ActiveRecord::Schema.define(version: 2019_08_20_175746) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "converted"
+    t.string "match_two_facebook"
+    t.string "match_two_linkedin"
     t.index ["helper_id"], name: "index_pseudo_matches_on_helper_id"
     t.index ["match_one_id"], name: "index_pseudo_matches_on_match_one_id"
   end
