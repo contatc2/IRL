@@ -1,33 +1,35 @@
 <div class="top_page">
-    <p class="mx-3">You are in control</p>
-    <div class="d-flex justify-content-between">
-        <div>
-            <%= image_tag "lock.svg", class: "mb-3", alt: "data protection", style: 'height:auto;width:100px;' %>
-        </div>
+  <p class="mx-3">You are in control</p>
+  <div class="d-flex justify-content-between">
+    <div>
+      <%= image_tag "lock.svg", class: "mb-3", alt: "data protection", style: 'height:auto;width:100px;' %>
     </div>
+  </div>
 </div>
-<div class="container">
+<div class="row justify-content-center">
+  <div class="col-xs-12 col-md-8 col-lg-6">
     <div class="catch-paragraph">
-        Data are shared with your friends only and each match approved individually by you.
+      Data are shared with your friends only and each match approved individually by you.
     </div>
     <!-- approve terms & conditions -->
     <div class="text-center">
-        <%= link_to user_facebook_omniauth_authorize_path, class: "loginBtn--facebook" do %>
+      <%= link_to user_facebook_omniauth_authorize_path, class: "loginBtn--facebook" do %>
         <i class="fab fa-facebook-f"></i> | Continue with Facebook
+      <% end %>
+      <div class="small-paragraph">
+        We don’t post on Facebook!<br>
+        By signing in, you agree to our
+        <%= link_to terms_and_conditions_path, class: "small-paragraph" do %>terms of service
+        <% end %> and
+        <%= link_to privacy_policy_path, class: "small-paragraph" do %>privacy policy
         <% end %>
-        <div class="small-paragraph">
-            We don’t post on Facebook!<br>
-            By signing in, you agree to our
-            <%= link_to terms_and_conditions_path, class: "small-paragraph" do %>terms of service
-            <% end %> and
-            <%= link_to privacy_policy_path, class: "small-paragraph" do %>privacy policy
-            <% end %>
-        </div>
+      </div>
     </div>
     <div class="catch-paragraph">
-        Speed-up onboarding with Facebook (picture, profile URL, location & email).
+      Speed-up onboarding with Facebook (picture, profile URL, location & email).
     </div>
     <div class="text-center">
-        <%= link_to "sign up with e-mail and password", new_user_registration_path, class: "low_key_button justify-content-center" %>
+      <%= link_to "sign up with e-mail and password", new_user_registration_path, class: "low_key_button justify-content-center" %>
     </div>
+  </div>
 </div>

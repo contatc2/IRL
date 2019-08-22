@@ -1,60 +1,62 @@
 <div class="top_page">
-    <p class="mx-3">Invite your friends</p>
-    <div class="d-flex justify-content-center">
-        <div>
-            <%= image_tag "invite.svg", class: "mb-3", alt: "data protection", style: 'height:auto;width:400px;' %>
-        </div>
+  <p class="mx-3">Invite your friends</p>
+  <div class="d-flex justify-content-center">
+    <div>
+      <%= image_tag "invite.svg", class: "mb-3", alt: "data protection", style: 'height:auto;width:400px;' %>
     </div>
+  </div>
 </div>
 <!-- search your friend in the existing app users -->
-<div class="container">
+<div class="row justify-content-center">
+  <div class="col-xs-8 col-sm-6">
     <div class="mt-3 text-center">
-        <% if @user.available %>
+      <% if @user.available %>
         <div class="catch-paragraph">
-            Nominate your helpers below:
+          Nominate your helpers below:
         </div>
-        <% else %>
+      <% else %>
         <div class="catch-paragraph">
-            Feels great to see your friends happy. Spread the love with RealLife.love. Invite your single friends and spread the magic!
+          Feels great to see your friends happy. Spread the love with RealLife.love. Invite your single friends and spread the magic!
         </div>
-        <% end %>
-        <div class="d-flex justify-content-start flex-wrap mx-5 mt-2">
-            <% unless @search_results.nil? %>
-            <% if @search_results == [] || @search_results == [@user] %>
+      <% end %>
+      <div class="d-flex justify-content-start flex-wrap mx-5 mt-2">
+        <% unless @search_results.nil? %>
+          <% if @search_results == [] || @search_results == [@user] %>
             <h4 class="mt-3 text-center"><span class="catch-paragraph" style="color:green">
-                    <%= @search %> is not on the platform yet. You can send an invite below!</span></h4>
-            <% elsif @search_results - @users_to_remove == [] %>
+                <%= @search %> is not on the platform yet. You can send an invite below!</span></h4>
+          <% elsif @search_results - @users_to_remove == [] %>
             <h4 class="mt-3 text-center"><span class="catch-paragraph" style="color:green">You have already invited or been invited by
-                    <%= @search %>. If you want to invite someone else, you can send an invite through e-mail below!</span></h4>
-            <% else %>
+                <%= @search %>. If you want to invite someone else, you can send an invite through e-mail below!</span></h4>
+          <% else %>
             <%= render 'searched_user', users: @search_results - @users_to_remove %>
-            <% end %>
-            <% end %>
-        </div>
-        <div class="form2">
-            <%= form_tag new_friend_invitation_path, method: :get do %>
-            <%= text_field_tag :query,
+          <% end %>
+        <% end %>
+      </div>
+      <div class="form2">
+        <%= form_tag new_friend_invitation_path, method: :get do %>
+          <%= text_field_tag :query,
           params[:query],
           class: "form-control",
           placeholder: "Enter your friend's name or e-mail" %>
-            <%= submit_tag 'Search friend', class: "main_action_button mt-3" %>
-            <% end %>
-        </div>
+          <%= submit_tag 'Search friend', class: "main_action_button mt-3" %>
+        <% end %>
+      </div>
     </div>
     <!-- Invite friend through e-mail -->
     <div class="mt-3 text-center">
-        <div class="form2">
-            <% if @user.available %>
-            <p class="mb-0">Your friend isn't on RealLife yet?</p>
-            <p>Send an invite via e-mail to ask for help:</p>
-            <% else %>
-            <p class="mb-0">Your friend is not on RealLife yet?</p>
-            <p>Send an invite to offer your help:</p>
-            <% end %>
-            <%= simple_form_for @referral do |f| %>
-            <%= f.input :friend_email, placeholder: "Enter your friend's e-mail",  label: false  %>
-            <%= f.submit "Send invitation", class:"main_action_button mb-0" %>
-            <% end %>
-        </div>
+      <div class="form2">
+        <% if @user.available %>
+          <p class="mb-0">Your friend isn't on RealLife yet?</p>
+          <p>Send an invite via e-mail to ask for help:</p>
+        <% else %>
+          <p class="mb-0">Your friend is not on RealLife yet?</p>
+          <p>Send an invite to offer your help:</p>
+        <% end %>
+        <%= simple_form_for @referral do |f| %>
+          <%= f.input :friend_email, placeholder: "Enter your friend's e-mail",  label: false  %>
+          <%= f.submit "Send invitation", class:"main_action_button mb-0" %>
+        <% end %>
+      </div>
     </div>
+  </div>
 </div>

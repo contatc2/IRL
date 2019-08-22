@@ -6,15 +6,12 @@
     </div>
   </div>
 </div>
-
-<div class="container">
-  <div class="row text-center">
-    <div class="col col-xs-10" >
-      <% if @pseudo_match.helper == current_user %>
-        <%= render 'show_helper' %>
-      <% else %>
-        <%= render 'show_single' %>
-      <% end %>
-    </div>
+<div class="row justify-content-center">
+  <div class="col-xs-12 col-sm-10" >
+    <% if @pseudo_match.helper == current_user %>
+      <%= render 'show_helper' %>
+    <% else %>
+      <%= render 'show_single' %>
+    <% end %>
   </div>
 </div>

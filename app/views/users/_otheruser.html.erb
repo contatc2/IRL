@@ -22,35 +22,33 @@
     <% end %>
   </div>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-      <!-- if user available, show search criteria and matches -->
-      <% if @user.available %>
-        <div class="p-2 my-3">
-          <% unless @matches.empty? %>
-            <h2>Current Matches</h2>
-            <%= render 'mymatches', matches: @matches  %>
-          <% end %>
-          <% unless @pseudo_matches.empty? %>
-            <%= render 'pseudo_matches'  %>
-          <% end %>
-        </div>
-        <!-- show helper page for not available should be restricted to user logged in-->
-      <% else %>
-        <div class="p-2 my-3">
-          <% if @helper_matches.empty? || @helper_pseudo_matches.empty? %>
-            <p>No matches submitted yet... </p>
-          <% else %>
-            <h2>Submitted Matches</h2>
-            <%= render 'helper_matches' %>
-            <%= render 'helper_pseudo_matches', matches: @helper_pseudo_matches %>
-          <% end %>
-        </div>
-      <% end %>
-      <%@chat_room = ChatRoom.find_by(user_one: @user, user_two: current_user) || ChatRoom.find_by(user_two: @user, user_one: current_user) %>
-      <%= render 'chat' %>
-      <%= link_to 'back to my profile', user_path(current_user)  %>
-    </div>
+<div class="row">
+  <div class="col-xs-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+    <!-- if user available, show search criteria and matches -->
+    <% if @user.available %>
+      <div class="p-2 my-3">
+        <% unless @matches.empty? %>
+          <h2>Current Matches</h2>
+          <%= render 'mymatches', matches: @matches  %>
+        <% end %>
+        <% unless @pseudo_matches.empty? %>
+          <%= render 'pseudo_matches'  %>
+        <% end %>
+      </div>
+      <!-- show helper page for not available should be restricted to user logged in-->
+    <% else %>
+      <div class="p-2 my-3">
+        <% if @helper_matches.empty? || @helper_pseudo_matches.empty? %>
+          <p>No matches submitted yet... </p>
+        <% else %>
+          <h2>Submitted Matches</h2>
+          <%= render 'helper_matches' %>
+          <%= render 'helper_pseudo_matches', matches: @helper_pseudo_matches %>
+        <% end %>
+      </div>
+    <% end %>
+    <%@chat_room = ChatRoom.find_by(user_one: @user, user_two: current_user) || ChatRoom.find_by(user_two: @user, user_one: current_user) %>
+    <%= render 'chat' %>
+    <%= link_to 'back to my profile', user_path(current_user)  %>
   </div>
 </div>
