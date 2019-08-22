@@ -8,7 +8,7 @@ class MatchesController < ApplicationController
     @match = Match.new
     @pseudo_match = PseudoMatch.new
     @match_one = User.find(params[:match_one])
-    single_friends = current_user.friends.select(&:available)
+    single_friends = current_user.friends.select { |friend| friend.available && friend.male == @match_one.male_search }
     single_friends_invited = FriendInvitation.where(accepted: nil, user: current_user)
     .map(&:friend)&.select(&:available)
     @friends = single_friends_invited + single_friends
