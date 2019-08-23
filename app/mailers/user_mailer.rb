@@ -37,9 +37,8 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: "Hey #{@user.first_name}, it's a match with #{@match.first_name}!", track_opens: 'true')
   end
 
-  def match_invite(email, helper, intro)
+  def match_invite(email, helper)
     @helper = helper
-    @intro = intro
     @url = 'https://www.reallife.love'
     mail(to: email, subject: "#{@helper.first_name} has a great match waiting for you on IRL", track_opens: 'true')
   end
