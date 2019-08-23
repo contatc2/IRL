@@ -26,7 +26,7 @@
   <% end %>
 </div>
 <div class="p-2 text-center">
-  <% if @helper_matches.empty? || @helper_pseudo_matches.empty? %>
+  <% if @helper_matches.empty? && @helper_pseudo_matches.empty? %>
     <p>Create your first match today! </p>
   <% else %>
     <h4>My submitted Matches</h4>

@@ -1,5 +1,5 @@
 <%= simple_form_for @user do |f| %>
-  <span class="catch-paragraph mb-0">'You are a:</span>
+  <span class="catch-paragraph mb-0">You are a:</span>
   <%= render 'devise/registrations/gender' %>
   <span class="catch-paragraph my-0">You would like to be matched with a:</span>
   <%= render 'search_gender'%>
@@ -10,5 +10,3 @@
     <%= f.button :submit, "UPDATE SEARCH", class: "second_action_button right" %>
   </div>
 <% end %>
-</div>
-</div>

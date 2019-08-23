@@ -6,6 +6,9 @@ class PseudoMatch < ApplicationRecord
   validates :match_two_email, presence: true
   validates :match_two_first_name, presence: true
 
+  validates :match_two_facebook, presence: true, unless: :match_two_linkedin
+  validates :match_two_linkedin, presence: true, unless: :match_two_facebook
+
   def status
     match_one_accepted == false ? 'Rejected' : 'Pending'
   end
