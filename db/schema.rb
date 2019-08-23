@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_22_151211) do
+ActiveRecord::Schema.define(version: 2019_08_23_104445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,9 +56,11 @@ ActiveRecord::Schema.define(version: 2019_08_22_151211) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "intro_message"
+    t.bigint "pseudo_match_id"
     t.index ["helper_id"], name: "index_matches_on_helper_id"
     t.index ["match_one_id"], name: "index_matches_on_match_one_id"
     t.index ["match_two_id"], name: "index_matches_on_match_two_id"
+    t.index ["pseudo_match_id"], name: "index_matches_on_pseudo_match_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -85,6 +87,7 @@ ActiveRecord::Schema.define(version: 2019_08_22_151211) do
     t.boolean "converted"
     t.string "match_two_facebook"
     t.string "match_two_linkedin"
+    t.string "match_two_last_name"
     t.index ["helper_id"], name: "index_pseudo_matches_on_helper_id"
     t.index ["match_one_id"], name: "index_pseudo_matches_on_match_one_id"
   end
