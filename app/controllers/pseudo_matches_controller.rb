@@ -7,14 +7,15 @@ class PseudoMatchesController < ApplicationController
   def create
     @pseudo_match = PseudoMatch.new(pseudo_match_params)
     @pseudo_match.helper = current_user
-    @pseudo_match.save
+    @pseudo_match.date = Date.today
+    @pseudo_match.save!
     UserMailer.match_created(@pseudo_match.match_one, @pseudo_match.helper, @pseudo_match.intro_message).deliver_now
-    UserMailer.match_invite(@pseudo_match.match_two_email, @pseudo_match.helper, @pseudo_match.intro_message).deliver_now
     redirect_to user_path(current_user)
   end
 
   def update
     @pseudo_match.update(pseudo_match_params)
+    @pseudo_match.match_one_accepted && UserMailer.match_invite(@pseudo_match.match_two_email, @pseudo_match.helper).deliver_now
     redirect_to user_path(current_user)
   end
 
@@ -25,7 +26,8 @@ class PseudoMatchesController < ApplicationController
   end
 
   def pseudo_match_params
-    params.require(:pseudo_match).permit(:match_one_id, :match_one_accepted,
-                                         :match_two_first_name, :match_two_email, :match_two_picture, :intro_message)
+    params.require(:pseudo_match).permit(:match_one_id, :match_one_accepted, :match_two_facebook, :match_two_linkedin,
+                                         :match_two_first_name, :match_two_last_name, :match_two_email,
+                                         :match_two_picture, :intro_message)
   end
 end

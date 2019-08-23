@@ -8,7 +8,7 @@ class MatchesController < ApplicationController
     @match = Match.new
     @pseudo_match = PseudoMatch.new
     @match_one = User.find(params[:match_one])
-    single_friends = current_user.friends.select(&:available)
+    single_friends = current_user.friends.select { |friend| friend.available && friend.male == @match_one.male_search }
     single_friends_invited = FriendInvitation.where(accepted: nil, user: current_user)
     .map(&:friend)&.select(&:available)
     @friends = single_friends_invited + single_friends
@@ -21,12 +21,16 @@ class MatchesController < ApplicationController
     @match.match_two = User.find(params[:match][:match_two_id])
     @match.save
     UserMailer.match_created(@match.match_one, @match.helper, @match.intro_message).deliver_now
-    UserMailer.match_created(@match.match_two, @match.helper, @match.intro_message).deliver_now
     redirect_to user_path(current_user)
   end
 
   def update
     @match.update(match_params)
+    params[:match_one_accepted] && UserMailer.match_created(@match.match_two, @match.helper, @match.intro_message).deliver_now
+    if params[:match_two_accepted]
+      UserMailer.match_accepted(@match.match_one, @match.match_two).deliver_now
+      UserMailer.match_accepted(@match.match_two, @match.match_one).deliver_now
+    end
     redirect_to user_path(current_user)
   end
 

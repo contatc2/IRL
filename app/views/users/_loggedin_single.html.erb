@@ -35,7 +35,7 @@
 </div>
 <!-- if user is available show matches profiles -->
 <div class="p-3 text-center">
-  <% if @matches.empty? %>
+  <% if @matches.empty? && @pseudo_matches.empty? %>
     <p>You don't have any matches yet, nudge your friends.</p>
   <% else %>
     <h4>My Matches</h4>

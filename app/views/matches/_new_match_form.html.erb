@@ -1,0 +1,10 @@
+        
+<div class="form-inputs">
+  <%= simple_form_for @match do |f| %>
+    <%= f.hidden_field :match_one_id, value: @match_one.id %>
+    <%= f.association :match_two, label: 'Who would be the perfect match?', label_method: :full_name, collection: @friends_matchable %>
+    <%= f.input :intro_message, placeholder: "I thought you would be great for each other..." %>
+  </div>
+  <%= f.submit class:"main_action_button mb-0" %>
+<% end %>
+</div>

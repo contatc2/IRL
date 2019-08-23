@@ -1,3 +1,16 @@
+input.form-control {
+  border: 1px solid rgba(0,0,0,0.2);
+  box-shadow: none;
+  font-size: 14px;
+  color: #868686;
+  width: 100% !important;
+  &:focus {
+    outline: none;
+    border: 1px solid $blue;
+    box-shadow: none;
+  }
+}
+
 .form{
   background-color: $sky-blue;
   color: white !important;
@@ -13,10 +26,6 @@
   padding:($spacer * .5) ($spacer * 1) ;
   margin-top: ($spacer * 1);
   border-radius: 20px;
-}
-
-.from-text{
-  color: white !important;
 }
 
 .form-text{
@@ -113,5 +122,27 @@
 
 .flex-item {
   flex: 0 0 25%;
+}
+
+.input-icons i {
+  position: absolute;
+}
+
+.input-icons {
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: left;
+  input.form-control {
+    padding-left: 40px;
+  }
+}
+
+.icon-link {
+  color: #060805;
+}
+
+.icon {
+  padding: 10px;
+  font-size: 20px;
 }
 

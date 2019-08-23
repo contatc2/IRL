@@ -41,18 +41,7 @@
 .message_content {
   margin-bottom: 0;
 }
-input.form-control {
-  border: 1px solid transparent;
-  box-shadow: none;
-  font-size: 14px;
-  color: #868686;
-  width: 100% !important;
-  &:focus {
-    outline: none;
-    border: 1px solid $blue;
-    box-shadow: none;
-  }
-}
+
 .chat-header {
   background-color: white;
   color: $light-blue;
