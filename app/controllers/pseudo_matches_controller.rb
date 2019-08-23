@@ -15,7 +15,7 @@ class PseudoMatchesController < ApplicationController
 
   def update
     @pseudo_match.update(pseudo_match_params)
-    params[:match_one_accepted] && UserMailer.match_invite(@pseudo_match.match_two_email, @pseudo_match.helper).deliver_now
+    @pseudo_match.match_one_accepted && UserMailer.match_invite(@pseudo_match.match_two_email, @pseudo_match.helper).deliver_now
     redirect_to user_path(current_user)
   end
 
