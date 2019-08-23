@@ -42,6 +42,6 @@
     <%= render 'mymatches', matches: @matches  %>
   <% end %>
   <% unless @pseudo_matches.empty? %>
-    <%= render 'pseudo_matches'  %>
+    <%= render 'pseudo_matches', pseudo_matches: @pseudo_matches  %>
   <% end %>
 </div>

@@ -1,15 +1,15 @@
 <div class="cards mt-3">
-    <% @pseudo_matches.each do |match| %>
+  <% pseudo_matches.each do |match| %>
     <% mymatch_image = match.match_two_picture %>
     <% mymatch_name = match.match_two_first_name %>
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= mymatch_image %>');">
-        <%= link_to user_path(match.helper), class:"text-decoration-none" do %>
+      <%= link_to user_path(match.helper), class:"text-decoration-none" do %>
         <%= cl_image_tag(match.helper.profile_image_path, width:50, height:50, gravity:"faces", crop:"fill", class:"card-helper") %>
-        <% end %>
-        <%= mymatch_name  %>
-        <small>
-            <%= match.status %></small>
-        <%= link_to "", pseudo_match_path(match), class: "text-decoration-none card-link" %>
+      <% end %>
+      <%= mymatch_name  %>
+      <small>
+        <%= match.status %></small>
+      <%= link_to "", pseudo_match_path(match), class: "text-decoration-none card-link" %>
     </div>
-    <% end %>
+  <% end %>
 </div>

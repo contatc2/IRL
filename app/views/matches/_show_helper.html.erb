@@ -1,5 +1,4 @@
 <!-- content according to status -->
-
 <% if @match.status == "Accepted" %>
   <p>Congratulations, we have a match, <strong><%= @current_user.first_name_cap %></strong> and <strong><%= mymatch.first_name_cap %></strong> let's hope for magic!</p>
 <% elsif @match.status == "Rejected" %>
@@ -17,30 +16,20 @@
     <p>We are waiting for <strong><%= @match.match_two.first_name_cap %></strong>'s response, give a nudge.</p>
   <% end %>
 <% end %>
-
 <!-- matches pictures -->
 <div class="show-flex">
   <div style="position: absolute; left: 40%; top: 40%; z-index: 10; color: #fff; font-size: 18px">
     <%= @match.status  %>
   </div>
-
   <%= render 'match_picture', user: @match.match_one %>
   <%= render 'match_picture', user: @match.match_two %>
-
 </div>
-
 <div class="show-flex">
-
-    <%= render 'social_icons', user: @match.match_one %>
-    <%= render 'social_icons', user: @match.match_two %>
-
+  <%= render 'social_icons', user: @match.match_one %>
+  <%= render 'social_icons', user: @match.match_two %>
 </div>
-
 <!-- to be removed and merged in chat -->
 <div class="invitations mt-3">
-    <h4>Your comment:</h4>
-      <%= @match.intro_message %>
+  <h4>Your comment:</h4>
+  <%= @match.intro_message %>
 </div>
-
-<%= render 'chat' %>
-
