@@ -34,21 +34,20 @@ class ApplicationController < ActionController::Base
   def create_match(resource)
     @pseudo_matches = PseudoMatch.where(match_two_email: resource.email, converted: nil)
     @pseudo_matches.each do |pseudo_match|
-      match = Match.new(
+      Match.create!(
         helper: pseudo_match.helper,
         match_one: pseudo_match.match_one,
         match_one_accepted: pseudo_match.match_one_accepted,
         match_two: resource,
-        intro_message: pseudo_match.intro_message
+        intro_message: pseudo_match.intro_message,
+        pseudo_match_id: pseudo_match.id
       )
-      match.save
 
       pseudo_match.update(converted: true)
-      invitation = FriendInvitation.new(
+      FriendInvitation.create!(
         user: pseudo_match.helper,
         friend: resource
       )
-      invitation.save
     end
   end
 end

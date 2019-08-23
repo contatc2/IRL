@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-  before_action :find_match, only: :update
+  before_action :find_match, only: %i[update show]
 
   def show
   end
@@ -19,15 +19,18 @@ class MatchesController < ApplicationController
     @match = Match.new(match_params)
     @match.helper = current_user
     @match.match_two = User.find(params[:match][:match_two_id])
-    @match.save
-    UserMailer.match_created(@match.match_one, @match.helper, @match.intro_message).deliver_now
-    redirect_to user_path(current_user)
+    if @match.save!
+      @match.pseudo_match_id.nil? && UserMailer.match_created(@match.match_one, @match.helper, @match.intro_message).deliver_now
+      redirect_to user_path(current_user)
+    else
+      render :new
+    end
   end
 
   def update
     @match.update(match_params)
-    params[:match_one_accepted] && UserMailer.match_created(@match.match_two, @match.helper, @match.intro_message).deliver_now
-    if params[:match_two_accepted]
+    params[:match][:match_one_accepted] && UserMailer.match_created(@match.match_two, @match.helper, @match.intro_message).deliver_now
+    if @match.match_two_accepted
       UserMailer.match_accepted(@match.match_one, @match.match_two).deliver_now
       UserMailer.match_accepted(@match.match_two, @match.match_one).deliver_now
     end
