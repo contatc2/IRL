@@ -6,6 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :validatable
   devise :omniauthable, omniauth_providers: [:facebook]
+  acts_as_token_authenticatable
   has_many :matches, foreign_key: 'helper_id', dependent: :delete_all
   has_many :pseudo_matches, foreign_key: 'helper_id', dependent: :delete_all
   has_many :referrals, dependent: :delete_all

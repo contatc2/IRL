@@ -166,6 +166,8 @@ GEM
     public_suffix (3.1.1)
     puma (4.1.0)
       nio4r (~> 2.0)
+    pundit (2.1.0)
+      activesupport (>= 3.0.0)
     rack (2.0.7)
     rack-proxy (0.6.5)
       rack
@@ -219,6 +221,10 @@ GEM
     simple_form (4.1.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
+    simple_token_authentication (1.16.0)
+      actionmailer (>= 3.2.6, < 7)
+      actionpack (>= 3.2.6, < 7)
+      devise (>= 3.2, < 6)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -279,10 +285,12 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma
+  pundit
   rails (= 5.2.2)
   redis
   sassc-rails
   simple_form
+  simple_token_authentication
   spring
   spring-watcher-listen (~> 2.0.0)
   uglifier
