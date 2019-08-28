@@ -21,6 +21,8 @@ gem 'carrierwave', '~> 1.2'
 gem 'cloudinary', '~> 1.9.1'
 gem 'postmark-rails'
 gem 'pg_search'
+gem 'pundit'
+gem 'simple_token_authentication'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
